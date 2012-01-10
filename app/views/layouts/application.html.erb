@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Rubiks</title>
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<div class="header">
+  <div class="logo">
+    Rubiks Cubed
+  </div>
+</div>
+
+<div class="content">
+  <%= yield %>
+</div>
+
+</body>
+</html>
