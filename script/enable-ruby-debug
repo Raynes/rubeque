@@ -1,0 +1,15 @@
+#!/bin/bash
+#
+# This script will help install ruby-debug for ruby 1.9.3
+#
+VENDOR_PATH="$0/../../vendor/src"
+echo `ls $VENDOR_PATH`
+#
+#  The gem install calls need the ruby src location
+#  A sample RUBY_LOCATION is /Users/uname/.rvm/src/ruby-1.9.3-p0/
+RUBY_LOCATION=`which ruby | sed 's/bin\/ruby//' | sed s/rubies/src/`
+gem install archive-tar-minitar
+gem install $VENDOR_PATH/linecache19-0.5.13.gem
+gem install $VENDOR_PATH/ruby_core_source-0.1.5.gem
+gem install $VENDOR_PATH/ruby-debug19-0.11.6.gem -- --with-ruby-include=$RUBY_LOCATION
+gem install $VENDOR_PATH/ruby-debug-base19-0.11.26.gem -- --with-ruby-include=$RUBY_LOCATION
