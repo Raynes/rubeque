@@ -14,13 +14,37 @@ body {
 div.header {
   height: 40px;
   background: #384041;
-  .logo {
-    color: #fff;
+  color: #fff;
+  font-size: 18px;
+
+  .container {
     width: 950px;
     margin: 0 auto;
-    font-size: 28px;
-    font-weight: bolder;
     padding: 10px 0;
+  }
+  .logo {
+    width: 300px;
+    float: left;
+    font-size: 28px;
+  }
+  .user, .menu {
+    float: right;
+  }
+  a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    float: left;
+    margin: 0 0 0 40px;
+    &:hover {
+      background: inherit;
+      color: #aeaeae;
+    }
+  }
+  p {
+    font-size: 18px;
+    float: left;
+    margin: 0 0 0 40px;
   }
 }
 

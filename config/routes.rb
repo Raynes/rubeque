@@ -5,7 +5,8 @@ Rubeque::Application.routes.draw do
 
   get "static/index"
 
-  root :to => "static#index"
+  #root :to => "static#index"
+  root to: "problems#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
