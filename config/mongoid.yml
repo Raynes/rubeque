@@ -4,11 +4,11 @@ defaults: &defaults
 
 development:
   <<: *defaults
-  database: rubiks_dev
+  database: rubeque_dev
 
 test:
   <<: *defaults
-  database: rubiks_test
+  database: rubeque_test
 
 production:
   host: <%= ENV["MONGOID_HOST"] %>

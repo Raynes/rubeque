@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Rubiks::Application.load_tasks
+Rubeque::Application.load_tasks

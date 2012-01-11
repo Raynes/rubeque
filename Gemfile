@@ -34,5 +34,8 @@ end
 
 group :development do
   # bash < <(curl -L https://raw.github.com/gist/1333785)
-  gem 'ruby-debug19'
+  rvm_path = ENV['rvm_path']
+  gem 'linecache19','0.5.13', :path => "#{rvm_path}/gems/ruby-1.9.3-p0@rubeque/gems/linecache19-0.5.13"
+  gem 'ruby-debug-base19', '0.11.26', :path => "#{rvm_path}/gems/ruby-1.9.3-p0@rubeque/gems/ruby-debug-base19-0.11.26"
+  gem 'ruby-debug19', '0.11.6',:require => 'ruby-debug'#, :path => "#{rvm_path}/gems/ruby-1.9.3-p0@rubeque/gems/ruby-debug19-0.11.6"
 end
