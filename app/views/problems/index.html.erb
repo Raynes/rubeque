@@ -4,10 +4,8 @@
   <tr>
     <th>Title</th>
     <th>Instructions</th>
-    <th>Code</th>
     <th>Difficulty</th>
-    <th></th>
-    <th></th>
+    <th>Solutions</th>
     <th></th>
   </tr>
 
@@ -15,11 +13,9 @@
   <tr>
     <td><%= problem.title %></td>
     <td><%= problem.instructions %></td>
-    <td><%= problem.code %></td>
     <td><%= problem.difficulty %></td>
+    <td><%= problem.solutions.count %></td>
     <td><%= link_to 'Show', problem %></td>
-    <td><%= link_to 'Edit', edit_problem_path(problem) %></td>
-    <td><%= link_to 'Destroy', problem, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>

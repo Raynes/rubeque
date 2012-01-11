@@ -14,6 +14,7 @@ class ProblemsController < ApplicationController
   # GET /problems/1.json
   def show
     @problem = Problem.find(params[:id])
+    @solution = @problem.solutions.where(user: current_user).first || Solution.new(:problem => @problem)
 
     respond_to do |format|
       format.html # show.html.erb

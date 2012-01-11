@@ -1,7 +1,13 @@
 class Problem
   include Mongoid::Document
-  field :title, :type => String
-  field :instructions, :type => String
-  field :code, :type => String
-  field :difficulty, :type => String
+  field :title
+  field :instructions
+  field :code
+  field :difficulty
+
+  embeds_many :solutions
+
+  DIFFICULTY_LEVELS = ["easy", "medium", "hard"]
+
+  validates_presence_of :title, :code, :difficulty
 end

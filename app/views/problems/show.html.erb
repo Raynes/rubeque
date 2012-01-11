@@ -16,6 +16,13 @@
   <pre><%= @problem.code %></pre>
 </p>
 
+<hr/>
 
-<%= link_to 'Edit', edit_problem_path(@problem) %> |
+<h2>Your Solution</h2>
+<%= form_for [@problem, @solution] do |f| -%>
+  <%= form_errors @solution %>
+  <%= f.text_area :code %><br/>
+  <%= f.submit "Submit", :disable_with => "Submitting..." %>
+<% end -%>
+
 <%= link_to 'Back', problems_path %>
