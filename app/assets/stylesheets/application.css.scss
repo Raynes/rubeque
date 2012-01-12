@@ -87,26 +87,34 @@ table {
     color: #444; } }
 
 header {
-  height: 60px;
-  background: #384041;
+  height: 55px;
+  background: url(/assets/headerbg.png);
   font-size: 14px;
   font-weight: bold;
-  color: #fff;
-  border: 1px solid #000;
+  color: #333;
+  border-bottom: 8px solid #D31000;
+  position: relative;
 
+  img {
+    position: relative;
+    top: -10px;
+    float: left;
+    margin: -17px -20px;
+    height: 75px;
+  }
   .container {
     width: 950px;
     margin: 0 auto;
     padding: 20px 0;
     a {
-      color: #fff;
+      color: #B11000;
       text-decoration: none;
       display: block;
       float: left;
       margin: 0 0 0 40px;
       &:hover {
         background: inherit;
-        color: #aeaeae; } } }
+        color: #343434; } } }
 
   .logo {
     width: 300px;
@@ -120,7 +128,8 @@ header {
         text-shadow: 1px 1px 0 #333; } } }
 
   .user, .menu {
-    float: right; }
+    float: right;
+    margin-top: 12px; }
 
   p {
     font-size: 14px;
