@@ -3,35 +3,41 @@
 <head>
   <title>rubeque</title>
   <%= stylesheet_link_tag    "application" %>
+  <link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<header>
-  <div class="container">
-    <div class="logo">
-      <%= link_to image_tag("rubeque.png"), root_path %>
+<div id="wrap">
+  <header>
+    <div class="container">
+      <div class="logo">
+        <%= link_to image_tag("rubeque.png"), root_path %>
+      </div>
+      <div class="user">
+        <% if user_signed_in? %>
+          <p><%= current_user.username %></p>
+          <%= link_to "[Logout]", destroy_user_session_path(), method: :delete, style: "margin-left: 4px" %>
+        <% else %>
+          <%= link_to "Sign In", new_user_session_path %>
+          <%= link_to "Register", new_user_registration_path %>
+        <% end -%>
+      </div>
+      <div class="menu">
+        <%= link_to "Problems", problems_path() %>
+        <%= link_to "Users", users_path() %>
+      </div>
     </div>
-    <div class="user">
-      <% if user_signed_in? %>
-        <p><%= current_user.username %></p>
-        <%= link_to "[Logout]", destroy_user_session_path(), method: :delete, style: "margin-left: 4px" %>
-      <% else %>
-        <%= link_to "Sign In", new_user_session_path %>
-        <%= link_to "Register", new_user_registration_path %>
-      <% end -%>
-    </div>
-    <div class="menu">
-      <%= link_to "Problems", problems_path() %>
-      <%= link_to "Users", users_path() %>
-    </div>
-  </div>
-</header>
+  </header>
 
-<section class="content">
-  <%= yield %>
-</section>
+  <div class="content">
+    <%= yield %>
+  </div>
+
+  <div class="push"></div>
+
+</div>
 
 <footer>
   <div class="container">

@@ -6,17 +6,7 @@
  *= require_tree . 
 */
 
-section.content {
-  width: 950px;
-  margin: 10px auto;
-  background: #fff;
-  border: 1px solid #ccc;
-  padding: 0 10px 30px;
-  h1 {
-    background: #565656;
-    margin: 0px -10px 20px;
-    padding: 10px 10px;
-    color: #fff; } }
+html, body {height: 100%;}
 
 body {
   padding: 0 0 0;
@@ -24,7 +14,6 @@ body {
   background-color: #fff;
   color: #333;
   font-family: verdana, arial, freesans, sans-serif;
-  background: url('/assets/headerbg.png');
   font-size: 13px;
   line-height: 18px; }
 
@@ -88,13 +77,20 @@ table {
     border: 1px solid #ccc;
     padding: 4px 6px; }
   th {
+    font-family: "Droid Sans", Arial, Sans-serif;
+    font-size: 15px;
     background: #eee;
     color: #444; } }
 
+h1, h2, h3, h4 {
+  font-family: "Droid Sans", Helvetica, Arial, Sans-serif;
+}
+
 header {
-  height: 55px;
-  background: #fff;
-  font-size: 14px;
+  height: 65px;
+  background: url('/assets/bgnoise.gif');
+  font-family: "Droid Sans", Helvetica, Arial, Sans-serif;
+  font-size: 20px;
   font-weight: bold;
   color: #333;
   border-bottom: 8px solid #D31000;
@@ -102,7 +98,7 @@ header {
 
   img {
     position: relative;
-    top: -10px;
+    top: -5px;
     float: left;
     margin: -17px -20px;
     height: 75px;
@@ -134,7 +130,7 @@ header {
 
   .user, .menu {
     float: right;
-    margin-top: 12px; }
+    margin-top: 0.5em; }
 
   p {
     font-size: 14px;
@@ -145,22 +141,49 @@ header {
 footer {
   border-top: 1px solid #CCC;
   color: #999;
-  margin: 20px auto 0;
   padding: 10px 0;
   font-size: 10px;
   background: #eee;
-  position:fixed;
-  left:0px;
-  bottom:0px;
   width:100%;
 
   .container {
     width: 950px;
     margin: 0 auto;
   }
+
   a {
     color: #999;
     &:hover {
       background: inherit;
       color: #666; } }
+}
+
+footer, .push {
+  height: 65px;
+}
+
+#wrap {
+  background: url('/assets/sqnoise.png');
+  min-height: 100%;
+  height: auto !important;
+  margin: 0 auto -65px; // set footer height here
+}
+
+div.content {
+  width: 950px;
+  min-height: 500px;
+  margin: 10px auto;
+  background: #fff;
+  border: 1px solid #ccc;
+  padding: 0 10px 30px;
+
+  h1 {
+    padding-bottom: 5px;
+    border-bottom: 2px solid #eee; }
+  b {
+    font-size: 15px;
+    font-family: "Droid Sans", Helvetica, Arial, Sans-serif; } }
+
+textarea#solution_code {
+  font-family: Monaco, "Courier New", Monospace;
 }
