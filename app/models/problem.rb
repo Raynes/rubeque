@@ -5,7 +5,7 @@ class Problem
   field :code
   field :difficulty
 
-  embeds_many :solutions
+  references_many :solutions
 
   DIFFICULTY_LEVELS = ["easy", "medium", "hard"]
 

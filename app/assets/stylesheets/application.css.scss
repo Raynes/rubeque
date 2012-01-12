@@ -7,11 +7,11 @@
 */
 
 body {
-  padding: 0 0 10px;
+  padding: 0 0 0;
   margin: 0;
 }
 
-div.content {
+section.content {
   width: 950px;
   margin: 10px auto;
 }
@@ -19,12 +19,12 @@ div.content {
 body {
   background-color: #fff;
   color: #333;
-  font-family: verdana, arial, helvetica, sans-serif;
+  font-family: verdana, arial, freesans, sans-serif;
   font-size: 13px;
   line-height: 18px; }
 
 p, ol, ul, td {
-  font-family: verdana, arial, helvetica, sans-serif;
+  font-family: verdana, arial, freesans, sans-serif;
   font-size: 13px;
   line-height: 18px; }
 
@@ -80,44 +80,73 @@ table {
   border-collapse: collapse;
   width: 100%;
   td, th {
-    border: 1px solid #aaa;
+    border: 1px solid #ccc;
     padding: 4px 6px; }
   th {
-    background: #eee; } }
+    background: #eee;
+    color: #444; } }
 
-div.header {
-  height: 40px;
+header {
+  height: 60px;
   background: #384041;
+  font-size: 14px;
+  font-weight: bold;
   color: #fff;
-  font-size: 18px;
+  border: 1px solid #000;
 
   .container {
     width: 950px;
     margin: 0 auto;
-    padding: 10px 0;
-  }
+    padding: 20px 0;
+    a {
+      color: #fff;
+      text-decoration: none;
+      display: block;
+      float: left;
+      margin: 0 0 0 40px;
+      &:hover {
+        background: inherit;
+        color: #aeaeae; } } }
+
   .logo {
     width: 300px;
     float: left;
     font-size: 28px;
-  }
+
+    a {
+      margin-left: 0;
+      letter-spacing: -1px;
+      &:hover {
+        text-shadow: 1px 1px 0 #333; } } }
+
   .user, .menu {
-    float: right;
+    float: right; }
+
+  p {
+    font-size: 14px;
+    float: left;
+    margin: 0 0 0 40px; }
+}
+
+footer {
+  border-top: 1px solid #CCC;
+  color: #999;
+  margin: 20px auto 0;
+  padding: 10px 0;
+  font-size: 10px;
+  background: #eee;
+  position:fixed;
+  left:0px;
+  bottom:0px;
+  width:100%;
+
+  .container {
+    width: 950px;
+    margin: 0 auto;
   }
   a {
-    color: #fff;
-    text-decoration: none;
-    display: block;
-    float: left;
-    margin: 0 0 0 40px;
+    color: #999;
     &:hover {
       background: inherit;
-      color: #aeaeae;
-    }
-  }
-  p {
-    font-size: 18px;
-    float: left;
-    margin: 0 0 0 40px;
-  }
+      color: #666; } }
 }

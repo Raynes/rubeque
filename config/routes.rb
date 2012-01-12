@@ -1,7 +1,8 @@
 Rubeque::Application.routes.draw do
-  resources :problems do
-    resources :solutions
-  end
+  resources :users, only: :index
+
+  resources :problems
+  resources :solutions
 
   devise_for :users
 

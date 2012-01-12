@@ -7,6 +7,7 @@ class User
 
   field :username
   field :email
+  field :solution_count, type: Integer
 
   references_many :solutions
 

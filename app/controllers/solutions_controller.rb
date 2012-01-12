@@ -40,13 +40,13 @@ class SolutionsController < ApplicationController
   # POST /solutions
   # POST /solutions.json
   def create
-    @problem  = Problem.find(params[:problem_id])
     @solution = Solution.new(params[:solution])
-    @solution.problem = @problem
+    @solution.user = current_user
+    @problem = @solution.problem
 
     respond_to do |format|
       if @solution.save
-        format.html { redirect_to @problem, notice: 'Solution successfully ran.' }
+        format.html { redirect_to @problem, notice: 'Your solution passed!' }
         format.json { render json: @solution, status: :created, location: @solution }
       else
         format.html { render "/problems/show" }
@@ -59,6 +59,7 @@ class SolutionsController < ApplicationController
   # PUT /solutions/1.json
   def update
     @solution = Solution.find(params[:id])
+    @problem = @solution.problem
 
     respond_to do |format|
       if @solution.update_attributes(params[:solution])

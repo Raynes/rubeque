@@ -8,29 +8,37 @@
 </head>
 <body>
 
-<div class="header">
+<header>
   <div class="container">
     <div class="logo">
-      rubeque
+      <%= link_to "rubeque", root_path %>
     </div>
     <div class="user">
       <% if user_signed_in? %>
-        <p>Logged in: <%= current_user.username %></p>
-        <%= link_to "Logout", destroy_user_session_path(), method: :delete %>
+        <p><%= current_user.username %></p>
+        <%= link_to "[Logout]", destroy_user_session_path(), method: :delete, style: "margin-left: 4px" %>
       <% else %>
         <%= link_to "Sign In", new_user_session_path %>
         <%= link_to "Register", new_user_registration_path %>
       <% end -%>
     </div>
     <div class="menu">
-
+      <%= link_to "Problems", problems_path() %>
+      <%= link_to "Users", users_path() %>
     </div>
   </div>
-</div>
+</header>
 
-<div class="content">
+<section class="content">
   <%= yield %>
-</div>
+</section>
+
+<footer>
+  <div class="container">
+    &copy; 2012 <%= link_to "SciMed Solutions, Inc.", "http://www.scimedsolutions.com" %><br/>
+    All rights reserved.
+  </div>
+</footer>
 
 </body>
 </html>

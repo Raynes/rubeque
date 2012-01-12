@@ -3,11 +3,12 @@
 <h1><%= @problem.title %></h1>
 
 <p>
-  <b>Difficulty:</b>
+  <b>Difficulty:</b><br/>
   <%= @problem.difficulty %>
 </p>
 
 <p>
+  <b>Instructions:</b><br/>
   <%= @problem.instructions %>
 </p>
 
@@ -16,13 +17,13 @@
   <pre><%= @problem.code %></pre>
 </p>
 
-<hr/>
-
 <h2>Your Solution</h2>
-<%= form_for [@problem, @solution] do |f| -%>
+<%= form_for @solution do |f| -%>
   <%= form_errors @solution %>
+  <%= f.hidden_field :problem_id %>
   <%= f.text_area :code %><br/>
   <%= f.submit "Submit", :disable_with => "Submitting..." %>
 <% end -%>
+<br/>
 
 <%= link_to 'Back', problems_path %>
