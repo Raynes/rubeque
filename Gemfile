@@ -4,6 +4,7 @@ gem 'rails', '3.1.3'
 gem "mongoid", "~> 2.4"
 gem "bson_ext", "~> 1.5"
 gem "coderay", "~> 1.0.5"
+gem 'fakefs', :require => "fakefs/safe"
 
 # Gems used only for assets and not required
 # in production environments by default.
