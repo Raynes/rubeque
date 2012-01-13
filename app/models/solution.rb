@@ -5,9 +5,14 @@ class Solution
 
   referenced_in :problem
   referenced_in :user
+  references_many :votes
 
   validate :run_problem
   after_create :update_user_solution_count
+
+  def score
+    votes.upvote.count - votes.downvote.count
+  end
 
   protected
 

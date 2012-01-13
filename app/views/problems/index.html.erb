@@ -10,7 +10,7 @@
   </tr>
 
 <% @problems.each do |problem| %>
-  <tr>
+  <tr class="<%= 'solved' if problem.solved?(current_user) %>">
     <td><%= problem._id %></td>
     <td><%= link_to problem.title, problem %></td>
     <td><%= problem.instructions %></td>

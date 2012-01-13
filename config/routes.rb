@@ -1,4 +1,6 @@
 Rubeque::Application.routes.draw do
+  resources :votes
+
   resources :users, only: :index
 
   resources :problems do

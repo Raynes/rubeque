@@ -12,6 +12,7 @@ class User
   field :admin, type: Boolean
 
   references_many :solutions
+  references_many :votes
 
   validates_uniqueness_of :email, :username
 

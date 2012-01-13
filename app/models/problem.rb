@@ -18,6 +18,11 @@ class Problem
   DIFFICULTY_LEVELS = ["easy", "medium", "hard"]
 
   validates_presence_of :title, :code, :difficulty
+  
+  
+  def to_s
+    "#{title}"
+  end
 
   def solved?(user)
     user.present? && solutions.where(:user_id => user.id).present?

@@ -87,6 +87,9 @@ table {
   
   border-collapse: collapse;
   width: 100%;
+  tr.solved {
+    color: green;
+    background-color: #CCFFCC; }
   td, th {
     border: 1px solid #ccc;
     padding: 4px 6px;
@@ -236,7 +239,37 @@ p#solutions-link {
   position: relative;
   float: right;
   top: -44px; }
-  
+
+div.votes {
+  float: right;
+  margin-top: -6px;
+  position: relative;
+  b {
+    position: relative;
+    top: -12px;
+    margin-right: 15px; } }
+
+a.upvote, a.downvote {
+  text-decoration: none;
+  margin-left: -6px;
+  opacity:0.6;
+  filter:alpha(opacity=40); /* For IE8 and earlier */
+
+  &:hover {
+    background-color: inherit;
+    opacity: 1;
+    filter:alpha(opacity=100); }
+  img {
+    height: 36px; }
+  &.selected {
+    opacity: 1;
+    filter:alpha(opacity=100); } }
+
+a.downvote img {
+  transform: rotate(180deg);
+   -moz-transform: rotate(180deg);
+   -webkit-transform: rotate(180deg); }
+
 form#user_edit {
   label {
     display: block;
