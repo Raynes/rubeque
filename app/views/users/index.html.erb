@@ -1,15 +1,17 @@
-<h1>Users</h1>
+<h1>Scores</h1>
 
 <table>
   <tr>
     <th>User</th>
+    <th>Score</th>
     <th>Solutions</th>
   </tr>
 
 <% @users.each do |user| %>
   <tr>
     <td><%= user.username %></td>
-    <td><%= user_solution_count(user) %></td>
+    <td><%= user.score %></td>
+    <td><%= user.solution_count %></td>
   </tr>
 <% end %>
 </table>
