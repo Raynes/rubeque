@@ -9,6 +9,7 @@ class User
   field :username
   field :email
   field :solution_count, type: Integer
+  field :admin, type: Boolean
 
   references_many :solutions
 

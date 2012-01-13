@@ -37,3 +37,8 @@ assert_equal fizzbuzz(15), "FizzBuzz"
 assert_equal fizzbuzz(5175), "FizzBuzz"
 eos
                )
+
+User.create!(:username => 'admin',
+             :email => 'kbennoune@gmail.com',
+             :admin => true,
+             :password => 'Secret1234')
