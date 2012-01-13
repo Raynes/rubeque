@@ -65,8 +65,8 @@ code_block
 
 Problem.create!(#_id: 7,
                   difficulty: "easy",
-                  title: "Fibonacci finder",
-                  instructions: "Your favorite and mine, Fibonacci!  Write a method that handles Fibonacci sequences. Have it return the nth item in the Fibonacci sequence.  Hint: The first item in the sequence is 0.",
+                  title: "Your favorite and mine, Fibonacci!",
+                  instructions: "Write a method that handles Fibonacci sequences. Have it return the nth item in the Fibonacci sequence.  Hint: The first item in the sequence is 0.",
                   approved: true,
                   code: <<-code_block
  def fibo_finder(n)
@@ -84,7 +84,7 @@ Problem.create!(#_id: 7,
 Problem.create!(#_id: 8,
                difficulty: 'medium',
                title: "Pigs fly;  wait, no they don't.",
-               instructions: 'Can you make a method return a differect value after a return is called?',
+               instructions: 'Can you make a method return a differect value after a "return" is called?',
                approved: true,
                code: <<-eos
                  def do_pigs_fly?
