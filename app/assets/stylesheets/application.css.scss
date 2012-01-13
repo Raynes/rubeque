@@ -57,7 +57,10 @@ div {
 .message {
   padding: 0.8em;
   text-align: center;
-  margin: 15px auto; }
+  margin: 15px auto;
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px; }
 
 #error_explanation {
   width: 600px;
@@ -157,6 +160,7 @@ header {
       float: left;
       margin: 0 0 0 40px;
       cursor: pointer;
+      text-shadow: 0 2px 0 #fff;
       &:hover {
         background: inherit;
         color: #343434; } } }
@@ -224,7 +228,7 @@ div.content {
   padding: 0 10px 30px;
 
   h1 {
-    padding-bottom: 5px;
+    padding-bottom: 8px;
     border-bottom: 2px solid #eee; }
   b, label {
     font-size: 15px;

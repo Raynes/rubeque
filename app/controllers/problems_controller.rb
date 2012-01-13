@@ -33,7 +33,7 @@ class ProblemsController < ApplicationController
     @solution = if current_user && (solution =  @problem.solutions.where(user_id: current_user.id).first)
       solution
     else
-      Solution.new(:problem => @problem)
+      Solution.new(problem: @problem, code: params[:solution_code])
     end
 
     respond_to do |format|
