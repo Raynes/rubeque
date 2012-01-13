@@ -14,7 +14,7 @@
 
 <p>
   <b>Code:</b>
-  <%=raw CodeRay.scan(@problem.code, :ruby).div(:line_numbers => :table) %>
+  <%=raw render :partial => "shared/highlight_code", :locals => {:code => @problem.code}  %>
 </p>
 
 <h2>Your Solution</h2>
