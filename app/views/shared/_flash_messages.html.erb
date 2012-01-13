@@ -1,7 +1,7 @@
 <div id="flash">
   <% flash.each do |message_type, message| %>
     <div class="message" id="<%= message_type %>">
-      <%= message %>
+      <b><%= message %></b>
     </div>
   <% end %>
 </div>

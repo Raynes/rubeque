@@ -1,18 +1,23 @@
-<h1>Listing solutions</h1>
+<h1>Solutions for <%= link_to "#{@problem}", @problem %></h1>
 
 <% if @solutions.any? %>
+
   <% @solutions.each_with_index do |solution, index| %>
-    <h3>Solution <%= index+1 %></h3>
-    
+
+    <%= render "votes", solution: solution %>
+
+    <h2>Solution <%= index+1 %></h2>
+
     <%=raw highlight_code(solution.code) %>
-    
+
     <p class="small">
       Submitted by <strong><%= solution.user %></strong> on <%= solution.updated_at %>.
       <% if current_user_admin? %><%= link_to 'Edit', edit_solution_path(solution) %>|<%= link_to 'Destroy', solution, confirm: 'Are you sure?', method: :delete %><% end %>
     </p>
   <% end -%>
-<% else %>
-  <p>There are no solutions to this problem.</p>
-<% end -%>
 
-<%= link_to "Back to Problem", problem_path(@problem) %>
+<% else %>
+
+  <p>There are no solutions to this problem.</p>
+
+<% end -%>

@@ -7,7 +7,7 @@ module ApplicationHelper
   
   
   def highlight_code(code)
-    CodeRay.scan(code, :ruby).div
+    CodeRay.scan(code, :ruby).div(:css => :class)
   end
 
 end

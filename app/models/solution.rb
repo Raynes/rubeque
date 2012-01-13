@@ -5,9 +5,14 @@ class Solution
 
   referenced_in :problem
   referenced_in :user
+  references_many :votes
 
   validate :run_problem
-  after_create :update_user_solution_count
+  after_create :update_user_solution_count, :create_upvote_for_solution
+
+  def score
+    votes.upvote.count - votes.downvote.count
+  end
 
   protected
 
@@ -34,6 +39,10 @@ class Solution
         FakeFS.deactivate!
       end
     end
+    
+    def create_upvote_for_solution
+      self.votes.create(:user => user, :up => true) if user
+    end
 
     def update_user_solution_count
       # TODO: find all the solutions and update the user's solution count?
@@ -42,4 +51,5 @@ class Solution
         updating_user.save
       end
     end
+    
 end

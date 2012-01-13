@@ -40,14 +40,14 @@ div {
     margin-bottom: 10px; } }
 
 #notice {
-  border: 1px solid #AACCAA;
+  border: 1px solid green;
   color: green;
   background-color: #CCFFCC; }
   
-#error, #warning {
-  border: 1px solid maroon;
-  color: maroon;
-  background-color: lavenderblush; }
+#error, #warning, #alert {
+  border: 1px solid #B11000;
+  color: #B11000;
+  background-color: pink; }
 
 .field_with_errors {
   padding: 2px;
@@ -55,9 +55,9 @@ div {
   display: table; }
 
 .message {
-  padding: 0.5em;
+  padding: 0.8em;
   text-align: center;
-  margin: 5px auto; }
+  margin: 10px auto; }
 
 #error_explanation {
   width: 600px;
@@ -83,19 +83,29 @@ hr {
   border: 2px solid #efefef; }
 
 table {
+  $background: #ebebeb;
+  
   border-collapse: collapse;
   width: 100%;
   tr.solved {
-    color: green;
-    background-color: #CCFFCC; }
+    //color: green;
+    background-color: #CCFFCC !important; }
   td, th {
     border: 1px solid #ccc;
-    padding: 4px 6px; }
+    padding: 4px 6px;
+  }
+  
   th {
     font-family: "Droid Sans", Arial, Sans-serif;
     font-size: 15px;
-    background: #eee;
-    color: #444; } }
+    background: $background;
+    color: #444;
+  }
+  
+  tr:nth-of-type(2n + 1) {
+    background: $background;
+  }
+}
 
 h1, h2, h3, h4 {
   font-family: "Droid Sans", Helvetica, Arial, Sans-serif;
@@ -103,6 +113,8 @@ h1, h2, h3, h4 {
 
 textarea {
   width: 400px;
+  box-shadow: 0px 1px 1px #999 inset;
+  border-color: #aaa;
 }
 
 header {
@@ -206,13 +218,17 @@ div.content {
   margin: 10px auto;
   background: #fff;
   border: 1px solid #ccc;
+  border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
   padding: 0 10px 30px;
 
   h1 {
     padding-bottom: 5px;
     border-bottom: 2px solid #eee; }
-  b {
+  b, label {
     font-size: 15px;
+    font-weight: bold;
     font-family: "Droid Sans", Helvetica, Arial, Sans-serif; } }
 
 textarea#solution_code {
@@ -224,7 +240,37 @@ p#solutions-link {
   position: relative;
   float: right;
   top: -44px; }
-  
+
+div.votes {
+  float: right;
+  margin-top: -6px;
+  position: relative;
+  b {
+    position: relative;
+    top: -12px;
+    margin-right: 15px; } }
+
+a.upvote, a.downvote {
+  text-decoration: none;
+  margin-left: -6px;
+  opacity:0.6;
+  filter:alpha(opacity=40); /* For IE8 and earlier */
+
+  &:hover {
+    background-color: inherit;
+    opacity: 1;
+    filter:alpha(opacity=100); }
+  img {
+    height: 36px; }
+  &.selected {
+    opacity: 1;
+    filter:alpha(opacity=100); } }
+
+a.downvote img {
+  transform: rotate(180deg);
+   -moz-transform: rotate(180deg);
+   -webkit-transform: rotate(180deg); }
+
 form#user_edit {
   label {
     display: block;
@@ -234,7 +280,18 @@ form#user_edit {
       font-style: italic;
     }
   }
+  
   input {
+    display: block;
     margin-bottom: 20px;
   }
+}
+
+a#new_problem {
+  display: inline-block;
+  margin-top: 10px;
+}
+
+td.solved-mark {
+  text-align: center;
 }
