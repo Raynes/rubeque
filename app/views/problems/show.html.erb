@@ -19,10 +19,10 @@
 
 <h2>Your Solution</h2>
 
-<% if @problem.solved?(current_user) || current_user.admin? %>
-<p id="solutions-link">
-  <%= link_to "View Solutions", solutions_path(:problem_id => @problem.id) %>
-</p>
+<% if @problem.solved?(current_user) || current_user_admin? %>
+  <p id="solutions-link">
+    <%= link_to "View Solutions", solutions_path(:problem_id => @problem.id) %>
+  </p>
 <% end -%>
 
 <%= form_for @solution do |f| -%>

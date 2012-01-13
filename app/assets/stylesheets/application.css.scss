@@ -130,6 +130,11 @@ header {
     width: 950px;
     margin: 0 auto;
     padding: 20px 0;
+    
+    .username a {
+      color: #000;
+    }
+        
     a {
       color: #B11000;
       text-decoration: none;
@@ -216,3 +221,17 @@ p#solutions-link {
   position: relative;
   float: right;
   top: -44px; }
+  
+form#user_edit {
+  label {
+    display: block;
+    margin-bottom: 5px;
+    
+    .explanation {
+      font-style: italic;
+    }
+  }
+  input {
+    margin-bottom: 20px;
+  }
+}
