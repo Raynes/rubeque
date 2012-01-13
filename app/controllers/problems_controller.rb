@@ -18,7 +18,7 @@ class ProblemsController < ApplicationController
   def show
     @problem = Problem.find(params[:id])
     @solution = if current_user
-      @problem.solutions.where(user_id: current_user.id).first
+      @problem.solutions.where(user_id: current_user.id).first || Solution.new(:problem => @problem)
     else
       Solution.new(:problem => @problem)
     end
