@@ -1,25 +1,23 @@
 <h1><%='Unapproved ' if (params[:action] == 'unapproved') -%>Problems</h1>
 
-<table>
+<table id="problems">
   <tr>
     <th>ID</th>
     <th>Title</th>
     <th>Instructions</th>
     <th>Difficulty</th>
     <th>Solutions</th>
-    <th></th>
   </tr>
 
 <% @problems.each do |problem| %>
   <tr class="<%= 'solved' if problem.solved?(current_user) %>">
     <td><%= problem._id %></td>
-    <td><%= problem.title %></td>
+    <td><%= link_to problem.title, problem %></td>
     <td><%= problem.instructions %></td>
     <td><%= problem.difficulty.titleize %></td>
     <td><%= problem.solutions.count %></td>
-    <td><%= link_to 'Show', problem %></td>
   </tr>
 <% end %>
 </table>
 
-<%= link_to 'Create new problem', new_problem_path %>
+<%= link_to 'Create new problem', new_problem_path, id: 'new_problem' %>
