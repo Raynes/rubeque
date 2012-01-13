@@ -1,6 +1,9 @@
 class ProblemsController < ApplicationController
   # GET /problems
   # GET /problems.json
+  
+  before_filter :restrict_to_admin, only: [:edit,:update,:destroy]
+  
   def index
     @problems = Problem.all
 
