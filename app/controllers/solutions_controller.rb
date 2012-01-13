@@ -48,7 +48,9 @@ class SolutionsController < ApplicationController
 
     respond_to do |format|
       if @solution.save
-        format.html { redirect_to @problem, notice: 'Your solution passed!' }
+        notice = 'Your solution passed!'
+        notice += '  Please sign in or register to earn points.' if current_user.blank?
+        format.html { redirect_to @problem, notice: notice }
         format.json { render json: @solution, status: :created, location: @solution }
       else
         flash.now[:error] = "Sorry, that solution didn't work!"
