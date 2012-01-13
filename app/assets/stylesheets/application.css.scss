@@ -30,10 +30,9 @@ pre {
 a {
   color: #000;
   &:visited {
-    color: #666; }
+    color: #444; }
   &:hover {
-    color: #fff;
-    background-color: #000; } }
+    color: #D31000; } }
 
 div {
   &.field, &.actions {
@@ -193,14 +192,16 @@ footer {
   .container {
     width: 950px;
     margin: 0 auto;
+
+    img {
+      float: right; }
   }
 
   a {
     color: #999;
     &:hover {
       background: inherit;
-      color: #666; } }
-}
+      color: #666; } } }
 
 .small {
   font-size: 0.8em; }
@@ -228,7 +229,7 @@ div.content {
   padding: 0 10px 30px;
 
   h1 {
-    padding-bottom: 8px;
+    padding-bottom: 10px;
     border-bottom: 2px solid #eee; }
   b, label {
     font-size: 15px;
@@ -299,3 +300,6 @@ a#new_problem {
 td.solved-mark {
   text-align: center;
 }
+
+table#problems tr.problem {
+  cursor: pointer; }

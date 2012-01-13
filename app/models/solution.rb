@@ -28,7 +28,7 @@ class Solution
       begin
         FakeFS.activate!
         evaluator = Proc.new do
-          $SAFE = 4
+          $SAFE = 3
           eval(problem_code)
         end
         success = evaluator.call

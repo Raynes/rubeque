@@ -11,10 +11,10 @@
   </tr>
 
 <% @problems.each do |problem| %>
-  <tr class="<%= 'solved' if problem.solved?(current_user) %>">
+  <tr class="problem <%= 'solved' if problem.solved?(current_user) %>" id="<%= problem.id %>">
     <td><%= problem._id[-4..-1].to_i %></td>
-    <td><%= link_to problem.title, problem %></td>
-    <td><%= problem.instructions %></td>
+    <td><%= problem.title %></td>
+    <td><%= truncate(problem.instructions, length: 70) %></td>
     <td><%= problem.difficulty.titleize %></td>
     <td><%= problem.solutions.count %></td>
     <td class="solved-mark"><%= problem.solved?(current_user) ? image_tag("check.png") : "" %></td>
