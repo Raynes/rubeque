@@ -18,7 +18,7 @@ class Problem
   validates_presence_of :title, :code, :difficulty
 
   def solved?(user)
-    solutions.where(:user_id => user.id).present?
+    user.present? && solutions.where(:user_id => user.id).present?
   end
 
   private
