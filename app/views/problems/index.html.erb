@@ -13,7 +13,7 @@
   <tr>
     <td><%= problem.title %></td>
     <td><%= problem.instructions %></td>
-    <td><%= problem.difficulty %></td>
+    <td><%= problem.difficulty.titleize %></td>
     <td><%= problem.solutions.count %></td>
     <td><%= link_to 'Show', problem %></td>
   </tr>
