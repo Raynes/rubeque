@@ -3,8 +3,11 @@
 <% if @solutions.any? %>
   <% @solutions.each_with_index do |solution, index| %>
     <h3>Solution <%= index+1 %></h3>
-    <pre><%= solution.code %></pre>
-    <p class="small">Submitted by <strong><%= solution.user %></strong> on <%= solution.updated_at %>.</p>
+    <%=raw render :partial => "shared/highlight_code", :locals => {:code => solution.code}  %>
+    <p class="small">
+      Submitted by <strong><%= solution.user %></strong> on <%= solution.updated_at %>.
+      <% if current_user_admin? %><%= link_to 'Edit', edit_solution_path(solution) %>|<%= link_to 'Destroy', solution, confirm: 'Are you sure?', method: :delete %><% end %>
+    </p>
   <% end -%>
 <% else %>
   <p>There are no solutions to this problem.</p>
