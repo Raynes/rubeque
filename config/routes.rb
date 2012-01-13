@@ -12,6 +12,7 @@ Rubeque::Application.routes.draw do
   devise_for :users
 
   get "static/index"
+  match 'help' => 'static#help', :via => :get, :as => :help
 
   #root :to => "static#index"
   root to: "problems#index"

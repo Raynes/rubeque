@@ -1,51 +1,52 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>rubeque</title>
-  <%= stylesheet_link_tag "application", "coderay" %>
-  <link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <head>
+    <title>rubeque</title>
+    <%= stylesheet_link_tag "application", "coderay" %>
+    <link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
 
-<div id="wrap">
-  <header>
-    <div class="container">
-      <div class="logo">
-        <%= link_to image_tag("rubeque.png"), root_path %>
+    <div id="wrap">
+      <header>
+        <div class="container">
+          <div class="logo">
+            <%= link_to image_tag("rubeque.png"), root_path %>
+          </div>
+          <div class="user">
+            <% if user_signed_in? %>
+              <span class="username"><%= link_to current_user.username, edit_user_registration_path %></span>
+              <%= link_to "Log Out", destroy_user_session_path(), method: :delete %>
+            <% else %>
+              <%= link_to "Sign In", new_user_session_path %>
+              <%= link_to "Register", new_user_registration_path %>
+            <% end -%>
+          </div>
+          <div class="menu">
+            <%= link_to "Problems", problems_path() %>
+            <%= link_to "Scores", users_path() %>
+            <%= link_to "Help", help_path() %>
+          </div>
+        </div>
+      </header>
+
+      <div class="content">
+        <%= render "/shared/flash_messages" %>
+        <%= yield %>
       </div>
-      <div class="user">
-        <% if user_signed_in? %>
-          <span class="username"><%= link_to current_user.username, edit_user_registration_path %></span>
-          <%= link_to "Log Out", destroy_user_session_path(), method: :delete %>
-        <% else %>
-          <%= link_to "Sign In", new_user_session_path %>
-          <%= link_to "Register", new_user_registration_path %>
-        <% end -%>
-      </div>
-      <div class="menu">
-        <%= link_to "Problems", problems_path() %>
-        <%= link_to "Scores", users_path() %>
-      </div>
+
+      <div class="push"></div>
+
     </div>
-  </header>
 
-  <div class="content">
-    <%= render "/shared/flash_messages" %>
-    <%= yield %>
-  </div>
+    <footer>
+      <div class="container">
+        &copy; 2012 <%= link_to "SciMed Solutions, Inc.", "http://www.scimedsolutions.com" %><br/>
+        All rights reserved.
+      </div>
+    </footer>
 
-  <div class="push"></div>
-
-</div>
-
-<footer>
-  <div class="container">
-    &copy; 2012 <%= link_to "SciMed Solutions, Inc.", "http://www.scimedsolutions.com" %><br/>
-    All rights reserved.
-  </div>
-</footer>
-
-</body>
+  </body>
 </html>

@@ -1,0 +1,20 @@
+<h1>Help is here!</h1>
+
+<p>Rubeque challenges users to solve koan-style problems.  This is a fancy way of saying you'll be asked to fill in the blanks.</p>
+  
+<p>The "blanks" that you will be filling in are indicated by a <strong>double underscore</strong>: '__'.  This is not part of the syntax of the language.  Any code which makes the final form evaluate to 'true' will be considered a correct answer.  Let's consider the first problem:
+</p>
+
+<p><%=raw highlight_code("assert_equal 'hello world'.__, 'HELLO WORLD'") %></p>
+
+<p>Any of the following would be considered correct answers:</p>
+
+<ol>
+  <li>upcase</li>
+  <li>to_s.upcase</li>
+  <li>split("").each{|c| c.upcase!}.join</li>
+</ol>
+
+<p>Some operations are prohibited for security reasons. No system calls will be allowed.</p>
+
+Many of the easier problems on this site can be solved using only your browser. However at some point you will want to install Ruby, and use your favorite IDE or text editor to write your code.  Writing all your code directly on the site has a disadvantage:
