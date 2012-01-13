@@ -48,6 +48,21 @@ Problem.create!(_id: 5,
                 instructions: "How would you create an array that contains the squares of all elements in a range?",
                 code: "assert_equal [1, 4, 9, 16], (1..4).map { __ }",
                 approved: true)
+                
+Problem.create!(_id: 8,
+                difficulty: 'medium',
+                title: "Pigs fly;  wait, no they don't.",
+                instructions: 'Can you make a method return a differect value after a return is called?',
+                approved: true,
+                code: <<-eos
+                  def do_pigs_fly?
+                    return true
+                    __
+                  end
+  
+                  assert_equal do_pigs_fly?, false
+                eos
+                )
 
 User.delete_all
 User.create!(:username => 'admin',
