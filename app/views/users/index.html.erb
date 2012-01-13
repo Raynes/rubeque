@@ -4,16 +4,16 @@
   <tr>
     <th></th>
     <th>User</th>
-    <th>Score</th>
     <th>Problems Solved</th>
+    <th>Score</th>
   </tr>
 
 <% @users.each_with_index do |user, i| %>
   <tr>
     <td><%= i+1 %></td>
     <td><%= user.username %></td>
-    <td><%= user.score || 0 %></td>
     <td><%= user.solution_count || 0 %></td>
+    <td><%= user.score || 0 %></td>
   </tr>
 <% end %>
 </table>
