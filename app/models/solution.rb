@@ -26,10 +26,17 @@ class Solution
 
       # run it
       begin
-        success = eval(problem_code)
+        FakeFS.activate!
+        evaluator = Proc.new do
+          $SAFE = 4
+          eval(problem_code)
+        end
+        success = evaluator.call
         errors.add(:base, "Your solution failed.") unless success
       rescue Exception => e
         errors.add(:base, "Your solution failed: #{e.message}")
+      ensure
+        FakeFS.deactivate!
       end
     end
     
