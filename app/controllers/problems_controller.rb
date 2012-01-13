@@ -1,6 +1,9 @@
 class ProblemsController < ApplicationController
   # GET /problems
   # GET /problems.json
+  
+  before_filter :restrict_to_admin, only: [:edit,:update,:destroy]
+  
   def index
     @problems = Problem.all
 
@@ -14,8 +17,8 @@ class ProblemsController < ApplicationController
   # GET /problems/1.json
   def show
     @problem = Problem.find(params[:id])
-    @solution = if current_user
-      @problem.solutions.where(user_id: current_user.id).first
+    @solution = if current_user && (solution =  @problem.solutions.where(user_id: current_user.id).first)
+      solution
     else
       Solution.new(:problem => @problem)
     end
@@ -45,6 +48,7 @@ class ProblemsController < ApplicationController
   # POST /problems
   # POST /problems.json
   def create
+    params[:problem][:_id] = Problem.max(id).to_i + 1
     @problem = Problem.new(params[:problem])
 
     respond_to do |format|

@@ -1,5 +1,6 @@
 class Solution
   include Mongoid::Document
+  include Mongoid::Timestamps
   field :code
 
   referenced_in :problem

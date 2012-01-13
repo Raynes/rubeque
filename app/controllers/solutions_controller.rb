@@ -1,6 +1,8 @@
 class SolutionsController < ApplicationController
   # GET /solutions
   # GET /solutions.json
+  before_filter :restrict_to_admin, only: [:edit,:update,:destroy]
+  
   def index
     @solutions = Solution.all
 

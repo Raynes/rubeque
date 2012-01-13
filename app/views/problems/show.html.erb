@@ -2,13 +2,15 @@
 
 <p>
   <b>Difficulty:</b><br/>
-  <%= @problem.difficulty %>
+  <%= @problem.difficulty.titleize %>
 </p>
 
+<% if !@problem.instructions.blank? %>
 <p>
   <b>Instructions:</b><br/>
   <%= @problem.instructions %>
 </p>
+<% end %>
 
 <p>
   <b>Code:</b>

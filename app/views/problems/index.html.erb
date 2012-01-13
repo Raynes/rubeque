@@ -2,6 +2,7 @@
 
 <table>
   <tr>
+    <th>ID</th>
     <th>Title</th>
     <th>Instructions</th>
     <th>Difficulty</th>
@@ -11,9 +12,10 @@
 
 <% @problems.each do |problem| %>
   <tr>
+    <td><%= problem._id %></td>
     <td><%= problem.title %></td>
     <td><%= problem.instructions %></td>
-    <td><%= problem.difficulty %></td>
+    <td><%= problem.difficulty.titleize %></td>
     <td><%= problem.solutions.count %></td>
     <td><%= link_to 'Show', problem %></td>
   </tr>

@@ -93,6 +93,10 @@ h1, h2, h3, h4 {
   font-family: "Droid Sans", Helvetica, Arial, Sans-serif;
 }
 
+textarea {
+  width: 400px;
+}
+
 header {
   height: 65px;
   background: url('/assets/bgnoise.gif');
@@ -193,4 +197,5 @@ div.content {
 
 textarea#solution_code {
   font-family: Monaco, "Courier New", Monospace;
+  width: 500px;
 }
