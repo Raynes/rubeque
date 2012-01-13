@@ -85,6 +85,9 @@ hr {
 table {
   border-collapse: collapse;
   width: 100%;
+  tr.solved {
+    color: green;
+    background-color: #CCFFCC; }
   td, th {
     border: 1px solid #ccc;
     padding: 4px 6px; }
