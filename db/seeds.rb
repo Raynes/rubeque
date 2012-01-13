@@ -17,3 +17,8 @@ Problem.create!(:difficulty => "easy",
                 :title => "Reverse",
                 :instructions => "What happens when you apply reverse? Hint: don't forget to quote your strings!",
                 :code => "assert_equal 'nocab yknuhc'.reverse, __")
+                
+User.create!(:username => 'admin',
+             :email => 'kbennoune@gmail.com',
+             :admin => true,
+             :password => 'Secret1234')
