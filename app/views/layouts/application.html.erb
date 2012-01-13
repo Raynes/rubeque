@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>rubeque</title>
-  <%= stylesheet_link_tag    "application" %>
+  <%= stylesheet_link_tag "application", "coderay" %>
   <link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
@@ -17,8 +17,8 @@
       </div>
       <div class="user">
         <% if user_signed_in? %>
-          <p><%= current_user.username %></p>
-          <%= link_to "[Logout]", destroy_user_session_path(), method: :delete, style: "margin-left: 4px" %>
+          <span class="username"><%= link_to current_user.username, edit_user_registration_path %></span>
+          <%= link_to "Log Out", destroy_user_session_path(), method: :delete %>
         <% else %>
           <%= link_to "Sign In", new_user_session_path %>
           <%= link_to "Register", new_user_registration_path %>

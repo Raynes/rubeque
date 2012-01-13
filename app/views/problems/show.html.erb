@@ -1,5 +1,13 @@
 <h1><%= @problem.title %></h1>
 
+<% if current_user_admin? %>
+  <% if !@problem.approved %>
+    <%= link_to 'Approve', approve_problem_path(@problem), method: :put %>
+  <% else %>
+    <span>Approved</span>
+  <% end %>
+  | <%= link_to 'Edit', edit_problem_path(@problem) %> | <%= link_to 'Destroy', @problem, confirm: "Are you sure you want to destroy?", method: :delete %>
+<% end %>
 <p>
   <b>Difficulty:</b><br/>
   <%= @problem.difficulty.titleize %>
@@ -14,23 +22,23 @@
 
 <p>
   <b>Code:</b>
-  <pre><%= @problem.code %></pre>
+  <%=raw highlight_code(@problem.code) %>
 </p>
 
 <h2>Your Solution</h2>
 
-<% if @problem.solved?(current_user) || current_user.admin? %>
-<p id="solutions-link">
-  <%= link_to "View Solutions", solutions_path(:problem_id => @problem.id) %>
-</p>
+<% if @problem.solved?(current_user) || current_user_admin? %>
+  <p id="solutions-link">
+    <%= link_to "View Solutions", solutions_path(:problem_id => @problem.id) %>
+  </p>
 <% end -%>
 
 <%= form_for @solution do |f| -%>
   <%= form_errors @solution %>
   <%= f.hidden_field :problem_id %>
   <%= f.text_area :code %><br/>
-  <%= f.submit "Submit", :disable_with => "Submitting..." %>
+  <%= f.submit "Submit", :disable_with => "Submitting..." unless @problem.solved?(current_user) %>
 <% end -%>
 <br/>
 
-<%= link_to 'Back', problems_path %>
+<%= link_to 'Back', :back %>

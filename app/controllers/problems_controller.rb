@@ -2,11 +2,19 @@ class ProblemsController < ApplicationController
   # GET /problems
   # GET /problems.json
   
-  before_filter :restrict_to_admin, only: [:edit,:update,:destroy]
+  before_filter :restrict_to_admin, only: [:edit,:update,:destroy,:unapproved]
   before_filter :authenticate_user!, only: [:new]
   
+  def unapproved
+    @problems = Problem.unapproved
+    respond_to do |format|
+      format.html { render 'index.html.erb' }
+      format.json { render json: @problems }
+    end
+  end
+  
   def index
-    @problems = Problem.all
+    @problems = Problem.approved
 
     respond_to do |format|
       format.html # index.html.erb
@@ -59,6 +67,19 @@ class ProblemsController < ApplicationController
       else
         format.html { render action: "new" }
         format.json { render json: @problem.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+  
+  def approve
+    @problem = Problem.find(params[:id])
+    @problem.approved = true
+    respond_to do |format|
+      if @problem.save
+        format.html { redirect_to({action: 'unapproved'}, {notice: 'Problem was successfully approved.'}) }
+        format.json { head :ok }
+      else
+        format.html { redirect_to @problem, notice: 'Approval failed!' }
       end
     end
   end

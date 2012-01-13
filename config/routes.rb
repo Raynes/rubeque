@@ -3,8 +3,11 @@ Rubeque::Application.routes.draw do
 
   resources :users, only: :index
 
-  resources :problems
-  resources :solutions
+  resources :problems do
+    get 'unapproved', on: :collection
+    put 'approve', on: :member
+  end
+  resources :solutions, except: [:new]
 
   devise_for :users
 

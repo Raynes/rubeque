@@ -5,7 +5,7 @@ class SolutionsController < ApplicationController
 
   def index
     @problem = Problem.find(params[:problem_id]) rescue nil
-    if !current_user.admin? && (problem.nil? || !@problem.solved?(current_user))
+    if !current_user_admin? && (@problem.nil? || !@problem.solved?(current_user))
       redirect_to "/" and return
     end
     @solutions = Solution.where(:problem_id => @problem.id)
@@ -23,17 +23,6 @@ class SolutionsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @solution }
-    end
-  end
-
-  # GET /solutions/new
-  # GET /solutions/new.json
-  def new
-    @solution = Solution.new
-
-    respond_to do |format|
-      format.html # new.html.erb
       format.json { render json: @solution }
     end
   end
@@ -57,7 +46,7 @@ class SolutionsController < ApplicationController
         format.html { redirect_to @problem, notice: notice }
         format.json { render json: @solution, status: :created, location: @solution }
       else
-        flash.now[:error] = "Sorry, that solution didn't work!"
+        flash.now[:error] = "Sorry, that solution didn't work! Try again."
         format.html { render "/problems/show" }
         format.json { render json: @solution.errors, status: :unprocessable_entity }
       end
@@ -75,7 +64,7 @@ class SolutionsController < ApplicationController
         format.html { redirect_to @problem, notice: 'Solution was successfully updated.' }
         format.json { head :ok }
       else
-        flash.now[:error] = "Sorry, that solution didn't work!"
+        flash.now[:error] = "Sorry, that solution didn't work! Try again."
         format.html { render "/problems/show" }
         format.json { render json: @solution.errors, status: :unprocessable_entity }
       end

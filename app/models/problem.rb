@@ -1,6 +1,8 @@
 class Problem
   include Mongoid::Document
   include Mongoid::Timestamps
+  scope :approved, proc{ where(approved: true )}
+  scope :unapproved, proc{ any_of({approved: nil}, {approved: false}) }
   field :title
   field :instructions
   field :code
@@ -16,9 +18,14 @@ class Problem
   DIFFICULTY_LEVELS = ["easy", "medium", "hard"]
 
   validates_presence_of :title, :code, :difficulty
+  
+  
+  def to_s
+    "#{title}"
+  end
 
   def solved?(user)
-    solutions.where(:user_id => user.id).present?
+    user.present? && solutions.where(:user_id => user.id).present?
   end
 
   private
