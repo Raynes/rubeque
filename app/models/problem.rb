@@ -1,6 +1,8 @@
 class Problem
   include Mongoid::Document
   include Mongoid::Timestamps
+  scope :approved, proc{ where(approved: true )}
+  scope :unapproved, proc{ any_of({approved: nil}, {approved: false}) }
   field :title
   field :instructions
   field :code

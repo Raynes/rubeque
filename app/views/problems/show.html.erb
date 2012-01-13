@@ -1,5 +1,13 @@
 <h1><%= @problem.title %></h1>
 
+<% if current_user_admin? %>
+  <% if !@problem.approved %>
+    <%= link_to 'Approve', approve_problem_path(@problem), method: :put %>
+  <% else %>
+    <span>Approved</span>
+  <% end %>
+  | <%= link_to 'Edit', edit_problem_path(@problem) %> | <%= link_to 'Destroy', @problem, confirm: "Are you sure you want to destroy?", method: :delete %>
+<% end %>
 <p>
   <b>Difficulty:</b><br/>
   <%= @problem.difficulty.titleize %>
@@ -14,7 +22,7 @@
 
 <p>
   <b>Code:</b>
-  <%=raw render :partial => "shared/highlight_code", :locals => {:code => @problem.code}  %>
+  <%=raw highlight_code(@problem.code) %>
 </p>
 
 <h2>Your Solution</h2>
@@ -33,4 +41,4 @@
 <% end -%>
 <br/>
 
-<%= link_to 'Back', problems_path %>
+<%= link_to 'Back', :back %>

@@ -49,6 +49,7 @@ Problem.create!(_id: 5,
                 code: "assert_equal [1, 4, 9, 16], (1..4).map { __ }",
                 approved: true)
 
+User.delete_all
 User.create!(:username => 'admin',
              :email => 'kbennoune@gmail.com',
              :admin => true,
