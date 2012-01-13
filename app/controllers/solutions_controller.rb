@@ -1,7 +1,7 @@
 class SolutionsController < ApplicationController
   # GET /solutions
   # GET /solutions.json
-  before_filter :restrict_to_admin, only: [:edit,:update,:destroy]
+  before_filter :restrict_to_admin, only: [:edit,:destroy]
 
   def index
     @problem = Problem.find(params[:problem_id]) rescue nil
@@ -57,6 +57,10 @@ class SolutionsController < ApplicationController
   # PUT /solutions/1.json
   def update
     @solution = Solution.find(params[:id])
+    if @solution.user != current_user
+      flash[:error] = "You cannot update that solution"
+      redirect_to "/" and return
+    end
     @problem = @solution.problem
 
     respond_to do |format|

@@ -2,16 +2,18 @@
 
 <table>
   <tr>
+    <th></th>
     <th>User</th>
     <th>Score</th>
-    <th>Solutions</th>
+    <th>Problems Solved</th>
   </tr>
 
-<% @users.each do |user| %>
+<% @users.each_with_index do |user, i| %>
   <tr>
+    <td><%= i+1 %></td>
     <td><%= user.username %></td>
-    <td><%= user.score %></td>
-    <td><%= user.solution_count %></td>
+    <td><%= user.score || 0 %></td>
+    <td><%= user.solution_count || 0 %></td>
   </tr>
 <% end %>
 </table>
