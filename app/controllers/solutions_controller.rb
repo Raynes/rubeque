@@ -2,9 +2,13 @@ class SolutionsController < ApplicationController
   # GET /solutions
   # GET /solutions.json
   before_filter :restrict_to_admin, only: [:edit,:update,:destroy]
-  
+
   def index
-    @solutions = Solution.all
+    problem = Problem.find(params[:problem_id]) rescue nil
+    if problem.nil? || !problem.solved?(current_user)
+      redirect_to "/" and return
+    end
+    @solutions = Solution.where(:problem_id => problem.id)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -37,7 +41,9 @@ class SolutionsController < ApplicationController
 
     respond_to do |format|
       if @solution.save
-        format.html { redirect_to @problem, notice: 'Your solution passed!' }
+        notice = 'Your solution passed!'
+        notice += '  Please sign in or register to earn points.' if current_user.blank?
+        format.html { redirect_to @problem, notice: notice }
         format.json { render json: @solution, status: :created, location: @solution }
       else
         flash.now[:error] = "Sorry, that solution didn't work!"

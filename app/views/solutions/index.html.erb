@@ -1,27 +1,11 @@
 <h1>Listing solutions</h1>
 
-<table>
-  <tr>
-    <th>Problem</th>
-    <th>Code</th>
-    <th>User</th>
-    <th></th>
-    <% if current_user_admin? %>
-      <th></th>
-      <th></th>
-    <% end %>
-  </tr>
-
-<% @solutions.each do |solution| %>
-  <tr>
-    <td><%= solution.problem.title %></td>
-    <td><%= solution.code.truncate(40,omission: '...') %></td>
-    <td><%= solution.user %></td>
-    <td><%= link_to 'Show', solution %></td>
-    <% if current_user_admin? %>
-      <td><%= link_to 'Edit', edit_solution_path(solution) %></td>
-      <td><%= link_to 'Destroy', solution, confirm: 'Are you sure?', method: :delete %></td>
-    <% end %>
-  </tr>
-<% end %>
-</table>
+<% if @solutions.any? %>
+  <% @solutions.each_with_index do |solution, index| %>
+    <h3>Solution <%= index+1 %></h3>
+    <pre><%= solution.code %></pre>
+    <p class="small">Submitted by <strong><%= solution.user %></strong> on <%= solution.updated_at %>.</p>
+  <% end -%>
+<% else %>
+  <p>There are no solutions to this problem.</p>
+<% end -%>
