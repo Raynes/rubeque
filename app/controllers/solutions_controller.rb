@@ -51,6 +51,7 @@ class SolutionsController < ApplicationController
         format.html { redirect_to @problem, notice: 'Your solution passed!' }
         format.json { render json: @solution, status: :created, location: @solution }
       else
+        flash.now[:error] = "Sorry, that solution didn't work!"
         format.html { render "/problems/show" }
         format.json { render json: @solution.errors, status: :unprocessable_entity }
       end
@@ -68,6 +69,7 @@ class SolutionsController < ApplicationController
         format.html { redirect_to @problem, notice: 'Solution was successfully updated.' }
         format.json { head :ok }
       else
+        flash.now[:error] = "Sorry, that solution didn't work!"
         format.html { render "/problems/show" }
         format.json { render json: @solution.errors, status: :unprocessable_entity }
       end

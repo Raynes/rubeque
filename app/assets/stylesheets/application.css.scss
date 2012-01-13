@@ -43,6 +43,11 @@ div {
   border: 1px solid #AACCAA;
   color: green;
   background-color: #CCFFCC; }
+  
+#error, #warning {
+  border: 1px solid maroon;
+  color: maroon;
+  background-color: lavenderblush; }
 
 .field_with_errors {
   padding: 2px;
