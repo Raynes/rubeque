@@ -15,5 +15,5 @@ class User
 
   validates_uniqueness_of :email, :username
 
-  attr_accessible :username, :email, :password, :password_confirmation, :remember_me
+  attr_accessible :username, :email, :password, :password_confirmation, :remember_me, :admin
 end

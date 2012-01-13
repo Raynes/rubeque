@@ -5,6 +5,7 @@ class Problem
   field :instructions
   field :code
   field :difficulty
+  field :approved, type: Boolean
   field :_id, type: Integer
   key :_id
 
