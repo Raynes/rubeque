@@ -3,7 +3,16 @@ class ApplicationController < ActionController::Base
   
   protected
   def restrict_to_admin
-    (current_user && current_user.admin?) || access_denied
+    case
+    when !current_user then require_login
+    when current_user.admin? then true
+    else access_denied
+    end
+  end
+  
+  def require_login
+    flash[:notice] = "You need to signin to access this resource."
+    redirect_to new_user_session_path
   end
   
   def access_denied
