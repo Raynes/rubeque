@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
     flash[:notice] = "You need to signin to access this resource."
     redirect_to new_user_session_path
   end
-  
+    
   def access_denied
     flash[:notice] = "Sorry, you can't #{params[:action]}."
     redirect_to action: :show
