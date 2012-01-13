@@ -4,11 +4,11 @@ class SolutionsController < ApplicationController
   before_filter :restrict_to_admin, only: [:edit,:update,:destroy]
 
   def index
-    problem = Problem.find(params[:problem_id]) rescue nil
-    if problem.nil? || !problem.solved?(current_user)
+    @problem = Problem.find(params[:problem_id]) rescue nil
+    if !current_user.admin? && (problem.nil? || !@problem.solved?(current_user))
       redirect_to "/" and return
     end
-    @solutions = Solution.where(:problem_id => problem.id)
+    @solutions = Solution.where(:problem_id => @problem.id)
 
     respond_to do |format|
       format.html # index.html.erb
