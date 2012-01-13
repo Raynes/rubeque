@@ -2,9 +2,13 @@ class SolutionsController < ApplicationController
   # GET /solutions
   # GET /solutions.json
   before_filter :restrict_to_admin, only: [:edit,:update,:destroy]
-  
+
   def index
-    @solutions = Solution.all
+    @problem = Problem.find(params[:problem_id]) rescue nil
+    if !current_user_admin? && (@problem.nil? || !@problem.solved?(current_user))
+      redirect_to "/" and return
+    end
+    @solutions = Solution.where(:problem_id => @problem.id)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -19,17 +23,6 @@ class SolutionsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @solution }
-    end
-  end
-
-  # GET /solutions/new
-  # GET /solutions/new.json
-  def new
-    @solution = Solution.new
-
-    respond_to do |format|
-      format.html # new.html.erb
       format.json { render json: @solution }
     end
   end

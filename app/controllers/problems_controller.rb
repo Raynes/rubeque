@@ -3,6 +3,7 @@ class ProblemsController < ApplicationController
   # GET /problems.json
   
   before_filter :restrict_to_admin, only: [:edit,:update,:destroy]
+  before_filter :authenticate_user!, only: [:new]
   
   def index
     @problems = Problem.all
@@ -48,7 +49,7 @@ class ProblemsController < ApplicationController
   # POST /problems
   # POST /problems.json
   def create
-    params[:problem][:_id] = Problem.max(id).to_i + 1
+    params[:problem][:_id] = Problem.max(:_id).to_i + 1
     @problem = Problem.new(params[:problem])
 
     respond_to do |format|

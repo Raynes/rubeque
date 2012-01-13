@@ -18,11 +18,18 @@
 </p>
 
 <h2>Your Solution</h2>
+
+<% if @problem.solved?(current_user) || current_user.admin? %>
+<p id="solutions-link">
+  <%= link_to "View Solutions", solutions_path(:problem_id => @problem.id) %>
+</p>
+<% end -%>
+
 <%= form_for @solution do |f| -%>
   <%= form_errors @solution %>
   <%= f.hidden_field :problem_id %>
   <%= f.text_area :code %><br/>
-  <%= f.submit "Submit", :disable_with => "Submitting..." %>
+  <%= f.submit "Submit", :disable_with => "Submitting..." unless @problem.solved?(current_user) %>
 <% end -%>
 <br/>
 

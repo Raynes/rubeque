@@ -25,7 +25,7 @@
   </div>
   <div class="field">
     <%= f.label :difficulty %><br />
-    <%= f.text_field :difficulty %>
+    <%= f.select :difficulty, Problem::DIFFICULTY_LEVELS.collect { |level| [level.capitalize, level] } %>
   </div>
   <div class="actions">
     <%= f.submit %>

@@ -21,7 +21,8 @@ class Solution
 
       # run it
       begin
-        eval(problem_code)
+        success = eval(problem_code)
+        errors.add(:base, "Your solution failed.") unless success
       rescue Exception => e
         errors.add(:base, "Your solution failed: #{e.message}")
       end
