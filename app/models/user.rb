@@ -14,6 +14,7 @@ class User
 
   references_many :solutions
   references_many :votes
+  references_many :problems, inverse_of: :creator
 
   validates_uniqueness_of :email, :username
 

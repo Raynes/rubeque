@@ -11,7 +11,7 @@
 
 <% @problems.each do |problem| %>
   <tr class="<%= 'solved' if problem.solved?(current_user) %>">
-    <td><%= problem._id %></td>
+    <td><%= problem._id[-4..-1].to_i %></td>
     <td><%= link_to problem.title, problem %></td>
     <td><%= problem.instructions %></td>
     <td><%= problem.difficulty.titleize %></td>
@@ -20,4 +20,6 @@
 <% end %>
 </table>
 
-<%= link_to 'Create new problem', new_problem_path, id: 'new_problem' %>
+<% if current_user %>
+  <%= link_to 'Submit a problem', new_problem_path, id: 'new_problem' %>
+<% end -%>

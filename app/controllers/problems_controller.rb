@@ -26,6 +26,10 @@ class ProblemsController < ApplicationController
   # GET /problems/1.json
   def show
     @problem = Problem.find(params[:id])
+    if !@problem.approved?
+      redirect_to "/" and return
+    end
+
     @solution = if current_user && (solution =  @problem.solutions.where(user_id: current_user.id).first)
       solution
     else
@@ -57,12 +61,12 @@ class ProblemsController < ApplicationController
   # POST /problems
   # POST /problems.json
   def create
-    params[:problem][:_id] = Problem.max(:_id).to_i + 1
     @problem = Problem.new(params[:problem])
+    @problem.creator = current_user
 
     respond_to do |format|
       if @problem.save
-        format.html { redirect_to @problem, notice: 'Problem was successfully created.' }
+        format.html { redirect_to problems_path, notice: 'Problem was successfully submitted.' }
         format.json { render json: @problem, status: :created, location: @problem }
       else
         format.html { render action: "new" }

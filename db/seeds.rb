@@ -3,28 +3,28 @@
 
 Problem.delete_all
 
-Problem.create!(_id: 1,
+Problem.create!(#_id: 1,
                 difficulty: "easy",
                 title: "Hello World",
                 instructions: "",
                 code: "assert_equal 'hello world'.__, 'HELLO WORLD'",
                 approved: true)
 
-Problem.create!(_id: 2,
+Problem.create!(#_id: 2,
                 difficulty: "easy",
                 title: "Nil Values",
                 instructions: "Enter in a boolean value for what #nil? will return.",
                 code: "[0, '', 'chunky_bacon'].each { |v| assert_equal v.nil?, __ }",
                 approved: true)
 
-Problem.create!(_id: 3,
+Problem.create!(#_id: 3,
                 difficulty: "easy",
                 title: "Reverse",
                 instructions: "What happens when you apply reverse? Hint: don't forget to quote your strings!",
                 code: "assert_equal 'nocab yknuhc'.reverse, __",
                 approved: true)
 
-Problem.create!(_id: 4,
+Problem.create!(#_id: 4,
                 difficulty: "easy",
                 title: "FizzBuzz",
                 instructions: "If a number is divisible by 3, return \"Fizz\". If a number is divisible by 5, return \"Buzz\". If a number
@@ -42,14 +42,14 @@ assert_equal fizzbuzz(5175), "FizzBuzz"
 eos
                )
 
-Problem.create!(_id: 5,
+Problem.create!(#_id: 5,
                 difficulty: "easy",
                 title: "Map",
                 instructions: "How would you create an array that contains the squares of all elements in a range?",
                 code: "assert_equal [1, 4, 9, 16], (1..4).map { __ }",
                 approved: true)
                 
-Problem.create!(_id: 6,
+Problem.create!(#_id: 6,
                 difficulty: "easy",
                 title: "Reverse each word",
                 instructions: "Write a method that takes a sentence and returns it with each word reversed in place.",
@@ -63,7 +63,7 @@ assert_equal "olleH ,ereht dna woh era ?uoy", reverse_each_word("Hello there, an
 code_block
                )
 
-Problem.create!(_id: 7,
+Problem.create!(#_id: 7,
                   difficulty: "easy",
                   title: "Your favorite and mine, Fibonacci!",
                   instructions: "Write a method that handles Fibonacci sequences. Have it return the nth item in the Fibonacci sequence.  Hint: The first item in the sequence is 0.",
@@ -80,8 +80,8 @@ Problem.create!(_id: 7,
  assert_equal 55, fibo_finder(10)
  code_block
                  )
-                 
-Problem.create!(_id: 8,
+
+Problem.create!(#_id: 8,
                difficulty: 'medium',
                title: "Pigs fly;  wait, no they don't.",
                instructions: 'Can you make a method return a differect value after a "return" is called?',
@@ -95,6 +95,24 @@ Problem.create!(_id: 8,
                  assert_equal do_pigs_fly?, false
                eos
                )
+
+Problem.create!(#_id: 9,
+                  difficulty: "medium",
+                  title: "Happy numbers",
+                  instructions: "Happy numbers are positive integers that follow a particular formula: take each individual digit,
+                                 square it, and then sum the squares to get a new number. Repeat with the new number and eventually,
+                                 you might get to a number whose squared sum is 1. This is a happy number. An unhappy number (or
+                                 sad number) is one that loops endlessly. Write a function that determines if a number is happy or not.",
+                  approved: true,
+                  code: <<-code_block
+ __
+
+ assert_equal happy_number?(7), true
+ assert_equal happy_number?(986543210), true
+ assert_equal happy_number?(2), false
+ assert_equal happy_number?(3), false
+ code_block
+                 )
 
 User.delete_all
 User.create!(:username => 'admin',
