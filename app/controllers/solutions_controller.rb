@@ -23,17 +23,6 @@ class SolutionsController < ApplicationController
     end
   end
 
-  # GET /solutions/new
-  # GET /solutions/new.json
-  def new
-    @solution = Solution.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @solution }
-    end
-  end
-
   # GET /solutions/1/edit
   def edit
     @solution = Solution.find(params[:id])

@@ -2,7 +2,7 @@ Rubeque::Application.routes.draw do
   resources :users, only: :index
 
   resources :problems
-  resources :solutions
+  resources :solutions, except: [:new]
 
   devise_for :users
 
