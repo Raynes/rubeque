@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= f.label :problem %><br />
-    <%= f.text_field :problem %>
+    <div class='instructions'><%= @solution.problem.instructions %></div>
   </div>
   <div class="field">
     <%= f.label :code %><br />
