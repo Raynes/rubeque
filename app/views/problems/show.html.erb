@@ -18,6 +18,13 @@
 </p>
 
 <h2>Your Solution</h2>
+
+<% if @problem.solved?(current_user) %>
+<p>
+  <%= link_to "Other People's Solutions", solutions_path(:problem_id => @problem.id) %>
+</p>
+<% end -%>
+
 <%= form_for @solution do |f| -%>
   <%= form_errors @solution %>
   <%= f.hidden_field :problem_id %>
