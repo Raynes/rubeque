@@ -2,24 +2,18 @@
   background-color: #232323;
   border: 1px solid black;
   font-family: 'Courier New', 'Terminal', monospace;
-  color: #000;
+  color: #E6E0DB;
   padding: 3px 5px;
   overflow: auto;
   font-size: 12px;
-  margin: 12px 0; }
-  
+  margin: 14px 0;
+}
 .CodeRay pre {
   margin: 0px;
-  padding: 0px 5px; 
-  font-size: 15px;}
-  
-.CodeRay td.line-numbers{
-  padding-left: 8px;
-  min-width: 30px;
-  width: 5%; }
-  
-.CodeRay td.code{
-  width: 90%; }
+  padding: 0px;
+  background-color: #232323;
+  font-size: 14px;
+}
 
 .CodeRay .an { color:#E7BE69 }                      /* html attribute */
 .CodeRay .c  { color:#BC9358; font-style: italic; } /* comment */
