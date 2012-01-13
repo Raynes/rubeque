@@ -19,9 +19,9 @@
 
 <h2>Your Solution</h2>
 
-<% if @problem.solved?(current_user) %>
-<p>
-  <%= link_to "Other People's Solutions", solutions_path(:problem_id => @problem.id) %>
+<% if @problem.solved?(current_user) || current_user.admin? %>
+<p id="solutions-link">
+  <%= link_to "View Solutions", solutions_path(:problem_id => @problem.id) %>
 </p>
 <% end -%>
 
