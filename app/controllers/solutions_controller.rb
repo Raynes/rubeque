@@ -2,9 +2,13 @@ class SolutionsController < ApplicationController
   # GET /solutions
   # GET /solutions.json
   before_filter :restrict_to_admin, only: [:edit,:update,:destroy]
-  
+
   def index
-    @solutions = Solution.all
+    problem = Problem.find(params[:problem_id]) rescue nil
+    if problem.nil? || !problem.solved?(current_user)
+      redirect_to "/" and return
+    end
+    @solutions = Solution.where(:problem_id => problem.id)
 
     respond_to do |format|
       format.html # index.html.erb

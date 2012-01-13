@@ -107,13 +107,20 @@ header {
   border-bottom: 8px solid #D31000;
   position: relative;
 
+  p {
+    font-size: inherit;
+    font-weight: inherit;
+    font-family: inherit;
+    float: left;
+    margin: 0 0 0 40px; }
+
   img {
     position: relative;
     top: -5px;
     float: left;
     margin: -17px -20px;
-    height: 75px;
-  }
+    height: 75px; }
+
   .container {
     width: 950px;
     margin: 0 auto;
@@ -144,10 +151,6 @@ header {
     float: right;
     margin-top: 0.5em; }
 
-  p {
-    font-size: 14px;
-    float: left;
-    margin: 0 0 0 40px; }
 }
 
 footer {
@@ -169,6 +172,9 @@ footer {
       background: inherit;
       color: #666; } }
 }
+
+.small {
+  font-size: 0.8em; }
 
 footer, .push {
   height: 65px;

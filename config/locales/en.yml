@@ -3,3 +3,10 @@
 
 en:
   hello: "Hello world"
+  datetime:
+    default: "%B %d, %Y %I:%M %P"
+  date:
+    default: "%B %d, %Y"
+  time:
+    formats:
+      default: "%I:%M %P"
