@@ -38,6 +38,7 @@ assert_equal fizzbuzz(5175), "FizzBuzz"
 eos
                )
 
+User.delete_all
 User.create!(:username => 'admin',
              :email => 'kbennoune@gmail.com',
              :admin => true,
