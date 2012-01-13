@@ -22,7 +22,7 @@
 
 <p>
   <b>Code:</b>
-  <pre><%= @problem.code %></pre>
+  <%=raw highlight_code(@problem.code) %>
 </p>
 
 <h2>Your Solution</h2>
