@@ -80,7 +80,21 @@ Problem.create!(_id: 7,
  assert_equal 55, fibo_finder(10)
  code_block
                  )
+                 
+Problem.create!(_id: 8,
+               difficulty: 'medium',
+               title: "Pigs fly;  wait, no they don't.",
+               instructions: 'Can you make a method return a differect value after a return is called?',
+               approved: true,
+               code: <<-eos
+                 def do_pigs_fly?
+                   return true
+                   __
+                 end
 
+                 assert_equal do_pigs_fly?, false
+               eos
+               )
 
 User.delete_all
 User.create!(:username => 'admin',
