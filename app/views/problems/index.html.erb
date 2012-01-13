@@ -7,6 +7,7 @@
     <th>Instructions</th>
     <th>Difficulty</th>
     <th>Solutions</th>
+    <th>Solved</th>
   </tr>
 
 <% @problems.each do |problem| %>
@@ -16,6 +17,7 @@
     <td><%= problem.instructions %></td>
     <td><%= problem.difficulty.titleize %></td>
     <td><%= problem.solutions.count %></td>
+    <td class="solved-mark"><%= problem.solved?(current_user) ? image_tag("check.png") : "" %></td>
   </tr>
 <% end %>
 </table>

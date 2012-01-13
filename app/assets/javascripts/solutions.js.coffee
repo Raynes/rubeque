@@ -1,3 +1,11 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
+$ ->
+  $("a.upvote, a.downvote").live "click", (event) ->
+    event.preventDefault()
+    solution = $(this).data 'solution-id'
+    upvote = $(this).hasClass 'upvote'
+    $(this).closest("div.votes").hide()
+    $.post "/votes", { "vote[solution_id]": solution, "vote[up]": upvote }, (data) ->
+      id = $(data).attr('id')
+      $("##{id}").replaceWith($(data).css("display", "none"))
+      $("##{id}").delay(300).fadeIn(400)
+    return false

@@ -88,8 +88,8 @@ table {
   border-collapse: collapse;
   width: 100%;
   tr.solved {
-    color: green;
-    background-color: #CCFFCC; }
+    //color: green;
+    background-color: #CCFFCC !important; }
   td, th {
     border: 1px solid #ccc;
     padding: 4px 6px;
@@ -226,8 +226,9 @@ div.content {
   h1 {
     padding-bottom: 5px;
     border-bottom: 2px solid #eee; }
-  b {
+  b, label {
     font-size: 15px;
+    font-weight: bold;
     font-family: "Droid Sans", Helvetica, Arial, Sans-serif; } }
 
 textarea#solution_code {
@@ -289,4 +290,8 @@ form#user_edit {
 a#new_problem {
   display: inline-block;
   margin-top: 10px;
+}
+
+td.solved-mark {
+  text-align: center;
 }
