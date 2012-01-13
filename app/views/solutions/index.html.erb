@@ -6,22 +6,22 @@
     <th>Code</th>
     <th>User</th>
     <th></th>
-    <th></th>
-    <th></th>
+    <% if current_user_admin? %>
+      <th></th>
+      <th></th>
+    <% end %>
   </tr>
 
 <% @solutions.each do |solution| %>
   <tr>
-    <td><%= solution.problem %></td>
-    <td><%= solution.code %></td>
+    <td><%= solution.problem.title %></td>
+    <td><%= solution.code.truncate(40,omission: '...') %></td>
     <td><%= solution.user %></td>
     <td><%= link_to 'Show', solution %></td>
-    <td><%= link_to 'Edit', edit_solution_path(solution) %></td>
-    <td><%= link_to 'Destroy', solution, confirm: 'Are you sure?', method: :delete %></td>
+    <% if current_user_admin? %>
+      <td><%= link_to 'Edit', edit_solution_path(solution) %></td>
+      <td><%= link_to 'Destroy', solution, confirm: 'Are you sure?', method: :delete %></td>
+    <% end %>
   </tr>
 <% end %>
 </table>
-
-<br />
-
-<%= link_to 'New Solution', new_solution_path %>

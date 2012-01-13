@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
+  helper_method :current_user_admin?
   
   protected
   def restrict_to_admin
@@ -18,5 +19,9 @@ class ApplicationController < ActionController::Base
   def access_denied
     flash[:notice] = "Sorry, you can't #{params[:action]}."
     redirect_to action: :show
+  end
+  
+  def current_user_admin?
+    current_user && current_user.admin?
   end
 end
