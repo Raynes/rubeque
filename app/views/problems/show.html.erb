@@ -14,7 +14,7 @@
 
 <p>
   <b>Code:</b>
-  <pre><%= @problem.code %></pre>
+  <%=raw CodeRay.scan(@problem.code, :ruby).div(:line_numbers => :table) %>
 </p>
 
 <h2>Your Solution</h2>
