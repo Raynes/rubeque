@@ -35,4 +35,4 @@ on what to work on.
 
 ## License
 
-The source code for rubeque is available under the Eclipse Public License v 1.0.  For more information, see LICENSE.html.
+The source code for rubeque is available under the [MIT License](http://www.opensource.org/licenses/MIT).
