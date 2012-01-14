@@ -113,9 +113,3 @@ Problem.create!(#_id: 9,
  assert_equal happy_number?(3), false
  code_block
                  )
-
-User.delete_all
-User.create!(:username => 'admin',
-             :email => 'kbennoune@gmail.com',
-             :admin => true,
-             :password => 'Secret1234')
