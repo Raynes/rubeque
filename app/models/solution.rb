@@ -17,29 +17,12 @@ class Solution
   protected
 
     def run_problem
-      # initialize test unit
-      require 'test/unit'
-      extend Test::Unit::Assertions
-
-      # get our code
-      problem_code = problem.code.gsub("__", self.code)
-
-      # run it
-      begin
-        FakeFS.activate!
-        evaluator = Proc.new do
-          $SAFE = 3
-          eval(problem_code)
-        end
-        success = evaluator.call
-        errors.add(:base, "Your solution failed.") unless success
-      rescue Exception => e
-        errors.add(:base, "Your solution failed: #{e.message}")
-      ensure
-        FakeFS.deactivate!
-      end
+      executor = CodeExecutor.new(problem.code.gsub("__", self.code))
+      result = executor.execute
+      executor.errors.each {|e| errors.add(:base, e)}
+      return result
     end
-    
+
     def create_upvote_for_solution
       self.votes.create(:user => user, :up => true) if user
     end
