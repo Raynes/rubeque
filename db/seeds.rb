@@ -87,12 +87,12 @@ Problem.create!(#_id: 8,
                instructions: 'Can you make a method return a differect value after a "return" is called?',
                approved: true,
                code: <<-eos
-                 def do_pigs_fly?
-                   return true
-                   __
-                 end
+def do_pigs_fly?
+  return true
+  __
+end
 
-                 assert_equal do_pigs_fly?, false
+assert_equal do_pigs_fly?, false
                eos
                )
 
