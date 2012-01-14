@@ -6,6 +6,7 @@
     <th>Title</th>
     <th>Instructions</th>
     <th>Difficulty</th>
+    <th>Submitted By</th>
     <th>Solutions</th>
     <th>Solved</th>
   </tr>
@@ -14,8 +15,9 @@
   <tr class="problem <%= 'solved' if problem.solved?(current_user) %>" id="<%= problem.id %>">
     <td><%= problem._id[-4..-1].to_i %></td>
     <td><%= problem.title %></td>
-    <td><%= truncate(problem.instructions, length: 70) %></td>
+    <td><%= truncate(problem.instructions, length: 50) %></td>
     <td><%= problem.difficulty.titleize %></td>
+    <td><%= problem.creator %></td>
     <td><%= problem.solutions.count %></td>
     <td class="solved-mark"><%= problem.solved?(current_user) ? image_tag("check.png") : "" %></td>
   </tr>
