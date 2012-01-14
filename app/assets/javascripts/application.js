@@ -6,4 +6,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require ace/ace-uncompressed.js
+//= require ace/theme-twilight.js
+//= require ace/mode-ruby.js
 //= require_directory .
