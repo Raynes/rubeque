@@ -1,4 +1,8 @@
+require 'test/unit'
+require 'timeout'
+
 class CodeExecutor
+  MAX_EXECUTION_TIME = 10 # seconds
 
   attr_accessor :code, :errors
 
@@ -9,7 +13,6 @@ class CodeExecutor
 
   def execute
     # initialize test unit
-    require 'test/unit'
     extend Test::Unit::Assertions
 
     begin
@@ -18,8 +21,13 @@ class CodeExecutor
         $SAFE = 3
         eval(@code)
       end
-      success = evaluator.call
-      @errors << "Your solution failed." unless success
+      timeout = Timeout::timeout(MAX_EXECUTION_TIME) { success = evaluator.call }
+
+      if timeout
+        @errors << "Your solution timed out."
+      elsif success == false
+        @errors << "Your solution failed."
+      end
     rescue Exception => e
       @errors << "Your solution failed: #{e.message}"
       return false
