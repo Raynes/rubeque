@@ -69,10 +69,11 @@ div {
   margin-bottom: 20px;
   background-color: lavenderblush;
   h2 {
+    font-family: verdana, arial, freesans, sans-serif;
     text-align: left;
     font-weight: bold;
     padding: 5px 5px 5px 15px;
-    font-size: 12px;
+    font-size: 14px;
     margin: -7px;
     margin-bottom: 0px;
     background-color: #c00;
@@ -237,9 +238,15 @@ div.content {
     font-family: "Droid Sans", Helvetica, Arial, Sans-serif; } }
 
 textarea#solution_code {
-  font-family: Monaco, "Courier New", Monospace;
+  font-family: 'Menlo', 'Monaco', 'Courier New', Monospace;
   width: 500px;
 }
+#editor {
+  font-family: 'Menlo', 'Monaco', 'Courier New', Monospace;
+  position: relative;
+  width: 615px;
+  height: 350px;
+  border: 1px solid #777; }
 
 p#solutions-link {
   position: relative;
