@@ -12,7 +12,7 @@ on what to work on.
 
 * Download and install [rvm](http://beginrescueend.com/).
 * Download and install [mongodb](http://www.mongodb.org/).
-* Enter the rubeque directory from the command line and follow the rm instructions
+* Enter the rubeque directory from the command line and follow the rvm instructions to install ruby 1.9.3
 * Start up your mongodb, if you don't have autostart:
 
         mongod
