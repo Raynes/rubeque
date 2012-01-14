@@ -1,4 +1,3 @@
-require 'test/unit'
 require 'timeout'
 
 class CodeExecutor
@@ -12,20 +11,15 @@ class CodeExecutor
   end
 
   def execute
-    # initialize test unit
-    extend Test::Unit::Assertions
-
     begin
       FakeFS.activate!
       evaluator = Proc.new do
         $SAFE = 3
         eval(@code)
       end
-      timeout = Timeout::timeout(MAX_EXECUTION_TIME) { success = evaluator.call }
+      success = Timeout::timeout(MAX_EXECUTION_TIME) { evaluator.call }
 
-      if timeout
-        @errors << "Your solution timed out."
-      elsif success == false
+      if success == false
         @errors << "Your solution failed."
       end
     rescue Exception => e
@@ -36,5 +30,13 @@ class CodeExecutor
     end
 
     return success
+  end
+
+  def assert_equal(x, y)
+    if x != y
+      raise "The value '#{x}' does not equal '#{y}'."
+    else
+      return true
+    end
   end
 end
