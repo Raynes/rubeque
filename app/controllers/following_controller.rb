@@ -73,12 +73,12 @@ class FollowingController < ApplicationController
   # DELETE /following/1.json
   def destroy
     # note: params[:id] is the user_id not the following id
-    @following = current_user.following.where(user_id: params[:id])
+    @following = current_user.following.where(user_id: params[:id]).first
     @following.destroy
 
     respond_to do |format|
       format.html { redirect_to following_index_url }
-      format.json { head :ok }
+      format.json { render text: @following.to_json }
     end
   end
 end

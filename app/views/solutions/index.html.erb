@@ -1,23 +1,43 @@
 <h1>Solutions for <%= link_to "#{@problem}", @problem %></h1>
 
-<% if @solutions.any? %>
+<h2>People You Follow</h2>
 
-  <% @solutions.each_with_index do |solution, index| %>
+<div class="solutions">
+  <% @followed_users.each do |user| %>
 
-    <%= render "votes", solution: solution %>
+    <div class="solution">
+      <h3><%= user %>'s Solution</h3>
+      <% if solution = Solution.first(conditions: { problem_id: @problem.id, user_id: user.id }) %>
+        <%= render "votes", solution: solution %>
+        <%= render solution %>
+      <% else %>
+        <p><%= user %> has not solved this problem.</p>
+      <% end -%>
+    </div>
 
-    <h2>Solution <%= index+1 %></h2>
-
-    <%=raw highlight_code(solution.code) %>
-
-    <p class="small">
-      Submitted by <strong><%= solution.user %></strong> on <%= solution.updated_at %>.
-      <% if current_user_admin? %><%= link_to 'Edit', edit_solution_path(solution) %>|<%= link_to 'Destroy', solution, confirm: 'Are you sure?', method: :delete %><% end %>
-    </p>
   <% end -%>
+</div>
 
-<% else %>
+<hr/>
+<h2>Top Solutions</h2>
 
-  <p>There are no solutions to this problem.</p>
+<div class="solutions">
+  <% @top_solutions.each_with_index do |solution, index| %>
 
+    <div class="solution">
+      <%= render "votes", solution: solution %>
+      <h3>Solution #<%= index + 1 %></h3>
+      <%= render solution %>
+    </div>
+
+  <% end -%>
+</div>
+
+<% if solution = Solution.first(conditions: { user_id: current_user.id, problem_id: @problem.id }) %>
+  <hr/>
+  <div class="solution">
+    <%= render "votes", solution: solution %>
+    <h2>Your Solution</h2>
+    <%= render solution %>
+  </div>
 <% end -%>

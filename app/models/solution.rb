@@ -2,6 +2,7 @@ class Solution
   include Mongoid::Document
   include Mongoid::Timestamps
   field :code
+  field :score, type: Integer
 
   referenced_in :problem
   referenced_in :user
@@ -10,8 +11,8 @@ class Solution
   validate :run_problem
   after_create :update_user_solution_count, :create_upvote_for_solution
 
-  def score
-    votes.upvote.count - votes.downvote.count
+  def update_score
+    update_attribute(:score, votes.upvote.count - votes.downvote.count)
   end
 
   def run_problem

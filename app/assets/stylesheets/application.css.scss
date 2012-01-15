@@ -83,6 +83,7 @@ div {
     list-style: square; } }
 
 hr {
+  margin: 15px 0 25px;
   border: 2px solid #efefef; }
 
 table {
@@ -113,6 +114,13 @@ table {
 h1, h2, h3, h4 {
   font-family: "Droid Sans", Helvetica, Arial, Sans-serif;
 }
+h2 {
+  font-size: 1.6em; }
+h3 {
+  font-size: 1.4em;
+  margin-bottom: .5em; }
+h4 {
+  font-size: 1.25em; }
 
 textarea {
   width: 400px;
@@ -210,6 +218,10 @@ footer {
 .small {
   font-size: 0.8em; }
 
+.clear {
+  float: none;
+  clear: both; }
+
 footer, .push {
   height: 65px;
 }
@@ -256,14 +268,70 @@ p#solutions-link {
   float: right;
   top: -44px; }
 
+form#user_edit {
+  label {
+    display: block;
+    margin-bottom: 5px;
+
+    .explanation {
+      font-style: italic;
+    }
+  }
+
+  input {
+    display: block;
+    margin-bottom: 20px;
+  }
+}
+
+a#new_problem {
+  display: inline-block;
+  margin-top: 10px;
+}
+
+td.solved-mark {
+  text-align: center;
+}
+
+table#problems tr.problem {
+  cursor: pointer; }
+
+table#users tr.user-record th {
+  background: inherit; }
+
+.solutions {
+  h3 {
+    height: 25px;
+    margin-bottom: 7px;
+    padding-top: 8px; }
+  .CodeRay {
+    margin-top: 3px; }
+  p {
+    margin-top: 4px; } }
+
+.solution {
+    position: relative; }
+
 div.votes {
-  float: right;
-  margin-top: -6px;
-  position: relative;
+  margin: 0 0 4px;
+  position: absolute;
+  height: 32px;
+  overflow: hidden;
+  right: 0;
+
   b {
+    font-size: 1.3em;
+    display: block;
+    float: left;
     position: relative;
-    top: -12px;
-    margin-right: 15px; } }
+    top: 10px;
+    margin: 0 9px 0; }
+  b.no-votes {
+    position: relative;
+    top: 17px; } }
+
+div.score-only {
+  top: 2px; }
 
 a.upvote, a.downvote {
   text-decoration: none;
@@ -285,34 +353,3 @@ a.downvote img {
   transform: rotate(180deg);
    -moz-transform: rotate(180deg);
    -webkit-transform: rotate(180deg); }
-
-form#user_edit {
-  label {
-    display: block;
-    margin-bottom: 5px;
-    
-    .explanation {
-      font-style: italic;
-    }
-  }
-  
-  input {
-    display: block;
-    margin-bottom: 20px;
-  }
-}
-
-a#new_problem {
-  display: inline-block;
-  margin-top: 10px;
-}
-
-td.solved-mark {
-  text-align: center;
-}
-
-table#problems tr.problem {
-  cursor: pointer; }
-
-table#users tr.user-record th {
-  background: inherit; }

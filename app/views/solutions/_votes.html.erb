@@ -1,3 +1,6 @@
-<div class="votes" id="votes-<%= solution.id %>">
-  <b>Score: <%= solution.score %></b><%= vote_link(solution, true) %><%= vote_link(solution, false) %>
+<div class="votes <%= "score-only" if solution.user == current_user %>" id="votes-<%= solution.id %>">
+  <b>Score: <%= solution.score %></b>
+  <% unless solution.user == current_user %>
+    <%= vote_link(solution, true) %><%= vote_link(solution, false) %>
+  <% end %>
 </div>
