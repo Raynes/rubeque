@@ -2,7 +2,6 @@
 
 <table id="problems">
   <tr>
-    <th>ID</th>
     <th>Title</th>
     <th>Instructions</th>
     <th>Difficulty</th>
@@ -13,7 +12,6 @@
 
 <% @problems.each do |problem| %>
   <tr class="problem <%= 'solved' if problem.solved?(current_user) %>" id="<%= problem.id %>">
-    <td><%= problem._id[-4..-1].to_i %></td>
     <td><%= problem.title %></td>
     <td><%= truncate(problem.instructions, length: 50) %></td>
     <td><%= problem.difficulty.titleize %></td>

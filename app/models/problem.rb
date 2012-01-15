@@ -21,6 +21,7 @@ class Problem
   DIFFICULTY_LEVELS = ["easy", "medium", "hard"]
 
   validates_presence_of :title, :code, :difficulty
+  validates_uniqueness_of :title
 
   def to_s
     "#{title}"

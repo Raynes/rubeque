@@ -5,9 +5,16 @@ Problem.delete_all
 
 Problem.create!(#_id: 1,
                 difficulty: "easy",
+                title: "The truth",
+                instructions: "Here's a hint: true equals true.",
+                code: "assert_equal true, __",
+                approved: true)
+
+Problem.create!(#_id: 1,
+                difficulty: "easy",
                 title: "Hello World",
                 instructions: "",
-                code: "assert_equal 'hello world'.__, 'HELLO WORLD'",
+                code: "assert_equal 'HELLO WORLD', 'hello world'.__",
                 approved: true)
 
 Problem.create!(#_id: 2,

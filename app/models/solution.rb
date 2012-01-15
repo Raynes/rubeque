@@ -14,14 +14,14 @@ class Solution
     votes.upvote.count - votes.downvote.count
   end
 
-  protected
+  def run_problem
+    executor = CodeExecutor.new(problem.code.gsub("__", self.code))
+    result = executor.execute
+    executor.errors.each {|e| errors.add(:base, e)}
+    return result
+  end
 
-    def run_problem
-      executor = CodeExecutor.new(problem.code.gsub("__", self.code))
-      result = executor.execute
-      executor.errors.each {|e| errors.add(:base, e)}
-      return result
-    end
+  protected
 
     def create_upvote_for_solution
       self.votes.create(:user => user, :up => true) if user

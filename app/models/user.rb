@@ -25,6 +25,12 @@ class User
   def to_s
     username
   end
+
+  def update_score
+    upvotes = solutions.map{|s| s.votes.where(:up => true)}.flatten
+    downvotes = solutions.map{|s| s.votes.where(:up => false)}.flatten
+    update_attribute(:score, upvotes.count - downvotes.count)
+  end
   
   protected
   

@@ -40,7 +40,7 @@ class SolutionsController < ApplicationController
     @problem = @solution.problem
 
     respond_to do |format|
-      if @solution.save
+      if run_and_save_solution(@solution)
         notice = 'Your solution passed!'
         notice += '  Please sign in or register to earn points.' if current_user.blank?
         format.html { redirect_to problem_path(@problem.id, solution_code: @solution.code), notice: notice }
@@ -86,4 +86,15 @@ class SolutionsController < ApplicationController
       format.json { head :ok }
     end
   end
+
+  private
+
+    def run_and_save_solution(solution)
+      if current_user
+        return solution.save
+      else
+        # don't save solutions unless we have a logged in user
+        return solution.valid?
+      end
+    end
 end
