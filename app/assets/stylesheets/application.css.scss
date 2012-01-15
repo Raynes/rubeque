@@ -120,6 +120,9 @@ textarea {
   border-color: #aaa;
 }
 
+.no-display {
+  display: none; }
+
 header {
   height: 65px;
   background: url('/assets/bgnoise.gif');
@@ -310,3 +313,6 @@ td.solved-mark {
 
 table#problems tr.problem {
   cursor: pointer; }
+
+table#users tr.user-record th {
+  background: inherit; }

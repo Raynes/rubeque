@@ -10,3 +10,7 @@
 //= require ace/theme-twilight.js
 //= require ace/mode-ruby.js
 //= require_directory .
+
+jQuery.ajaxSetup({ 
+  'beforeSend': function(xhr) {xhr.setRequestHeader("Accept", "application/json")} 
+});
