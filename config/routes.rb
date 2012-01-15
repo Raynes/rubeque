@@ -12,6 +12,8 @@ Rubeque::Application.routes.draw do
   resources :solutions, except: [:new]
 
   devise_for :users
+  match '/auth/:provider/callback', to: 'sessions#create'
+  match '/auth/failure' => 'sessions#failure'
 
   get "static/index"
   match 'help' => 'static#help', :via => :get, :as => :help
