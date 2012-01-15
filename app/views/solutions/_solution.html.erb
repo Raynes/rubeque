@@ -1,4 +1,8 @@
-<div class="clear"></div>
+<% title ||= "#{solution.user}'s Solution" -%>
+
+<%= render "votes", solution: solution %>
+
+<h3><%= title %></h3>
 
 <%=raw highlight_code(solution.code) %>
 

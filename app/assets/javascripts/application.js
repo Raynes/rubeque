@@ -6,6 +6,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui
 //= require ace/ace-uncompressed.js
 //= require ace/theme-twilight.js
 //= require ace/mode-ruby.js
@@ -13,4 +14,8 @@
 
 jQuery.ajaxSetup({ 
   'beforeSend': function(xhr) {xhr.setRequestHeader("Accept", "application/json")} 
+});
+
+$(function() {
+  $("input:submit").button();
 });

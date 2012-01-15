@@ -34,6 +34,15 @@ a {
   &:hover {
     color: #D31000; } }
 
+input, select, textarea {
+  font-size: 1.2em; }
+
+input[type=text] {
+  width: 300px; }
+
+textarea {
+  width: 600px; }
+
 div {
   &.field, &.actions {
     margin-bottom: 10px; } }
@@ -83,7 +92,7 @@ div {
     list-style: square; } }
 
 hr {
-  margin: 15px 0 25px;
+  margin: 2em 0 2.5em;
   border: 2px solid #efefef; }
 
 table {
@@ -248,7 +257,7 @@ div.content {
     padding-bottom: 10px;
     border-bottom: 2px solid #eee; }
   b, label {
-    font-size: 15px;
+    font-size: 16px;
     font-weight: bold;
     font-family: "Droid Sans", Helvetica, Arial, Sans-serif; } }
 
@@ -294,7 +303,9 @@ td.solved-mark {
 }
 
 table#problems tr.problem {
-  cursor: pointer; }
+  cursor: pointer;
+  &:hover {
+    color: #888; } }
 
 table#users tr.user-record th {
   background: inherit; }
@@ -311,6 +322,10 @@ table#users tr.user-record th {
 
 .solution {
     position: relative; }
+
+#your-solution h3 {
+  font-size: 1.6em;
+  margin: 1em 0 1em 0; }
 
 div.votes {
   margin: 0 0 4px;

@@ -31,6 +31,10 @@ class Problem
     user.present? && solutions.where(:user_id => user.id).present?
   end
 
+  def approve
+    update_attribute(:approved, true)
+  end
+
   private
 
     def automatically_approve

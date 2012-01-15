@@ -6,11 +6,10 @@
   <% @followed_users.each do |user| %>
 
     <div class="solution">
-      <h3><%= user %>'s Solution</h3>
       <% if solution = Solution.first(conditions: { problem_id: @problem.id, user_id: user.id }) %>
-        <%= render "votes", solution: solution %>
         <%= render solution %>
       <% else %>
+        <h3><%= user %>'s Solution</h3>
         <p><%= user %> has not solved this problem.</p>
       <% end -%>
     </div>
@@ -22,11 +21,9 @@
 <h2>Top Solutions</h2>
 
 <div class="solutions">
-  <% @top_solutions.each_with_index do |solution, index| %>
+  <% @top_solutions.each do |solution| %>
 
     <div class="solution">
-      <%= render "votes", solution: solution %>
-      <h3>Solution #<%= index + 1 %></h3>
       <%= render solution %>
     </div>
 
@@ -35,9 +32,11 @@
 
 <% if solution = Solution.first(conditions: { user_id: current_user.id, problem_id: @problem.id }) %>
   <hr/>
-  <div class="solution">
-    <%= render "votes", solution: solution %>
-    <h2>Your Solution</h2>
-    <%= render solution %>
+  <div class="solution" id="your-solution">
+    <%= render solution, title: "Your Solution" %>
   </div>
 <% end -%>
+
+<br/>
+
+<%= link_to "Back to Problem", problem_path(@problem) %>
