@@ -16,6 +16,7 @@ class Solution
   end
 
   def run_problem
+    return false if code.blank?
     executor = CodeExecutor.new(problem.code.gsub("__", self.code))
     result = executor.execute
     executor.errors.each {|e| errors.add(:base, e)}
