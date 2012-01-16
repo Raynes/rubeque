@@ -6,7 +6,6 @@ $ ->
     $("div.votes-#{solution}").hide()
     $.post "/votes", { "vote[solution_id]": solution, "vote[up]": upvote }, (data) ->
       id = $(data).attr('id')
-      debugger
       $("div.votes-#{id}").html($(data).html())
       $("div.votes-#{id}").delay(300).fadeIn(400)
     return false
