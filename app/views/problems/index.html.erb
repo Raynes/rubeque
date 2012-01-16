@@ -3,7 +3,7 @@
 <table id="problems">
   <tr>
     <th>Title</th>
-    <th>Instructions</th>
+    <th>Tags</th>
     <th>Difficulty</th>
     <th>Submitted By</th>
     <th>Solutions</th>
@@ -13,7 +13,7 @@
 <% @problems.each do |problem| %>
   <tr class="problem <%= 'solved' if problem.solved?(current_user) %>" id="<%= problem.id %>">
     <td><%= problem.title %></td>
-    <td><%= truncate(problem.instructions, length: 50) %></td>
+    <td><%= problem.tag_list %></td>
     <td><%= problem.difficulty.titleize %></td>
     <td><%= problem.creator %></td>
     <td><%= problem.solutions.count %></td>

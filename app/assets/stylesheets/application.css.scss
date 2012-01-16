@@ -37,8 +37,13 @@ a {
 input, select, textarea {
   font-size: 1.2em; }
 
-input[type=text] {
-  width: 300px; }
+input[type=text], input[type=password] {
+  border: 1px solid #B6B6B6;
+  width: 300px;
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  padding: 6px; }
 
 textarea {
   width: 600px; }

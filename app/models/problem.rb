@@ -12,6 +12,7 @@ class Problem
 
   references_many :solutions
   referenced_in :creator, class_name: "User"
+  embeds_many :tags
 
   scope :approved, proc{ where(approved: true ) }
   scope :unapproved, proc{ any_of({approved: nil}, {approved: false}) }
@@ -33,6 +34,18 @@ class Problem
 
   def approve
     update_attribute(:approved, true)
+  end
+
+  def tag_list
+    tags.map(&:name).join(", ")
+  end
+
+  def tag_list=(tag_list)
+    tag_list.split(",").each do |tag|
+      unless tags.where(name: tag).any?
+        tags.new(name: tag)
+      end
+    end
   end
 
   private
