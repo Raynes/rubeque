@@ -15,6 +15,12 @@
     <%= f.label :title %><br />
     <%= f.text_field :title %>
   </div>
+  <% if current_user_admin? %>
+    <div class="field">
+      <%= f.label :approved %><br/>
+      <%= f.check_box :approved %>
+    </div>
+  <% end -%>
   <div class="field">
     <%= f.label :difficulty %><br />
     <%= f.select :difficulty, Problem::DIFFICULTY_LEVELS.collect { |level| [level.capitalize, level] }, {}, style: "width: 315px" %>

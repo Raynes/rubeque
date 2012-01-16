@@ -11,8 +11,6 @@ class SolutionsController < ApplicationController
     @top_solutions = Solution.all(conditions: { problem_id: @problem.id }, sort: [[:score, :desc]], limit: 5)
     @followed_users = current_user.users_followed
 
-
-
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @solutions }

@@ -25,3 +25,11 @@
 <% if current_user %>
   <%= link_to 'Submit a problem', new_problem_path, id: 'new_problem' %>
 <% end -%>
+
+<% if current_user_admin? %>
+  <% if params[:action] == "unapproved" %>
+    | <%= link_to "Back to Problems", problems_path() %>
+  <% else %>
+    | <%= link_to "View Unapproved Problems", unapproved_problems_path() %>
+  <% end -%>
+<% end %>

@@ -28,6 +28,10 @@ class Problem
     "#{title}"
   end
 
+  def status
+    approved? ? "approved" : "unapproved"
+  end
+
   def solved?(user)
     user.present? && solutions.where(:user_id => user.id).present?
   end

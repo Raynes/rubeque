@@ -6,7 +6,7 @@ class ProblemsController < ApplicationController
   before_filter :authenticate_user!, only: [:new]
   
   def unapproved
-    @problems = Problem.unapproved
+    @problems = Problem.unapproved.asc(:created_at)
     respond_to do |format|
       format.html { render 'index.html.erb' }
       format.json { render json: @problems }
@@ -14,7 +14,7 @@ class ProblemsController < ApplicationController
   end
   
   def index
-    @problems = Problem.approved
+    @problems = Problem.approved.asc(:difficulty)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -26,7 +26,7 @@ class ProblemsController < ApplicationController
   # GET /problems/1.json
   def show
     @problem = Problem.find(params[:id])
-    if !@problem.approved?
+    if !@problem.approved? && !current_user_admin?
       redirect_to "/" and return
     end
 
