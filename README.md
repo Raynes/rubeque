@@ -31,7 +31,8 @@ on what to work on.
 ## Acknowledgements
 
 * [SciMed Solutions, Inc](http://www.scimedsolutions.com) for providing the time and resources necessary to make this.
-* [4clojure](http://www.4clojure.com) for providing advice.
+* [4clojure](http://www.4clojure.com) for providing advice and support.
+* [envylabs](https://github.com/envylabs) for their Ruby Conf presentation and RubyCop
 
 ## License
 
