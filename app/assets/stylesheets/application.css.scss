@@ -37,7 +37,7 @@ a {
 input, select, textarea {
   font-size: 1.2em; }
 
-input[type=text], input[type=password] {
+input[type=text], input[type=password], input[type=email] {
   border: 1px solid #B6B6B6;
   width: 300px;
   border-radius: 3px;
@@ -46,7 +46,13 @@ input[type=text], input[type=password] {
   padding: 6px; }
 
 textarea {
-  width: 600px; }
+  width: 600px;
+  border: 1px solid #B6B6B6;
+  border-radius: 3px;
+  box-shadow: 0 0 0 #fff;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  padding: 4px; }
 
 div {
   &.field, &.actions {
@@ -138,7 +144,6 @@ h4 {
 
 textarea {
   width: 400px;
-  box-shadow: 0px 1px 1px #999 inset;
   border-color: #aaa;
 }
 
