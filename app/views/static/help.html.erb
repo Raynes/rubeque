@@ -1,20 +1,21 @@
 <h1>Help is here!</h1>
 
-<p>Rubeque challenges users to solve koan-style problems.  This is a fancy way of saying you'll be asked to fill in the blanks.</p>
-  
-<p>The "blanks" that you will be filling in are indicated by a <strong>double underscore</strong>: '__'.  This is not part of the syntax of the language.  Any code which makes the final form evaluate to 'true' will be considered a correct answer.  Let's consider the first problem:
-</p>
+<p>Rubeque challenges users to solve ruby koans or short problems using ruby code. To do this, you'll need to fill in the blank on each problem.</p>
 
-<p><%=raw highlight_code("assert_equal 'hello world'.__, 'HELLO WORLD'") %></p>
+<p>The blanks that you will be filling in are indicated by a <strong>double underscore</strong>: '__'.  This is not part of the syntax of the language.  
+Any code which makes the final form evaluate to 'true' will be considered a correct answer.  Let's consider the first problem:</p>
+
+<p><%=raw highlight_code("assert_equal __, true") %></p>
 
 <p>Any of the following would be considered correct answers:</p>
-
 <ol>
-  <li>upcase</li>
-  <li>to_s.upcase</li>
-  <li>split("").each{|c| c.upcase!}.join</li>
+  <li>true</li>
+  <li>(1 == 1)</li>
+  <li>!(false)</li>
 </ol>
 
-<p>Some operations are prohibited for security reasons. No system calls will be allowed.</p>
+<p>Some operations are prohibited for security reasons. For example, no system calls will be allowed.</p>
 
-Many of the easier problems on this site can be solved using only your browser. However at some point you will want to install Ruby, and use your favorite IDE or text editor to write your code.  Writing all your code directly on the site has a disadvantage:
+<p>Many of the easier problems on this site can be solved using only your browser. If you need an interative ruby session (irb), we recommend
+<%= link_to "tryruby.org", "http://tryruby.org" %>. If you need to look up core ruby classes and methods, then head over to the official ruby doc
+site at <%= link_to "ruby-doc.org", "http://ruby-doc.org/core-1.9.3/" %>. For reference, we use ruby version 1.9.3 to run your code.</p>
