@@ -23,7 +23,7 @@
   <% end -%>
   <div class="field">
     <%= f.label :difficulty %><br />
-    <%= f.select :difficulty, Problem::DIFFICULTY_LEVELS.collect { |level| [level.capitalize, level] }, {}, style: "width: 315px" %>
+    <%= f.select :difficulty, difficulty_options, {}, style: "width: 315px" %>
   </div>
   <div>
     <%= f.label :tag_list, "Tags" %>

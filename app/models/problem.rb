@@ -7,7 +7,7 @@ class Problem
   field :title
   field :instructions
   field :code
-  field :difficulty
+  field :difficulty, type: Integer
   field :approved, type: Boolean
 
   references_many :solutions, dependent: :destroy
@@ -19,10 +19,12 @@ class Problem
 
   before_create :automatically_approve
 
-  DIFFICULTY_LEVELS = ["easy", "medium", "hard"]
+  DIFFICULTY_LEVELS = ["Elementary", "Easy", "Medium", "Hard"]
 
   validates_presence_of :title, :code, :difficulty
   validates_uniqueness_of :title
+
+  validates_inclusion_of :difficulty, in: (0..3)
 
   def to_s
     "#{title}"
@@ -50,6 +52,10 @@ class Problem
         tags.new(name: tag)
       end
     end
+  end
+
+  def difficulty_word
+    DIFFICULTY_LEVELS[read_attribute(:difficulty).to_i]
   end
 
   private
