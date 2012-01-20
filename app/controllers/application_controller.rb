@@ -12,13 +12,13 @@ class ApplicationController < ActionController::Base
   end
   
   def require_login
-    flash[:notice] = "You need to signin to access this resource."
+    flash[:alert] = "You need to log in to access this page."
     redirect_to new_user_session_path
   end
     
   def access_denied
-    flash[:notice] = "Sorry, you can't #{params[:action]}."
-    redirect_to action: :show
+    flash[:alert] = "Sorry, you can't access the page you requested."
+    redirect_to "/"
   end
   
   def current_user_admin?
