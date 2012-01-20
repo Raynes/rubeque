@@ -8,6 +8,7 @@ gem 'fakefs', :require => "fakefs/safe"
 gem 'jquery-rails'
 gem 'devise', '~> 1.5.3'
 gem "rinku"
+gem 'rubycop'
 
 # Gems used only for assets and not required
 # in production environments by default.

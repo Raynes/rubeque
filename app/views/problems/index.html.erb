@@ -5,9 +5,10 @@
     <th>Title</th>
     <th>Tags</th>
     <th>Difficulty</th>
-    <th>Submitted By</th>
     <th>Solutions</th>
-    <th>Solved</th>
+    <% if current_user %>
+      <th>Solved</th>
+    <% end %>
   </tr>
 
 <% @problems.each do |problem| %>
@@ -15,8 +16,9 @@
     <td><%= problem.title.titleize %></td>
     <td><%= problem.tag_list %></td>
     <td><%= problem.difficulty.titleize %></td>
-    <td><%= problem.creator %></td>
-    <td><%= problem.solutions.count %></td>
+    <% if current_user %>
+      <td><%= problem.solutions.count %></td>
+    <% end -%>
     <td class="solved-mark"><%= problem.solved?(current_user) ? image_tag("check.png") : "" %></td>
   </tr>
 <% end %>
