@@ -1,7 +1,7 @@
 class SolutionsController < ApplicationController
   # GET /solutions
   # GET /solutions.json
-  before_filter :restrict_to_admin, only: [:edit,:destroy]
+  before_filter :restrict_to_admin, only: [:edit, :destroy, :show, :new]
 
   def index
     @problem = Problem.find(params[:problem_id]) rescue nil
