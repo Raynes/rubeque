@@ -6,7 +6,7 @@ Problem.delete_all
 ######################################################################################################################
 
 Problem.create!(#_id: 1,
-                difficulty: "easy",
+                difficulty: 0,
                 title: "The truth",
                 tag_list: "booleans",
                 instructions: "Here's a hint: true equals true.",
@@ -16,7 +16,7 @@ Problem.create!(#_id: 1,
 ######################################################################################################################
 
 Problem.create!(#_id: 1,
-                difficulty: "easy",
+                difficulty: 0,
                 title: "Hello World",
                 instructions: "",
                 tag_list: "strings",
@@ -26,7 +26,7 @@ Problem.create!(#_id: 1,
 ######################################################################################################################
 
 Problem.create!(#_id: 2,
-                difficulty: "easy",
+                difficulty: 0,
                 title: "Nil Values",
                 instructions: "Enter in a boolean value for what #nil? will return.",
                 tag_list: "nil, booleans",
@@ -36,7 +36,7 @@ Problem.create!(#_id: 2,
 ######################################################################################################################
 
 Problem.create!(#_id: 3,
-                difficulty: "easy",
+                difficulty: 0,
                 title: "Reverse",
                 instructions: "What happens when you apply reverse? Hint: don't forget to quote your strings!",
                 tag_list: "strings",
@@ -45,8 +45,27 @@ Problem.create!(#_id: 3,
 
 ######################################################################################################################
 
+Problem.create!(#_id: 3,
+                difficulty: 0,
+                title: "Maximum",
+                instructions: "Find the max in a given set of numbers",
+                tag_list: "numbers",
+                approved: true,
+                code: <<-code_block
+def maximum(arr)
+  __
+end
+
+assert_equal maximum([2, 42, 22, 02]), 42
+assert_equal maximum([-2, 0, 33, 304, 2, -2]), 304
+assert_equal maximum([1]), 1
+code_block
+                )
+
+######################################################################################################################
+
 Problem.create!(#_id: 4,
-                difficulty: "easy",
+                difficulty: 0,
                 title: "FizzBuzz",
                 instructions: "If a number is divisible by 3, return \"Fizz\". If a number is divisible by 5, return \"Buzz\". If a number
                                is divisible by 3 and 5, return \"FizzBuzz\"",
@@ -67,7 +86,7 @@ eos
 ######################################################################################################################
 
 Problem.create!(#_id: 5,
-                difficulty: "easy",
+                difficulty: 0,
                 title: "Map",
                 instructions: "How would you create an array that contains the squares of all elements in a range?",
                 tag_list: "enumerables",
@@ -76,7 +95,7 @@ Problem.create!(#_id: 5,
 
 ######################################################################################################################
 
-Problem.create!(difficulty: "easy",
+Problem.create!(difficulty: 0,
                 title: "The Curious Case of the Missing Method",
                 instructions: "Stop this code from throwing an exception. Hint: find the right seven letter array
                   method: http://ruby-doc.org/core-1.9.3/Array.html",
@@ -86,7 +105,7 @@ Problem.create!(difficulty: "easy",
 
 ######################################################################################################################
 
-Problem.create!(difficulty: "easy",
+Problem.create!(difficulty: 0,
                 title: "Blackjack",
                 instructions: "Write a method that takes any number of integers and returns true if they sum to 21, false otherwise. Hint: splat operator.",
                 approved: true,
@@ -102,7 +121,7 @@ code_block
 
 ######################################################################################################################
 
-Problem.create!(difficulty: "easy",
+Problem.create!(difficulty: 0,
                 title: "Injected and Rejected",
                 instructions: "Write a method using inject and reject that takes an array of integers and gets the sum for all numbers greater than 50",
                 approved: true,
@@ -121,7 +140,7 @@ code_block
 
 ######################################################################################################################
 
-Problem.create!(difficulty: "easy",
+Problem.create!(difficulty: 1,
                 title: "Introduction to Regular Expressions",
                 instructions: "Write a regular expression that will match emails in a string.",
                 approved: true,
@@ -136,7 +155,7 @@ code_block
 ######################################################################################################################
 
 Problem.create!(#_id: 6,
-                difficulty: "easy",
+                difficulty: 1,
                 title: "Reverse each word",
                 instructions: "Write a method that takes a sentence and returns it with each word reversed in place.",
                 tag_list: "strings, enumerables",
@@ -153,29 +172,66 @@ code_block
 ######################################################################################################################
 
 Problem.create!(#_id: 7,
-                  difficulty: "easy",
-                  title: "Your favorite and mine, Fibonacci!",
-                  instructions: "Write a method that handles Fibonacci sequences. Have it return the nth item in the Fibonacci sequence.  
-                    Hint: The first item in the sequence is 0.",
-                  approved: true,
-                  tag_list: "arithmetic",
-                  code: <<-code_block
- def fibo_finder(n)
-   __
- end
+                difficulty: 1,
+                title: "Your favorite and mine, Fibonacci!",
+                instructions: "Write a method that handles Fibonacci sequences. Have it return the nth item in the Fibonacci sequence.  
+                  Hint: The first item in the sequence is 0.",
+                approved: true,
+                tag_list: "arithmetic",
+                code: <<-code_block
+def fibo_finder(n)
+  __
+end
 
- assert_equal 0, fibo_finder(0)
- assert_equal 1, fibo_finder(1)
- assert_equal 3, fibo_finder(4)
- assert_equal 13, fibo_finder(7)
- assert_equal 55, fibo_finder(10)
- code_block
+assert_equal 0, fibo_finder(0)
+assert_equal 1, fibo_finder(1)
+assert_equal 3, fibo_finder(4)
+assert_equal 13, fibo_finder(7)
+assert_equal 55, fibo_finder(10)
+code_block
+                 )
+
+######################################################################################################################
+
+Problem.create!(difficulty: 1,
+                title: "A Man, A Plan, A Canal--Panama!",
+                instructions: "A palindrome is a string that is written the same forward as it is in reverse. Write a method to 
+                  return the longest palindrome in a given string",
+                approved: true,
+                tag_list: "strings",
+                code: <<-code_block
+__
+
+assert_equal longest_palindrome("xyzzy"), "yzzy"
+assert_equal longest_palindrome("afbbbfjdjklgdfdhfdkjfffhhfffjkdfhdhkyejejfjkd", "dhfdkjfffhhfffjkdfhd"
+assert_equal longest_palindrome("bartarcarracecarbartar"), "racecar"
+assert_equal longest_palindrome("3.141592653589793238462643383279502884197169399375105820974944592307816406286208998628034825342117067982"), "32823"
+code_block
                  )
 
 ######################################################################################################################
 
 Problem.create!(#_id: 8,
-               difficulty: 'medium',
+               difficulty: 2,
+               title: "Prime Factors",
+               instructions: 'Find all of the prime factors for a given number',
+               approved: true,
+               tag_list: "exceptions",
+               code: <<-eos
+def prime_factors(num)
+  __
+end
+
+assert_equal prime_factors(102), [2, 3, 17]
+assert_equal prime_factors(896680), [2, 5, 29, 773]
+assert_equal prime_factors(42), [2, 3, 7]
+eos
+               )
+
+######################################################################################################################
+
+Problem.create!(#_id: 8,
+               difficulty: 2,
                title: "Pigs Fly;  Wait, No They Don't.",
                instructions: 'Can you make a method return a differect value after a "return" is called?',
                approved: true,
@@ -193,7 +249,7 @@ assert_equal do_pigs_fly?, false
 ######################################################################################################################
 
 Problem.create!(#_id: 9,
-                  difficulty: "medium",
+                  difficulty: 2,
                   title: "Happy Numbers",
                   instructions: "Happy numbers are positive integers that follow a particular formula: take each individual digit,
                                  square it, and then sum the squares to get a new number. Repeat with the new number and eventually,
@@ -213,7 +269,7 @@ Problem.create!(#_id: 9,
 
 ######################################################################################################################
 
-Problem.create!(difficulty: "hard",
+Problem.create!(difficulty: 3,
                 title: "Mason's Spades Problem",
                 instructions: %Q{In the game of spades, one player deals all 52 cards to four players so that each has 13 cards in his or her hand.
                   The cards are shuffled prior to dealing, so that the distribution is random. The first play of the game is for each player to
