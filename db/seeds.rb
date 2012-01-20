@@ -7,7 +7,7 @@ Problem.delete_all
 
 Problem.create!(#_id: 1,
                 difficulty: 0,
-                title: "The truth",
+                title: "The Truth",
                 tag_list: "booleans",
                 instructions: "Here's a hint: true equals true.",
                 code: "assert_equal true, __",
@@ -106,6 +106,18 @@ Problem.create!(difficulty: 0,
 ######################################################################################################################
 
 Problem.create!(difficulty: 0,
+                title: "Home on the Range",
+                instructions: "Fill in a range to complete the problem.",
+                approved: true,
+                tag_list: "ranges",
+                code: <<-code_block
+assert_equal (1..100).to_a[__].reduce(:+), 4494
+code_block
+               )
+
+######################################################################################################################
+
+Problem.create!(difficulty: 0,
                 title: "Blackjack",
                 instructions: "Write a method that takes any number of integers and returns true if they sum to 21, false otherwise. Hint: splat operator.",
                 approved: true,
@@ -127,7 +139,7 @@ Problem.create!(difficulty: 0,
                 approved: true,
                 tag_list: "arithmetic, enumerables",
                 code: <<-code_block
-def average_over_50(arr)
+def sum_over_50(arr)
   arr.__
 end
 
@@ -135,6 +147,110 @@ assert_equal sum_over_50([29, 52, 77, 102]), 231
 assert_equal sum_over_50([5, 11, 50]), 0
 assert_equal sum_over_50([4, 8, 15, 16, 23, 42]), 0
 assert_equal sum_over_50([300, 22, 1, 55, 42]), 355
+code_block
+               )
+
+######################################################################################################################
+
+Problem.create!(difficulty: 0,
+                title: "Baby Got Stacks",
+                instructions: "Write a stack class. A stack is a data structure where elements are added at the end and removed from the end as well.",
+                approved: true,
+                tag_list: "classes, stacks",
+                code: <<-code_block
+class Stack
+  __
+end
+
+stack = stack.new([5, 6, 7, 8])
+
+assert_equal stack.pop, 8
+assert_equal stack.pop, 7
+assert_equal stack.push([4, 2]), true
+assert_equal stack.pop(2), [2, 4]
+assert_equal stack.to_a, [5, 6]
+code_block
+               )
+
+######################################################################################################################
+
+Problem.create!(difficulty: 0,
+                title: "Queue Continuum",
+                instructions: "Write a queue class. A queue is a data structure where elements are added at the end and removed from the front.",
+                approved: true,
+                tag_list: "classes, queues",
+                code: <<-code_block
+class Queue
+  __
+end
+
+queue = Queue.new([5, 6, 7, 8])
+
+assert_equal queue.pop, 5
+assert_equal queue.pop, 6
+assert_equal queue.push([4, 2]), true
+assert_equal queue.pop(2), [7, 8]
+assert_equal queue.to_a, [4, 2]
+code_block
+               )
+
+######################################################################################################################
+
+Problem.create!(difficulty: 0,
+                title: "Temperature Robot",
+                instructions: "Temperature bot is comfortable when it's room temperature (18-21C). Help him out by completing the method.",
+                approved: true,
+                tag_list: "case statements, ranges",
+                code: <<-code_block
+def temperature_bot(temp)
+  # temperature bot is American but takes Celcius temperatures
+  case temp
+  when __
+    "I like this temperature"
+  else
+    "This is uncomfortable for me"
+  end
+end
+
+assert_equal temperature_bot(18), "I like this temperature"
+assert_equal temperature_bot(21), "I like this temperature"
+assert_equal temperature_bot(22), "This is uncomfortable for me"
+assert_equal temperature_bot(-3), "This is uncomfortable for me"
+code_block
+               )
+
+######################################################################################################################
+
+Problem.create!(difficulty: 1,
+                title: "The Lambda Lambda Lambda Fraternity",
+                instructions: "Write a proc or lambda that'll take one or two numbers and return true if one or both numbers are even.",
+                approved: true,
+                tag_list: "lambdas, procs, ruby 1.9",
+                code: <<-code_block
+even_check = __
+
+assert_equal [[2, 4], [1, 2], [8, 12]].select{|arr| even_check.call(*arr)}, [[2, 4], [8, 12]]
+assert_equal even_check.call(42), true
+assert_equal [[2, 4], [2, 1], [8, 11]].select{|arr| even_check.call(*arr)}, [[2, 4]]
+code_block
+               )
+
+######################################################################################################################
+
+Problem.create!(difficulty: 1,
+                title: "Quelle Heure Est-Il?",
+                instructions: "Write a function to parse some dates and return a standard format. Hint: the help page might be of use.",
+                approved: true,
+                tag_list: "dates, strings",
+                code: <<-code_block
+def pretty_date(date)
+  __
+end
+
+assert_equal pretty_date("11-30-1835"), "Nov 30, 1835"
+assert_equal pretty_date("July 20, 1933"), "Jul 20, 1933"
+assert_equal pretty_date("1922-11-11"), "Nov 11, 1922"
+assert_equal pretty_date("9/20/1978"), "Sep 20, 1978"
 code_block
                )
 
@@ -154,9 +270,45 @@ code_block
 
 ######################################################################################################################
 
+Problem.create!(difficulty: 1,
+                title: "Fixing Bad Code the Wrong Way",
+                instructions: "Your coworker did a bad job defining a class. Fit it for him using #method_missing.",
+                approved: true,
+                tag_list: "method_missing, classes",
+                code: <<-code_block
+class Person
+  def initialize(name, age, incoming_race)
+    @name = name
+    @age = age
+    self.race = incoming_race
+  end
+
+  def nam
+    @name.split.map(&:capitalize).join(" ")
+  end
+
+  def agE
+    @age
+  end
+
+  def method_missing(m, *args)
+    __
+  end
+end
+
+person = Person.new("kurt vonnegut", 89, "caucasian")
+
+assert_equal person.name, "Kurt Vonnegut"
+assert_equal person.race, "Caucasian"
+assert_equal person.age, 89
+code_block
+                 )
+
+######################################################################################################################
+
 Problem.create!(#_id: 6,
                 difficulty: 1,
-                title: "Reverse each word",
+                title: "Reverse Each Word",
                 instructions: "Write a method that takes a sentence and returns it with each word reversed in place.",
                 tag_list: "strings, enumerables",
                 approved: true,
@@ -173,7 +325,7 @@ code_block
 
 Problem.create!(#_id: 7,
                 difficulty: 1,
-                title: "Your favorite and mine, Fibonacci!",
+                title: "Your Favorite and Mine, Fibonacci!",
                 instructions: "Write a method that handles Fibonacci sequences. Have it return the nth item in the Fibonacci sequence.  
                   Hint: The first item in the sequence is 0.",
                 approved: true,
@@ -198,7 +350,7 @@ Problem.create!(difficulty: 1,
                 instructions: "Write a method #uniq_by that takes an enumerable and a block and returns a unique array of elements 
                   based on what's returned by a block. When elements match, keep the first.",
                 approved: true,
-                tag_list: "strings",
+                tag_list: "enumerables",
                 code: <<-code_block
 __
 
@@ -241,10 +393,34 @@ code_block
 
 Problem.create!(#_id: 8,
                difficulty: 2,
+               title: "Hello? Yes, This Is Dog",
+               instructions: 'Write a method to validate some strings that could potentially represent phone numbers. See if you can do it with a
+                regular expression.',
+               approved: true,
+               tag_list: "strings, regular expressions",
+               code: <<-eos
+def phone_number?(num)
+  __
+end
+
+assert_equal phone_number?("5555555555"), true
+assert_equal phone_number?("555555555"), false # missing a digit
+assert_equal phone_number?("555-5555"), true
+assert_equal phone_number?("(555) 555-5555"), true
+assert_equal phone_number?("(555) 555-555"), false
+assert_equal phone_number?("555-555-555"), true
+assert_equal phone_number?("(555-555-555"), false
+eos
+               )
+
+######################################################################################################################
+
+Problem.create!(#_id: 8,
+               difficulty: 2,
                title: "Prime Factors",
                instructions: 'Find all of the prime factors for a given number',
                approved: true,
-               tag_list: "exceptions",
+               tag_list: "arithmetic",
                code: <<-eos
 def prime_factors(num)
   __
@@ -272,6 +448,39 @@ end
 
 assert_equal do_pigs_fly?, false
                eos
+               )
+
+######################################################################################################################
+
+Problem.create!(#_id: 8,
+               difficulty: 2,
+               title: "Regular Expressions Revisted",
+               instructions: 'Parse this list into a two dimensional array where the inner array has a number and name.',
+               approved: true,
+               tag_list: "regular expressions, strings, arrays",
+               code: <<-eos
+doctor_map = "One: William Hartnell
+Two:Patrick Troughton
+Three:: Jon Pertwee
+Four: Tom Baker (longest run)
+5: Peter Davison
+six: Colin Baker
+Seven:   Sylvester McCoy
+Eight Paul McGann
+Nine: Christopher Eccleston *series reboot*
+Ten: David Tennant <- personal fav
+Eleven: Matthew Robert Smith - the current doctor"
+
+doctors = doctor_map.scan(/__/)
+
+assert_equal doctors[0][1], "William Hartnell"
+assert_equal doctors[4][1], "Peter Davison"
+assert_equal doctors[3][1], "Tom Baker"
+assert_equal doctors[4][0], "5"
+assert_equal doctors[7][0], "Eight"
+assert_equal doctors[9][1], "David Tennant"
+assert_equal doctors[10][1], "Matthew Robert Smith"
+eos
                )
 
 ######################################################################################################################
