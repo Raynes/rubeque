@@ -12,7 +12,7 @@
 
 <% @problems.each do |problem| %>
   <tr class="problem <%= 'solved' if problem.solved?(current_user) %>" id="<%= problem.id %>">
-    <td><%= problem.title %></td>
+    <td><%= problem.title.titleize %></td>
     <td><%= problem.tag_list %></td>
     <td><%= problem.difficulty.titleize %></td>
     <td><%= problem.creator %></td>

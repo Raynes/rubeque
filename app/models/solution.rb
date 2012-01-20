@@ -6,7 +6,7 @@ class Solution
 
   referenced_in :problem
   referenced_in :user
-  references_many :votes
+  references_many :votes, dependent: :destroy
 
   validate :run_problem
   after_create :update_user_solution_count, :create_upvote_for_solution

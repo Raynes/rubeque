@@ -22,7 +22,7 @@
 <% if !@problem.instructions.blank? %>
 <p>
   <b>Instructions:</b><br/>
-  <%= @problem.instructions %>
+  <%= @problem.approved? ? raw(Rinku.auto_link(@problem.instructions)) : @problem.instructions %>
 </p>
 <% end %>
 

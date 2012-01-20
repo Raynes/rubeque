@@ -5,19 +5,19 @@ class ProblemsController < ApplicationController
   before_filter :restrict_to_admin, only: [:edit,:update,:destroy,:unapproved]
   before_filter :authenticate_user!, only: [:new]
   
+  def index
+    @problems = Problem.approved.asc(:created_at)
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @problems }
+    end
+  end
+
   def unapproved
     @problems = Problem.unapproved.asc(:created_at)
     respond_to do |format|
       format.html { render 'index.html.erb' }
-      format.json { render json: @problems }
-    end
-  end
-  
-  def index
-    @problems = Problem.approved.asc(:difficulty)
-
-    respond_to do |format|
-      format.html # index.html.erb
       format.json { render json: @problems }
     end
   end

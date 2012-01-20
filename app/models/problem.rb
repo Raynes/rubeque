@@ -10,7 +10,7 @@ class Problem
   field :difficulty
   field :approved, type: Boolean
 
-  references_many :solutions
+  references_many :solutions, dependent: :destroy
   referenced_in :creator, class_name: "User"
   embeds_many :tags
 
