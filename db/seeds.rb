@@ -194,6 +194,34 @@ code_block
 ######################################################################################################################
 
 Problem.create!(difficulty: 1,
+                title: "Unique By",
+                instructions: "Write a method #uniq_by that takes an enumerable and a block and returns a unique array of elements 
+                  based on what's returned by a block. When elements match, keep the first.",
+                approved: true,
+                tag_list: "strings",
+                code: <<-code_block
+__
+
+class Programmer
+  def initialize(name)
+    @name = name
+  end
+  attr_accessor :name
+end
+
+programmers = [Programmer.new("David"), Programmer.new("Joe"), Programmer.new("Michael"), 
+  Programmer.new("Kamal"), Programmer.new("david")]
+
+assert_equal uniq_by(programmers) {|u| u.name.downcase}, programmers[0..3]
+assert_equal uniq_by([1.1, 2.1, 1.5, 3.1, 6, 2]) {|x| x.to_i}, [1.1, 2.1, 3.1, 6]
+assert_equal uniq_by([3, 6, 9, 2, 4, 8, 33, 1]) {|i| i.remainder(3)}, [3, 2, 4]
+code_block
+                 )
+
+
+######################################################################################################################
+
+Problem.create!(difficulty: 1,
                 title: "A Man, A Plan, A Canal--Panama!",
                 instructions: "A palindrome is a string that is written the same forward as it is in reverse. Write a method to 
                   return the longest palindrome in a given string",
