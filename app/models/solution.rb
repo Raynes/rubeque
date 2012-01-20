@@ -8,6 +8,8 @@ class Solution
   referenced_in :user
   references_many :votes, dependent: :destroy
 
+  index [:problem_id, :user_id]
+
   validate :run_problem
   after_create :update_user_solution_count, :create_upvote_for_solution
 

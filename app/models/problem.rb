@@ -1,8 +1,7 @@
 class Problem
   include Mongoid::Document
   include Mongoid::Timestamps
-  field :_id, type: Integer
-  key :_id
+  key :title
 
   field :title
   field :instructions
