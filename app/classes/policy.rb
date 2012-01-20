@@ -1,9 +1,8 @@
 require 'set'
 
-
 class Policy
   def initialize
-    @const_list = GrayList.new
+    @const_list = Rubycop::Analyzer::GrayList.new
     initialize_const_blacklist
   end
 

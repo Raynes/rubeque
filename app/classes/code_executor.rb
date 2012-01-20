@@ -12,7 +12,7 @@ class CodeExecutor
 
   def execute
     begin
-      check_code(code)
+      check_code(@code)
 
       FakeFS.activate!
       evaluator = Proc.new do
@@ -43,10 +43,10 @@ class CodeExecutor
   end
 
   def check_code(code)
-    policy = Rubycop::Analyzer::Policy.new
+    policy = Policy.new # Rubycop::Analyzer::Policy.new
     ast = Rubycop::Analyzer::NodeBuilder.build(code)
     if !ast.accept(policy)
-      raise "unsafe code found."
+      raise "your code contains a class or method call that is not allowed."
     end
     return true
   end
