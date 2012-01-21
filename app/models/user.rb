@@ -17,6 +17,8 @@ class User
   references_many :problems, inverse_of: :creator
   references_many :following, inverse_of: :follower
 
+  index :score, :solution_count
+
   validates_uniqueness_of :email, :username
 
   attr_accessible :username, :email, :password, :password_confirmation, :remember_me, :admin
@@ -40,6 +42,10 @@ class User
 
   def following?(user)
     users_followed.include?(user)
+  end
+
+  def update_solution_count
+    update_attribute(:solution_count, solutions.count)
   end
 
   protected
