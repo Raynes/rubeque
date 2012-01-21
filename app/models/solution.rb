@@ -2,6 +2,7 @@ class Solution
   include Mongoid::Document
   include Mongoid::Timestamps
   field :code
+  field :excluded_methods, type: Array
   field :score, type: Integer
 
   referenced_in :problem
@@ -19,7 +20,7 @@ class Solution
 
   def run_problem
     return false if code.blank?
-    executor = CodeExecutor.new(problem.code.gsub("__", self.code))
+    executor = CodeExecutor.new(problem.code.gsub("__", self.code),excluded_methods: excluded_methods)
     result = executor.execute
     executor.errors.each {|e| errors.add(:base, e)}
     return result

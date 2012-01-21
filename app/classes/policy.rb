@@ -3,7 +3,9 @@ require 'set'
 class Policy
   def initialize
     @const_list = Rubycop::Analyzer::GrayList.new
+    @call_list  = Rubycop::Analyzer::GrayList.new
     initialize_const_blacklist
+    initialize_call_balcklist
   end
 
   def inspect
@@ -64,6 +66,18 @@ class Policy
     (node.params.nil? || visit(node.params)) && node.elements.all? { |e| visit(e) }
   end
 
+  def initialize_call_balcklist
+    blacklist_calls CALL_BLACKLIST
+  end
+
+  def blacklist_calls(calls)
+    calls.each{|c| blacklist_call(c) }
+  end
+  
+  def blacklist_call(call)
+    @call_list.blacklist(call.to_s)
+  end
+
   CALL_BLACKLIST = %w[
     abort
     alias_method
@@ -109,7 +123,7 @@ class Policy
   ].to_set.freeze
 
   def visit_Call(node)
-    !CALL_BLACKLIST.include?(node.identifier.token.to_s) && [node.target, node.arguments, node.block].compact.all? { |e| visit(e) }
+    @call_list.allow?(node.identifier.token.to_s) && [node.target, node.arguments, node.block].compact.all? { |e| visit(e) }
   end
 
   def visit_Case(node)

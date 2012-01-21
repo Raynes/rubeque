@@ -5,8 +5,9 @@ class CodeExecutor
 
   attr_accessor :code, :errors
 
-  def initialize(code)
+  def initialize(code,opts={})
     @code = code
+    @excluded_methods = opts[:excluded_methods]
     @errors = []
   end
 
@@ -44,6 +45,7 @@ class CodeExecutor
 
   def check_code(code)
     policy = Policy.new # Rubycop::Analyzer::Policy.new
+    policy.blacklist_calls( @excluded_methods )
     ast = Rubycop::Analyzer::NodeBuilder.build(code)
     if !ast.accept(policy)
       raise "your code contains a class or method call that is not allowed."
