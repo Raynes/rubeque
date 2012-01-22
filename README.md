@@ -1,4 +1,4 @@
-# Rubeque
+# Rubeque [![Build Status](https://secure.travis-ci.org/daviddavis/rubeque.png)](http://travis-ci.org/daviddavis/rubeque)
 
 Rubeque is an interactive problem website for learning Ruby.
 
