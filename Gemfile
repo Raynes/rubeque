@@ -33,6 +33,7 @@ end
 group :test do
   gem 'cucumber-rails'
   gem 'database_cleaner'
+  gem 'capybara'
   gem 'rspec-rails', "~> 2.8"
   # Pretty printed test output
   gem 'turn', '0.8.2', :require => false
