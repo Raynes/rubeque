@@ -1,7 +1,7 @@
 require 'timeout'
 
 class CodeExecutor
-  MAX_EXECUTION_TIME = 10 # seconds
+  MAX_EXECUTION_TIME = 15 # seconds
 
   attr_accessor :code, :errors
 
