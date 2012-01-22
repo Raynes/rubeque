@@ -1,4 +1,4 @@
-require 'ruby-debug'
+# require 'ruby-debug' # this breaks travis ci
 
 Before('@javascript') do
   @javascript = true
