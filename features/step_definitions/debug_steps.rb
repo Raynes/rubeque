@@ -32,9 +32,9 @@ end
 
 Then /(.*) or I debug$/ do |test|
   begin
-    Then test
+    step test
   rescue
-    Then 'I debug'
+    step 'I debug'
   end
 end
 
@@ -49,7 +49,7 @@ end
 
 Then /^show me the page and pause\s*(.*)$/ do |prompt|
   save_and_open_page unless @javascript
-  When "I pause #{prompt}"
+  step "I pause #{prompt}"
 end
 
 Then /^show me the page$/ do
@@ -57,7 +57,7 @@ Then /^show me the page$/ do
 end
 
 Then /^show me the page and( let me|) debug/ do |polite|
-  Then %{show me the page}
+  step %{show me the page}
   trigger_debugger
 end
 

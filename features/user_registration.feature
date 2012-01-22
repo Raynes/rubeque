@@ -15,6 +15,16 @@ Feature: User registration
     And I fill in an email address
     And I fill in a password with confirmation
     And I click signup
-    Then I should be on the homepage
+    Then I should be on the home page
     And I should see a success message
     And there should be a new user account
+
+  Scenario: Registered user logs in
+    Given there is a user account named "esatie"
+    When I go to the login page
+    And I fill in my username
+    And I fill in my password
+    And I press the login button
+    Then I should be on the home page
+    And I should see a success message
+    And I should see my username on the page

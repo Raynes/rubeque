@@ -212,5 +212,6 @@ DEPENDENCIES
   ruby-debug19 (= 0.11.6)
   rubycop
   sass-rails (~> 3.1.5)
+  selenium-webdriver
   turn (= 0.8.2)
   uglifier (>= 1.0.3)

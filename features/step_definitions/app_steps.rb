@@ -2,14 +2,14 @@ When /^I go to the home page$/ do
   visit "/"
 end
 
-Then /^I should be on the homepage$/ do
+Then /^I should be on the home page$/ do
   current_path.should == root_path
 end
 
 Then /^I should see an? (success|error) message$/ do |type|
-  div_class = type == "success" ? "notice" : "alert"
+  element_css = type == "success" ? "div#notice" : "div#alert, div#error"
   within "div#flash" do
-    page.all("div##{div_class}").count.should >= 1
+    page.all(element_css).count.should >= 1
   end
 end
 

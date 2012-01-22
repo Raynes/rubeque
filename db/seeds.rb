@@ -134,6 +134,16 @@ code_block
 ######################################################################################################################
 
 Problem.create!(difficulty: 0,
+                title: "The Curious Case of the Missing Method Part 2",
+                instructions: "Fill in the missing method. Hint: find the right six letter enumerable method: 
+                  http://ruby-doc.org/core-1.9.3/Enumerable.html",
+                tag_list: "enumerables",
+                code: "assert_equal [1, 3, 7, 4, 9, 8].__(&:even), 4",
+                approved: true)
+
+######################################################################################################################
+
+Problem.create!(difficulty: 0,
                 title: "Injected and Rejected",
                 instructions: "Write a method using inject and reject that takes an array of integers and gets the sum for all numbers greater than 50",
                 approved: true,
