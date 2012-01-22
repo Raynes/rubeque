@@ -38,7 +38,7 @@ group :test, :development do
   # Pretty printed test output
   gem 'turn', '0.8.2', :require => false
   gem 'launchy'
-  gem 'selenium-webdriver'
+  gem 'selenium-webdriver', "~> 2.14.0" # 2.14 is required by travis ci
 end
 
 group :development do
