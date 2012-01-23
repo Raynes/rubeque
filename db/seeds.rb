@@ -405,7 +405,7 @@ Problem.create!(#_id: 8,
                difficulty: 2,
                title: "Hello? Yes, This Is Dog",
                instructions: 'Write a method to validate some strings that could potentially represent phone numbers. See if you can do it with a
-                regular expression.',
+                single regular expression.',
                approved: true,
                tag_list: "strings, regular expressions",
                code: <<-eos
