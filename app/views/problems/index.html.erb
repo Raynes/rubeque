@@ -16,10 +16,10 @@
     <td><%= problem.title %></td>
     <td><%= problem.tag_list %></td>
     <td><%= problem.difficulty_word %></td>
+    <td><%= problem.solutions.count %></td>
     <% if current_user %>
-      <td><%= problem.solutions.count %></td>
+      <td class="solved-mark"><%= problem.solved?(current_user) ? image_tag("check.png") : "" %></td>
     <% end -%>
-    <td class="solved-mark"><%= problem.solved?(current_user) ? image_tag("check.png") : "" %></td>
   </tr>
 <% end %>
 </table>
