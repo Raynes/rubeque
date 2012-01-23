@@ -97,7 +97,7 @@ Problem.create!(#_id: 5,
 
 Problem.create!(difficulty: 0,
                 title: "The Curious Case of the Missing Method",
-                instructions: "Stop this code from throwing an exception. Hint: find the right seven letter array
+                instructions: "Stop this code from throwing an exception. Hint: find the right seven-letter array
                   method: http://ruby-doc.org/core-1.9.3/Array.html",
                 tag_list: "enumerables, arrays",
                 code: "assert_equal [1, 4, nil, 9, 16, nil].__.inject(0) {|sum, number| sum + number}, 30",
@@ -135,8 +135,8 @@ code_block
 
 Problem.create!(difficulty: 0,
                 title: "The Curious Case of the Missing Method Part 2",
-                instructions: "Fill in the missing method. Hint: find the right six letter enumerable method: 
-                  http://ruby-doc.org/core-1.9.3/Enumerable.html",
+                instructions: "Fill in the missing method. Hint: find the right six-letter enumerable method:
+                  http://ruby-doc.org/core-1.9.3/Enumerable.html. There's also a four-letter alias for the method too.",
                 tag_list: "enumerables",
                 code: "assert_equal [1, 3, 7, 4, 9, 8].__(&:even?), 4",
                 approved: true)
