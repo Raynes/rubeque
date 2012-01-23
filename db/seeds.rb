@@ -138,7 +138,7 @@ Problem.create!(difficulty: 0,
                 instructions: "Fill in the missing method. Hint: find the right six letter enumerable method: 
                   http://ruby-doc.org/core-1.9.3/Enumerable.html",
                 tag_list: "enumerables",
-                code: "assert_equal [1, 3, 7, 4, 9, 8].__(&:even), 4",
+                code: "assert_equal [1, 3, 7, 4, 9, 8].__(&:even?), 4",
                 approved: true)
 
 ######################################################################################################################
