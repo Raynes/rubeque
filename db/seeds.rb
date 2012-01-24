@@ -282,7 +282,7 @@ code_block
 
 Problem.create!(difficulty: 1,
                 title: "Fixing Bad Code the Wrong Way",
-                instructions: "Your coworker did a bad job defining a class. Fit it for him using #method_missing.",
+                instructions: "Your coworker did a bad job defining a class. Fix it for him using #method_missing.",
                 approved: true,
                 tag_list: "method_missing, classes",
                 code: <<-code_block
