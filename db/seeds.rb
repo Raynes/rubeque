@@ -172,7 +172,7 @@ class Stack
   __
 end
 
-stack = stack.new([5, 6, 7, 8])
+stack = Stack.new([5, 6, 7, 8])
 
 assert_equal stack.pop, 8
 assert_equal stack.pop, 7
