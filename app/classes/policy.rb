@@ -45,11 +45,8 @@ class Policy
   def visit_Array(node)
     # was getting an execption, undefined method `elements' for #<Array:0x007fc338a72670>,
     # not sure if this is the best fix but it seems to work now
-    if node.is_a?(Array)
-      node.all? { |e| visit(e) }
-    else
-      node.elements.all? { |e| visit(e) }
-    end
+    elements = node.is_a?(Array) ? node : node.elements
+    elements.all? { |e| visit(e) }
   end
 
   def visit_Assoc(node)

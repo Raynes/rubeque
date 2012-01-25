@@ -1,3 +1,9 @@
+GIT
+  remote: git://github.com/daviddavis/RubyCop.git
+  revision: c6339a7ac858d988e7c1963f22d7692d952735b9
+  specs:
+    rubycop (0.5.1)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -155,7 +161,6 @@ GEM
       ruby-debug-base19 (>= 0.11.19)
     ruby_core_source (0.1.5)
       archive-tar-minitar (>= 0.5.2)
-    rubycop (0.5.1)
     rubyzip (0.9.5)
     sass (3.1.12)
     sass-rails (3.1.5)
@@ -210,7 +215,7 @@ DEPENDENCIES
   rspec-rails (~> 2.8)
   ruby-debug-base19 (= 0.11.26)
   ruby-debug19 (= 0.11.6)
-  rubycop
+  rubycop!
   sass-rails (~> 3.1.5)
   selenium-webdriver
   turn (= 0.8.2)
