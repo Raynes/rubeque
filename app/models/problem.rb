@@ -8,6 +8,7 @@ class Problem
   field :code
   field :difficulty, type: Integer
   field :approved, type: Boolean
+  field :excluded_methods, type: Array
 
   references_many :solutions, dependent: :destroy
   referenced_in :creator, class_name: "User"

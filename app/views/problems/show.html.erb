@@ -33,6 +33,13 @@
 </p>
 <% end %>
 
+<% if @problem.excluded_methods.any? %>
+  <p>
+    <b>Banned Methods:</b><br/>
+    <%= @problem.excluded_methods.join(", ") %>
+  </p>
+<% end -%>
+
 <p>
   <b>Code:</b>
   <%=raw highlight_code(@problem.code) %>

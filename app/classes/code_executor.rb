@@ -5,8 +5,9 @@ class CodeExecutor
 
   attr_accessor :code, :errors
 
-  def initialize(code)
+  def initialize(code, options = {})
     @code = code
+    @excluded_methods = options[:excluded_methods]
     @errors = []
   end
 
@@ -43,11 +44,26 @@ class CodeExecutor
   end
 
   def check_code(code)
-    policy = Policy.new # Rubycop::Analyzer::Policy.new
+    policy = initialize_policy
     ast = Rubycop::Analyzer::NodeBuilder.build(code)
     if !ast.accept(policy)
       raise "your code contains a class or method call that is not allowed."
     end
     return true
+  end
+
+  def initialize_policy
+    policy = Policy.new
+    policy.blacklist_calls( @excluded_methods )
+
+    constants = ["Mongoid", "Document"] + model_names
+    constants.each {|c| policy.blacklist_const(c)}
+    return policy
+  end
+
+  def model_names
+    Dir.chdir(File.join("#{Rails.root}", "app", "models"))
+    filenames = Dir.glob("*.rb")
+    filenames.map{|f| f.match(/^[^.]*/).to_s.camelize}
   end
 end
