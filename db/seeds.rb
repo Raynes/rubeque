@@ -303,6 +303,9 @@ class Person
 
   def method_missing(m, *args)
     __
+    else
+      super
+    end
   end
 end
 
