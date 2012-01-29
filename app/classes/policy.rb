@@ -11,7 +11,7 @@ class Policy < Rubycop::Analyzer::Policy
   end
 
   def blacklist_calls(calls)
-    calls.each{|c| blacklist_call(c) }
+    calls.each{|c| blacklist_call(c) } if calls
   end
 
   def blacklist_call(call)
