@@ -75,15 +75,15 @@
 
 /* Interaction states
 ----------------------------------*/
-.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default { border: 1px solid #B6B6B6; font-weight: normal; color: #4F4F4F; }
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default { border: 1px solid #B6B6B6; font-weight: normal; color: #5F5F5F; }
 .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default { 
-	background: #ededed url(bg_fallback.png) 0 0 repeat-x; /* Old browsers */
-		background: -moz-linear-gradient(top, #ededed 0%, #c4c4c4 100%); /* FF3.6+ */
-		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ededed), color-stop(100%,#c4c4c4)); /* Chrome,Safari4+ */
-		background: -webkit-linear-gradient(top, #ededed 0%,#c4c4c4 100%); /* Chrome10+,Safari5.1+ */
-		background: -o-linear-gradient(top, #ededed 0%,#c4c4c4 100%); /* Opera11.10+ */
-		background: -ms-linear-gradient(top, #ededed 0%,#c4c4c4 100%); /* IE10+ */
-		background: linear-gradient(top, #ededed 0%,#c4c4c4 100%); /* W3C */
+	background: #eee url(bg_fallback.png) 0 0 repeat-x; /* Old browsers */
+		background: -moz-linear-gradient(top, #fff 0%, #dcdcdc 100%); /* FF3.6+ */
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fff), color-stop(100%,#dcdcdc)); /* Chrome,Safari4+ */
+		background: -webkit-linear-gradient(top, #fff 0%,#dcdcdc 100%); /* Chrome10+,Safari5.1+ */
+		background: -o-linear-gradient(top, #fff 0%,#dcdcdc 100%); /* Opera11.10+ */
+		background: -ms-linear-gradient(top, #fff 0%,#dcdcdc 100%); /* IE10+ */
+		background: linear-gradient(top, #fff 0%,#dcdcdc 100%); /* W3C */
 	-webkit-box-shadow: 0 1px 0 rgba(255,255,255,0.6) inset;
 	-moz-box-shadow: 0 1px 0 rgba(255,255,255,0.6) inset;
 	box-shadow: 0 1px 0 rgba(255,255,255,0.6) inset;
