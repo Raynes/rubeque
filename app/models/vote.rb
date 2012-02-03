@@ -22,7 +22,7 @@ class Vote
   protected
 
     def update_user_score
-      user.update_score
+      solution.user.update_score
     end
 
     def update_solution_score
