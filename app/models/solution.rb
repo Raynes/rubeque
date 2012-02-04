@@ -18,6 +18,7 @@ class Solution
   end
 
   def run_problem
+    load "#{Rails.root}/app/classes/code_executor.rb"
     executor = CodeExecutor.new(problem.code.gsub("__", self.code), excluded_methods: problem.excluded_methods)
     result = executor.execute
     executor.errors.each {|e| errors.add(:base, e)}
