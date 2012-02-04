@@ -29,6 +29,7 @@ class CodeExecutor
       return false
     ensure
       FakeFS.deactivate!
+      load "#{Rails.root}/app/classes/code_executor.rb"
     end
 
     return success
