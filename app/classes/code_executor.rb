@@ -61,7 +61,7 @@ class CodeExecutor
   PRECODE = <<-code
     def assert_equal(x, y)
       if x != y
-        raise "The value '#{x}' does not equal '#{y}'."
+        raise "The value '\#{x}' does not equal '\#{y}'."
       else
         return true
       end
