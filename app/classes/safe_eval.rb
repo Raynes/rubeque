@@ -2,7 +2,7 @@ require 'timeout'
 require 'open3'
 
 module SafeEval
-  def self.setup(timelimit=5, memlimit=10)
+  def self.setup(timelimit=15, memlimit=10)
     @@timelimit = timelimit
     @@memlimit = memlimit
     @@memlimit = 50 # FIXME

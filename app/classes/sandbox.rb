@@ -18,9 +18,15 @@ class Sandbox
 
   def execute
     code = PRECODE + @code
-    result = SafeEval.eval(code)
-    if result != "true\n"
-      @errors = result
+    begin
+      result = SafeEval.eval(code)
+      if result == "true\n"
+        return true
+      else
+        @errors = result
+      end
+    rescue Exception => e
+      @errors = "Your solution failed: #{e.message}"
     end
   end
 
