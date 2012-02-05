@@ -9,6 +9,7 @@ gem 'jquery-rails'
 gem 'devise', '~> 1.5.3'
 gem "rinku"
 gem 'rubycop', git: "git://github.com/daviddavis/RubyCop.git"
+gem 'exception_notification', :require => 'exception_notifier'
 
 # Gems used only for assets and not required
 # in production environments by default.
