@@ -16,10 +16,9 @@ class CodeExecutor
       check_code(@code)
 
       FakeFS.activate!
-      evaluator = Proc.new do
-        $SAFE = 3
-        eval(@code)
-      end
+
+      code = PRECODE + @code
+      evaluator = Proc.new { eval(code) }
       success = Timeout::timeout(MAX_EXECUTION_TIME) { evaluator.call }
 
       if success == false
@@ -30,17 +29,10 @@ class CodeExecutor
       return false
     ensure
       FakeFS.deactivate!
+      load "#{Rails.root}/app/classes/code_executor.rb"
     end
 
     return success
-  end
-
-  def assert_equal(x, y)
-    if x != y
-      raise "The value '#{x}' does not equal '#{y}'."
-    else
-      return true
-    end
   end
 
   def check_code(code)
@@ -66,4 +58,18 @@ class CodeExecutor
     filenames = Dir.glob("*.rb")
     filenames.map{|f| f.match(/^[^.]*/).to_s.camelize}
   end
+
+  PRECODE = <<-code
+    def assert_equal(x, y)
+      if x != y
+        raise "The value '\#{x}' does not equal '\#{y}'."
+      else
+        return true
+      end
+    end
+
+    Object.instance_eval { remove_const :CodeExecutor }
+    $SAFE = 3
+  code
+
 end

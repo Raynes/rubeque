@@ -213,7 +213,7 @@ Problem.create!(difficulty: 0,
                 tag_list: "case statements, ranges",
                 code: <<-code_block
 def temperature_bot(temp)
-  # temperature bot is American but takes Celcius temperatures
+  # temperature bot is American but takes Celsius temperatures
   case temp
   when __
     "I like this temperature"
