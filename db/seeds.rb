@@ -3,6 +3,8 @@
 
 Problem.delete_all
 
+order_number = 0
+
 ######################################################################################################################
 
 Problem.create!(#_id: 1,
@@ -11,7 +13,8 @@ Problem.create!(#_id: 1,
                 tag_list: "booleans",
                 instructions: "Here's a hint: true equals true.",
                 code: "assert_equal true, __",
-                approved: true)
+                approved: true,
+                order_number: (order_number+=1))
 
 ######################################################################################################################
 
@@ -21,7 +24,8 @@ Problem.create!(#_id: 1,
                 instructions: "",
                 tag_list: "strings",
                 code: "assert_equal 'HELLO WORLD', 'hello world'.__",
-                approved: true)
+                approved: true,
+                order_number: (order_number+=1))
 
 ######################################################################################################################
 
@@ -31,7 +35,8 @@ Problem.create!(#_id: 2,
                 instructions: "Enter in a boolean value for what #nil? will return.",
                 tag_list: "nil, booleans",
                 code: "[0, '', 'chunky_bacon'].each { |v| assert_equal v.nil?, __ }",
-                approved: true)
+                approved: true,
+                order_number: (order_number+=1))
 
 ######################################################################################################################
 
@@ -41,7 +46,8 @@ Problem.create!(#_id: 3,
                 instructions: "What happens when you apply reverse? Hint: don't forget to quote your strings!",
                 tag_list: "strings",
                 code: "assert_equal 'nocab yknuhc'.reverse, __",
-                approved: true)
+                approved: true,
+                order_number: (order_number+=1))
 
 ######################################################################################################################
 
@@ -51,6 +57,7 @@ Problem.create!(#_id: 3,
                 instructions: "Find the max in a given set of numbers",
                 tag_list: "numbers",
                 approved: true,
+                order_number: (order_number+=1),
                 code: <<-code_block
 def maximum(arr)
   __
@@ -71,6 +78,7 @@ Problem.create!(#_id: 4,
                                is divisible by 3 and 5, return \"FizzBuzz\"",
                 tag_list: "arithmetic, strings",
                 approved: true,
+                order_number: (order_number+=1),
                 code: <<-eos
 def fizzbuzz(x)
   __
@@ -91,7 +99,8 @@ Problem.create!(#_id: 5,
                 instructions: "How would you create an array that contains the squares of all elements in a range?",
                 tag_list: "enumerables",
                 code: "assert_equal [1, 4, 9, 16], (1..4).map { __ }",
-                approved: true)
+                approved: true,
+                order_number: (order_number+=1))
 
 ######################################################################################################################
 
@@ -101,7 +110,8 @@ Problem.create!(difficulty: 0,
                   method: http://ruby-doc.org/core-1.9.3/Array.html",
                 tag_list: "enumerables, arrays",
                 code: "assert_equal [1, 4, nil, 9, 16, nil].__.inject(0) {|sum, number| sum + number}, 30",
-                approved: true)
+                approved: true,
+                order_number: (order_number+=1))
 
 ######################################################################################################################
 
@@ -109,6 +119,7 @@ Problem.create!(difficulty: 0,
                 title: "Home on the Range",
                 instructions: "Fill in a range to complete the problem.",
                 approved: true,
+                order_number: (order_number+=1),
                 tag_list: "ranges",
                 code: <<-code_block
 assert_equal (1..100).to_a[__].reduce(:+), 4494
@@ -121,6 +132,7 @@ Problem.create!(difficulty: 0,
                 title: "Blackjack",
                 instructions: "Write a method that takes any number of integers and returns true if they sum to 21, false otherwise. Hint: splat operator.",
                 approved: true,
+                order_number: (order_number+=1),
                 tag_list: "arithmetic, splat operator",
                 code: <<-code_block
 __
@@ -139,7 +151,8 @@ Problem.create!(difficulty: 0,
                   http://ruby-doc.org/core-1.9.3/Enumerable.html. There's also a four-letter alias for the method too.",
                 tag_list: "enumerables",
                 code: "assert_equal [1, 3, 7, 4, 9, 8].__(&:even?), 4",
-                approved: true)
+                approved: true,
+                order_number: (order_number+=1))
 
 ######################################################################################################################
 
@@ -147,6 +160,7 @@ Problem.create!(difficulty: 0,
                 title: "Injected and Rejected",
                 instructions: "Write a method using inject and reject that takes an array of integers and gets the sum for all numbers greater than 50",
                 approved: true,
+                order_number: (order_number+=1),
                 tag_list: "arithmetic, enumerables",
                 code: <<-code_block
 def sum_over_50(arr)
@@ -166,6 +180,7 @@ Problem.create!(difficulty: 0,
                 title: "Baby Got Stacks",
                 instructions: "Write a stack class. A stack is a data structure where elements are added at the end and removed from the end as well.",
                 approved: true,
+                order_number: (order_number+=1),
                 tag_list: "classes, stacks",
                 code: <<-code_block
 class Stack
@@ -188,6 +203,7 @@ Problem.create!(difficulty: 0,
                 title: "Queue Continuum",
                 instructions: "Write a queue class. A queue is a data structure where elements are added at the end and removed from the front.",
                 approved: true,
+                order_number: (order_number+=1),
                 tag_list: "classes, queues",
                 code: <<-code_block
 class Queue
@@ -210,6 +226,7 @@ Problem.create!(difficulty: 0,
                 title: "Temperature Robot",
                 instructions: "Temperature bot is comfortable when it's room temperature (18-21C). Help him out by completing the method.",
                 approved: true,
+                order_number: (order_number+=1),
                 tag_list: "case statements, ranges",
                 code: <<-code_block
 def temperature_bot(temp)
@@ -235,6 +252,7 @@ Problem.create!(difficulty: 1,
                 title: "The Lambda Lambda Lambda Fraternity",
                 instructions: "Write a proc or lambda that'll take one or two numbers and return true if one or both numbers are even.",
                 approved: true,
+                order_number: (order_number+=1),
                 tag_list: "lambdas, procs, ruby 1.9",
                 code: <<-code_block
 even_check = __
@@ -251,6 +269,7 @@ Problem.create!(difficulty: 1,
                 title: "Quelle Heure Est-Il?",
                 instructions: "Write a function to parse some dates and return a standard format. Hint: the help page might be of use.",
                 approved: true,
+                order_number: (order_number+=1),
                 tag_list: "dates, strings",
                 code: <<-code_block
 def pretty_date(date)
@@ -270,6 +289,7 @@ Problem.create!(difficulty: 1,
                 title: "Introduction to Regular Expressions",
                 instructions: "Write a regular expression that will match emails in a string.",
                 approved: true,
+                order_number: (order_number+=1),
                 tag_list: "strings, regular expressions",
                 code: <<-code_block
 assert_equal "john@mail.com to jane@mail.com".scan(/__/), ["john@mail.com", "jane@mail.com"]
@@ -284,6 +304,7 @@ Problem.create!(difficulty: 1,
                 title: "Fixing Bad Code the Wrong Way",
                 instructions: "Your coworker did a bad job defining a class. Fix it for him using #method_missing.",
                 approved: true,
+                order_number: (order_number+=1),
                 tag_list: "method_missing, classes",
                 code: <<-code_block
 class Person
@@ -325,6 +346,7 @@ Problem.create!(#_id: 6,
                 instructions: "Write a method that takes a sentence and returns it with each word reversed in place.",
                 tag_list: "strings, enumerables",
                 approved: true,
+                order_number: (order_number+=1),
                 code: <<-code_block
 def reverse_each_word(sentence)
  __
@@ -342,6 +364,7 @@ Problem.create!(#_id: 7,
                 instructions: "Write a method that handles Fibonacci sequences. Have it return the nth item in the Fibonacci sequence.  
                   Hint: The first item in the sequence is 0.",
                 approved: true,
+                order_number: (order_number+=1),
                 tag_list: "arithmetic",
                 code: <<-code_block
 def fibo_finder(n)
@@ -363,6 +386,7 @@ Problem.create!(difficulty: 1,
                 instructions: "Write a method #unique_by that takes an enumerable and a block and returns a unique array of elements 
                   based on what's returned by a block. When elements match, keep the first.",
                 approved: true,
+                order_number: (order_number+=1),
                 tag_list: "enumerables",
                 excluded_methods: ["uniq_by"],
                 code: <<-code_block
@@ -392,6 +416,7 @@ Problem.create!(difficulty: 1,
                 instructions: "A palindrome is a string that is written the same forward as it is in reverse. Write a method to 
                   return the longest palindrome in a given string",
                 approved: true,
+                order_number: (order_number+=1),
                 tag_list: "strings",
                 code: <<-code_block
 __
@@ -409,8 +434,9 @@ Problem.create!(#_id: 8,
                difficulty: 2,
                title: "Hello? Yes, This Is Dog",
                instructions: 'Write a method to validate some strings that could potentially represent phone numbers. See if you can do it with a
-                single regular expression.',
+                 single regular expression.',
                approved: true,
+               order_number: (order_number+=1),
                tag_list: "strings, regular expressions",
                code: <<-eos
 def phone_number?(num)
@@ -434,6 +460,7 @@ Problem.create!(#_id: 8,
                title: "Prime Factors",
                instructions: 'Find all of the prime factors for a given number',
                approved: true,
+               order_number: (order_number+=1),
                tag_list: "arithmetic",
                code: <<-eos
 def prime_factors(num)
@@ -453,6 +480,7 @@ Problem.create!(#_id: 8,
                title: "Pigs Fly;  Wait, No They Don't.",
                instructions: 'Can you make a method return a differect value after a "return" is called?',
                approved: true,
+               order_number: (order_number+=1),
                tag_list: "exceptions",
                code: <<-eos
 def do_pigs_fly?
@@ -471,6 +499,7 @@ Problem.create!(#_id: 8,
                title: "Regular Expressions Revisted",
                instructions: 'Parse this list into a two dimensional array where the inner array has a number and name.',
                approved: true,
+               order_number: (order_number+=1),
                tag_list: "regular expressions, strings, arrays",
                code: <<-eos
 doctor_map = "One: William Hartnell
@@ -507,6 +536,7 @@ Problem.create!(#_id: 9,
                                  you might get to a number whose squared sum is 1. This is a happy number. An unhappy number (or
                                  sad number) is one that loops endlessly. Write a function that determines if a number is happy or not.",
                   approved: true,
+                  order_number: (order_number+=1),
                   tag_list: "arithmetic",
                   code: <<-code_block
  __
@@ -534,6 +564,7 @@ Problem.create!(difficulty: 3,
                   after the decimal.},
                tag_list: "probability, arithmetic",
                approved: true,
+               order_number: (order_number+=1),
                code: <<-code_block
 __
 

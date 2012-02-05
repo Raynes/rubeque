@@ -9,6 +9,7 @@ class Problem
   field :difficulty, type: Integer
   field :approved, type: Boolean
   field :excluded_methods, type: Array
+  field :order_number, type: Integer
 
   references_many :solutions, dependent: :destroy
   referenced_in :creator, class_name: "User"
