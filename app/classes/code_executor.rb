@@ -56,7 +56,7 @@ class CodeExecutor
     policy = Policy.new
     policy.blacklist_calls( @excluded_methods )
 
-    constants = ["Mongoid", "Document"] + model_names
+    constants = ["Mongoid", "Document", "FakeFS", "RealFile", "RealFileTest", "RealFileUtils", "RealDir"] + model_names
     constants.each {|c| policy.blacklist_const(c)}
     return policy
   end
