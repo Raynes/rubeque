@@ -1,7 +1,7 @@
 class SolutionsController < ApplicationController
   # GET /solutions
   # GET /solutions.json
-  before_filter :restrict_to_admin, only: [:edit,:destroy]
+  before_filter :restrict_to_admin, only: [:edit, :destroy, :show, :new]
 
   def index
     @problem = Problem.find(params[:problem_id]) rescue nil
@@ -10,8 +10,6 @@ class SolutionsController < ApplicationController
     end
     @top_solutions = Solution.all(conditions: { problem_id: @problem.id }, sort: [[:score, :desc]], limit: 5)
     @followed_users = current_user.users_followed
-
-
 
     respond_to do |format|
       format.html # index.html.erb

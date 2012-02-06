@@ -18,4 +18,6 @@ jQuery.ajaxSetup({
 
 $(function() {
   $("input:submit").button();
+
+  $("input.tag-field").tagit({allowSpaces: true});
 });

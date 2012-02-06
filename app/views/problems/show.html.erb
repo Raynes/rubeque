@@ -1,24 +1,44 @@
 <h1><%= @problem.title %></h1>
 
 <% if current_user_admin? %>
-  <% if !@problem.approved %>
-    <%= link_to 'Approve', approve_problem_path(@problem), method: :put %>
-  <% else %>
-    <span>Approved</span>
-  <% end %>
-  | <%= link_to 'Edit', edit_problem_path(@problem) %> | <%= link_to 'Destroy', @problem, confirm: "Are you sure you want to destroy?", method: :delete %>
+  <p>
+    <b>Status:</b><br/>
+    <%= @problem.status.titleize %>
+  </p>
+<% end -%>
+
+<% if @problem.creator.present? %>
+  <p>
+    <b>Submitted By:</b><br/>
+    <%= @problem.creator %>
+  </p>
 <% end %>
+
 <p>
   <b>Difficulty:</b><br/>
-  <%= @problem.difficulty.titleize %>
+  <%= @problem.difficulty_word %>
 </p>
+
+<% if @problem.tags.any? %>
+  <p>
+    <b>Tags:</b><br/>
+    <%= @problem.tag_list %>
+  </p>
+<% end -%>
 
 <% if !@problem.instructions.blank? %>
 <p>
   <b>Instructions:</b><br/>
-  <%= @problem.instructions %>
+  <%= @problem.approved? ? raw(Rinku.auto_link(@problem.instructions)) : @problem.instructions %>
 </p>
 <% end %>
+
+<% if @problem.excluded_methods && @problem.excluded_methods.any? %>
+  <p>
+    <b>Banned Methods:</b><br/>
+    <%= @problem.excluded_methods.join(", ") %>
+  </p>
+<% end -%>
 
 <p>
   <b>Code:</b>
@@ -41,4 +61,12 @@
   <%= f.submit "Submit", confirm: (@solution.new_record? ? "" : "You've already solved this problem. Are you sure you want to change your solution?") %>
 <% end -%>
 <br/>
+
 <%= link_to "Back to Problems", problems_path() %>
+
+<% if current_user_admin? %>
+  <% if !@problem.approved %>
+    | <%= link_to 'Approve', approve_problem_path(@problem), method: :put, confirmation: "Are you sure you want to approve this problem?" %>
+  <% end %>
+  | <%= link_to 'Edit', edit_problem_path(@problem) %> | <%= link_to 'Destroy', @problem, confirm: "Are you sure you want to destroy?", method: :delete %>
+<% end %>

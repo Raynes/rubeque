@@ -4,6 +4,8 @@ class Vote
   referenced_in :user
   referenced_in :solution
 
+  index [:solution_id, :user_id]
+
   validates_presence_of :user_id, :solution_id
   validates_uniqueness_of :user_id, scope: :solution_id
 
@@ -20,7 +22,7 @@ class Vote
   protected
 
     def update_user_score
-      user.update_score
+      solution.user.update_score
     end
 
     def update_solution_score

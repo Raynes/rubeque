@@ -6,7 +6,9 @@ class Solution
 
   referenced_in :problem
   referenced_in :user
-  references_many :votes
+  references_many :votes, dependent: :destroy
+
+  index [:problem_id, :user_id]
 
   validate :run_problem
   after_create :update_user_solution_count, :create_upvote_for_solution
@@ -16,7 +18,8 @@ class Solution
   end
 
   def run_problem
-    executor = CodeExecutor.new(problem.code.gsub("__", self.code))
+    load "#{Rails.root}/app/classes/code_executor.rb"
+    executor = CodeExecutor.new(problem.code.gsub("__", self.code), excluded_methods: problem.excluded_methods)
     result = executor.execute
     executor.errors.each {|e| errors.add(:base, e)}
     return result

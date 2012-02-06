@@ -1,4 +1,4 @@
-# Rubeque
+# Rubeque [![Build Status](https://secure.travis-ci.org/daviddavis/rubeque.png)](http://travis-ci.org/daviddavis/rubeque)
 
 Rubeque is an interactive problem website for learning Ruby.
 
@@ -27,11 +27,14 @@ on what to work on.
 * [Joe Peck](https://github.com/joepeck) (joepeck)
 * [Michael Stalker](https://github.com/mstalker) (mstalker)
 * [Joseph Jaber](https://github.com/josephjaber) (josephjaber)
+* [Edward Anderson](https://github.com/nilbus) (nilbus)
 
 ## Acknowledgements
 
 * [SciMed Solutions, Inc](http://www.scimedsolutions.com) for providing the time and resources necessary to make this.
-* [4clojure](http://www.4clojure.com) for providing advice.
+* [4clojure](http://www.4clojure.com) for providing advice and support.
+* [envylabs](https://github.com/envylabs) for their Ruby Conf presentation on sandboxing
+* [Nick Markwell](https://github.com/duckinator) for his help in sandboxing
 
 ## License
 

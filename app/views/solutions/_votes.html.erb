@@ -1,4 +1,4 @@
-<div class="votes <%= "score-only" if solution.user == current_user %>" id="votes-<%= solution.id %>">
+<div class="votes <%= "score-only" if solution.user == current_user %> votes-<%= solution.id %>" id="<%= solution.id %>">
   <b>Score: <%= solution.score %></b>
   <% unless solution.user == current_user %>
     <%= vote_link(solution, true) %><%= vote_link(solution, false) %>

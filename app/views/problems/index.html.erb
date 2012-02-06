@@ -3,21 +3,23 @@
 <table id="problems">
   <tr>
     <th>Title</th>
-    <th>Instructions</th>
+    <th>Tags</th>
     <th>Difficulty</th>
-    <th>Submitted By</th>
     <th>Solutions</th>
-    <th>Solved</th>
+    <% if current_user %>
+      <th>Solved</th>
+    <% end %>
   </tr>
 
 <% @problems.each do |problem| %>
   <tr class="problem <%= 'solved' if problem.solved?(current_user) %>" id="<%= problem.id %>">
     <td><%= problem.title %></td>
-    <td><%= truncate(problem.instructions, length: 50) %></td>
-    <td><%= problem.difficulty.titleize %></td>
-    <td><%= problem.creator %></td>
+    <td><%= problem.tag_list %></td>
+    <td><%= problem.difficulty_word %></td>
     <td><%= problem.solutions.count %></td>
-    <td class="solved-mark"><%= problem.solved?(current_user) ? image_tag("check.png") : "" %></td>
+    <% if current_user %>
+      <td class="solved-mark"><%= problem.solved?(current_user) ? image_tag("check.png") : "" %></td>
+    <% end -%>
   </tr>
 <% end %>
 </table>
@@ -25,3 +27,11 @@
 <% if current_user %>
   <%= link_to 'Submit a problem', new_problem_path, id: 'new_problem' %>
 <% end -%>
+
+<% if current_user_admin? %>
+  <% if params[:action] == "unapproved" %>
+    | <%= link_to "Back to Problems", problems_path() %>
+  <% else %>
+    | <%= link_to "View Unapproved Problems", unapproved_problems_path() %>
+  <% end -%>
+<% end %>
