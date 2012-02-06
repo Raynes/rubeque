@@ -48,7 +48,7 @@ class Problem
   end
 
   def tag_list=(tag_list)
-    self.tags = tag_list.split(",").map{|t| Tag.new(name: t.strip)}
+    self.tags = tag_list.split(",").map(&:strip).uniq.map{|t| Tag.new(name: t)}
   end
 
   def difficulty_word
