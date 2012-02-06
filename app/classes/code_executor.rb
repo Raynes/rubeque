@@ -29,7 +29,7 @@ class CodeExecutor
       return false
     ensure
       FakeFS.deactivate!
-      load "#{Rails.root}/app/classes/code_executor.rb"
+      #load "#{Rails.root}/app/classes/code_executor.rb"
     end
 
     return success
@@ -68,7 +68,7 @@ class CodeExecutor
       end
     end
 
-    Object.instance_eval { remove_const :CodeExecutor }
+    #Object.instance_eval { remove_const :CodeExecutor }
     $SAFE = 3
   code
 
