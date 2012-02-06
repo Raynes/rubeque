@@ -2,21 +2,25 @@
 
 <table id="problems">
   <tr>
+    <td></td>
     <th>Title</th>
     <th>Tags</th>
     <th>Difficulty</th>
     <th>Solutions</th>
+    <th>Submitter</th>
     <% if current_user %>
       <th>Solved</th>
     <% end %>
   </tr>
 
-<% @problems.each do |problem| %>
+<% @problems.each_with_index do |problem, i| %>
   <tr class="problem <%= 'solved' if problem.solved?(current_user) %>" id="<%= problem.id %>">
+    <td><%= i+1 %></td>
     <td><%= problem.title %></td>
     <td><%= problem.tag_list %></td>
     <td><%= problem.difficulty_word %></td>
     <td><%= problem.solutions.count %></td>
+    <td><%= problem.creator %></td>
     <% if current_user %>
       <td class="solved-mark"><%= problem.solved?(current_user) ? image_tag("check.png") : "" %></td>
     <% end -%>

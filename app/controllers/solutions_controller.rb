@@ -9,7 +9,7 @@ class SolutionsController < ApplicationController
       redirect_to "/" and return
     end
     @top_solutions = Solution.all(conditions: { problem_id: @problem.id }, sort: [[:score, :desc]], limit: 5)
-    @followed_users = current_user.users_followed
+    @followed_users = current_user.users_followed.reject{|u| u.solutions.where(problem_id: @problem.id).empty?}
 
     respond_to do |format|
       format.html # index.html.erb
@@ -58,7 +58,7 @@ class SolutionsController < ApplicationController
   # PUT /solutions/1.json
   def update
     @solution = Solution.find(params[:id])
-    if @solution.user != current_user
+    if @solution.user != current_user && !current_user.admin?
       flash[:error] = "You cannot update that solution"
       redirect_to "/" and return
     end

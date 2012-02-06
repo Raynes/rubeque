@@ -235,7 +235,7 @@ footer {
       color: #666; } } }
 
 .small {
-  font-size: 0.8em; }
+  font-size: 0.9em; }
 
 .clear {
   float: none;
@@ -333,7 +333,9 @@ table#users tr.user-record th {
     margin-top: 4px; } }
 
 .solution {
-    position: relative; }
+    position: relative;
+    .CodeRay {
+      margin-bottom: 8px; } }
 
 #your-solution h3 {
   font-size: 1.6em;
