@@ -48,11 +48,7 @@ class Problem
   end
 
   def tag_list=(tag_list)
-    tag_list.split(",").each do |tag|
-      unless tags.where(name: tag).any?
-        tags.new(name: tag)
-      end
-    end
+    self.tags = tag_list.split(",").map{|t| Tag.new(name: t.strip)}
   end
 
   def difficulty_word

@@ -25,16 +25,16 @@
     <%= f.label :difficulty %><br />
     <%= f.select :difficulty, difficulty_options, {}, style: "width: 315px" %>
   </div>
-  <div class="field">
-    <%= f.label :tag_list, "Tags" %>
-    <%= f.text_field :tag_list, class: "tag-field" %>
-  </div>
   <% if current_user.admin? %>
     <div class="field">
       <%= f.label :order_number, 'Order' %><br/>
       <%= f.text_field :order_number %>
     </div>
   <% end -%>
+  <div class="field">
+    <%= f.label :tag_list, "Tags" %>
+    <%= f.text_field :tag_list, class: "tag-field" %>
+  </div>
   <div class="field">
     <%= f.label :instructions %><br />
     <%= f.text_area :instructions, style: "width: 611px; height: 200px;" %>
