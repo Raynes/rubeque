@@ -1,7 +1,12 @@
-require 'timeout'
+require 'sicuro'
 
 class CodeExecutor
   MAX_EXECUTION_TIME = 15 # seconds
+
+  ERROR_PATTERNS = [
+    /^SystemExit:/,
+    /Error\S*:/
+  ]
 
   attr_accessor :code, :errors
 
@@ -12,51 +17,24 @@ class CodeExecutor
   end
 
   def execute
+    code = PRECODE + @code
+    timelimit = MAX_EXECUTION_TIME
+    memlimit  = 30
+
+    Sicuro.setup(timelimit, memlimit)
     begin
-      check_code(@code)
-
-      FakeFS.activate!
-
-      code = PRECODE + @code
-      evaluator = Proc.new { eval(code) }
-      success = Timeout::timeout(MAX_EXECUTION_TIME) { evaluator.call }
-
-      if success == false
-        @errors << "Your solution failed."
-      end
+      result = Sicuro.eval(code)
     rescue Exception => e
-      @errors << "Your solution failed: #{e.message}"
-      return false
-    ensure
-      FakeFS.deactivate!
-      #load "#{Rails.root}/app/classes/code_executor.rb"
+      @errors << e.message
+    end
+    puts result
+
+    ERROR_PATTERNS.each {|re| @errors << result if result =~ re}
+    if result == "<timeout hit>"
+      @errors << "Your solution timed out."
     end
 
-    return success
-  end
-
-  def check_code(code)
-    policy = initialize_policy
-    ast = Rubycop::Analyzer::NodeBuilder.build(code)
-    if !ast.accept(policy)
-      raise "your code contains a class or method call that is not allowed."
-    end
-    return true
-  end
-
-  def initialize_policy
-    policy = Policy.new
-    policy.blacklist_calls( @excluded_methods )
-
-    constants = ["Mongoid", "Document", "FakeFS", "RealFile", "RealFileTest", "RealFileUtils", "RealDir"] + model_names
-    constants.each {|c| policy.blacklist_const(c)}
-    return policy
-  end
-
-  def model_names
-    Dir.chdir(File.join("#{Rails.root}", "app", "models"))
-    filenames = Dir.glob("*.rb")
-    filenames.map{|f| f.match(/^[^.]*/).to_s.camelize}
+    return @errors.empty?
   end
 
   PRECODE = <<-code
@@ -67,9 +45,6 @@ class CodeExecutor
         return true
       end
     end
-
-    #Object.instance_eval { remove_const :CodeExecutor }
-    $SAFE = 3
   code
 
 end
