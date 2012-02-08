@@ -5,7 +5,11 @@ class CodeExecutor
 
   ERROR_PATTERNS = [
     /^SystemExit:/,
-    /Error\S*:/
+    /Error\S*:/,
+    /Exception\S*:/,
+    /^fatal/,
+    /Interrupt\S*:/,
+    /Errno::/
   ]
 
   attr_accessor :code, :errors
@@ -27,7 +31,6 @@ class CodeExecutor
     rescue Exception => e
       @errors << e.message
     end
-    puts result
 
     ERROR_PATTERNS.each {|re| @errors << result if result =~ re}
     if result == "<timeout hit>"
