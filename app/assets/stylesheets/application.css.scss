@@ -317,8 +317,13 @@ td.solved-mark {
 
 table#problems tr.problem {
   cursor: pointer;
+  a {
+    text-decoration: none;
+    color: inherit;
+    &:hover {
+      color: inherit; } }
   &:hover {
-    color: #888; } }
+    color: #777; } }
 
 table#users tr.user-record th {
   background: inherit; }
