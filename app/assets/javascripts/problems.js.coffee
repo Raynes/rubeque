@@ -12,6 +12,8 @@ $ ->
     RubyMode = require("ace/mode/ruby").Mode
     editor.getSession().setMode(new RubyMode())
     editor.getSession().setValue($("#solution_code, #problem_code").text())
+    editor.getSession().setTabSize(2)
+    editor.getSession().setUseSoftTabs(true)
     $("#editor").css("font-size", "13px")
 
     $("form#new_solution, form.edit_solution").submit (e) ->
