@@ -80,7 +80,7 @@ class SolutionsController < ApplicationController
   # DELETE /solutions/1.json
   def destroy
     @solution = Solution.find(params[:id])
-    problem = @solution
+    problem = @solution.problem
     @solution.destroy
 
     respond_to do |format|
