@@ -29,6 +29,6 @@ Then /^there should (be|not be) a new solution in the database$/ do |new_solutio
   end
 end
 
-Then /^I should see an error message about unsafe code$/ do
-  page.find("#error_explanation li").text.should =~ /not allowed/
+Then /^I should see a "([^"]*)" error message$/ do |message|
+  page.find("#error_explanation li").text.should include(message)
 end
