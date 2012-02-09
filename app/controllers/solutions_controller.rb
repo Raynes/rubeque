@@ -8,7 +8,9 @@ class SolutionsController < ApplicationController
     if !current_user_admin? && (@problem.nil? || !@problem.solved?(current_user))
       redirect_to "/" and return
     end
-    @top_solutions = Solution.all(conditions: { problem_id: @problem.id }, sort: [[:score, :desc]], limit: 5)
+    @top_solutions = Solution.all(conditions: { problem_id: @problem.id, user_id: { "$nin" => [current_user.id] } },
+                                  sort: [[:score, :desc], [:updated_at, :desc]],
+                                  limit: 5)
     @followed_users = current_user.users_followed.reject{|u| u.solutions.where(problem_id: @problem.id).empty?}
 
     respond_to do |format|
