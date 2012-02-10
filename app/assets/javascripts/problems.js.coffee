@@ -12,10 +12,12 @@ $ ->
     RubyMode = require("ace/mode/ruby").Mode
     editor.getSession().setMode(new RubyMode())
     editor.getSession().setValue($("#solution_code, #problem_code").text())
+    editor.getSession().setTabSize(2)
+    editor.getSession().setUseSoftTabs(true)
     $("#editor").css("font-size", "13px")
 
     $("form#new_solution, form.edit_solution").submit (e) ->
-      $("#solution_code").text editor.getSession().getValue()
+      $("#solution_code").val editor.getSession().getValue()
 
     $("form#new_problem, form.edit_problem").submit (e) ->
-      $("#problem_code").text editor.getSession().getValue()
+      $("#problem_code").val editor.getSession().getValue()

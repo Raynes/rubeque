@@ -29,4 +29,4 @@ Feature: Submit solutions
     When I go to the problem page for "The Truth"
     When I fill in "Kernel.exit!" for the solution code
     And I submit the solution
-    Then I should see an error message about unsafe code
+    Then I should see a "SystemExit" error message

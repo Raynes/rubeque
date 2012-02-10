@@ -37,7 +37,7 @@ class User
   end
 
   def users_followed
-    @user_followed ||= following.sort_by{|f| f.user.username}.map(&:user)
+    @user_followed ||= following.sort_by{|f| f.user.username.downcase}.map(&:user)
   end
 
   def following?(user)

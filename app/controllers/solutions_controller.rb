@@ -8,8 +8,10 @@ class SolutionsController < ApplicationController
     if !current_user_admin? && (@problem.nil? || !@problem.solved?(current_user))
       redirect_to "/" and return
     end
-    @top_solutions = Solution.all(conditions: { problem_id: @problem.id }, sort: [[:score, :desc]], limit: 5)
-    @followed_users = current_user.users_followed
+    @top_solutions = Solution.all(conditions: { problem_id: @problem.id, user_id: { "$nin" => [current_user.id] } },
+                                  sort: [[:score, :desc], [:updated_at, :desc]],
+                                  limit: 5)
+    @followed_users = current_user.users_followed.reject{|u| u.solutions.where(problem_id: @problem.id).empty?}
 
     respond_to do |format|
       format.html # index.html.erb
@@ -58,7 +60,7 @@ class SolutionsController < ApplicationController
   # PUT /solutions/1.json
   def update
     @solution = Solution.find(params[:id])
-    if @solution.user != current_user
+    if @solution.user != current_user && !current_user.admin?
       flash[:error] = "You cannot update that solution"
       redirect_to "/" and return
     end
@@ -80,10 +82,11 @@ class SolutionsController < ApplicationController
   # DELETE /solutions/1.json
   def destroy
     @solution = Solution.find(params[:id])
+    problem = @solution.problem
     @solution.destroy
 
     respond_to do |format|
-      format.html { redirect_to solutions_url }
+      format.html { redirect_to problem }
       format.json { head :ok }
     end
   end

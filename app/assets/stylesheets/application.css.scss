@@ -178,7 +178,8 @@ header {
     width: 950px;
     margin: 0 auto;
     padding: 20px 0;
-    
+    position: relative;
+
     .username a {
       color: #000;
     }
@@ -196,7 +197,7 @@ header {
         color: #343434; } } }
 
   .logo {
-    width: 300px;
+    width: 200px;
     float: left;
     font-size: 28px;
 
@@ -235,7 +236,7 @@ footer {
       color: #666; } } }
 
 .small {
-  font-size: 0.8em; }
+  font-size: 0.9em; }
 
 .clear {
   float: none;
@@ -316,8 +317,13 @@ td.solved-mark {
 
 table#problems tr.problem {
   cursor: pointer;
+  a {
+    text-decoration: none;
+    color: inherit;
+    &:hover {
+      color: inherit; } }
   &:hover {
-    color: #888; } }
+    color: #777; } }
 
 table#users tr.user-record th {
   background: inherit; }
@@ -333,7 +339,9 @@ table#users tr.user-record th {
     margin-top: 4px; } }
 
 .solution {
-    position: relative; }
+    position: relative;
+    .CodeRay {
+      margin-bottom: 8px; } }
 
 #your-solution h3 {
   font-size: 1.6em;
