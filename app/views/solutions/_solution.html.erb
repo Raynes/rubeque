@@ -7,7 +7,10 @@
 <%=raw highlight_code(solution.code) %>
 
 <p class="small">
-  Submitted by <strong><%= solution.user %></strong> on <%= solution.updated_at %>.
+  <% if solution.time %>
+    Time: <strong><%= solution.time %></strong> seconds.
+  <% end %>
+  Date: <%= solution.updated_at %>.
   <% if current_user_admin? %><%= link_to 'Edit', edit_solution_path(solution) %> | <%= link_to 'Destroy', solution, confirm: 'Are you sure?', method: :delete %><% end %>
 </p>
 <div class="clear"></div>
