@@ -4,7 +4,7 @@ class User
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :lockable, :omniauthable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable
 
   field :username
   field :email
@@ -16,18 +16,43 @@ class User
   references_many :votes
   references_many :problems, inverse_of: :creator
   references_many :following, inverse_of: :follower
+  references_many :user_tokens, autosave: true, dependent: :destroy
 
   index :score, :solution_count
 
-  validates_uniqueness_of :email, :username
+  validates_uniqueness_of :username
+  validates_presence_of :username
+  validates :email,
+            presence: true,
+            uniqueness: true,
+            format: { :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i },
+            allow_nil: -> user { user.user_tokens.empty? }
 
   attr_accessible :username, :email, :password, :password_confirmation, :remember_me, :admin
   attr_accessor :users_followed
+  #attr_protected :provider, :uid, :name, :email
 
   after_create :initialize_score
 
   def to_s
     username
+  end
+
+  def self.new_with_session(params, session)
+    super.tap do |user|
+      if data = session[:omniauth]
+        user.user_tokens.build(:provider => data['provider'], :uid => data['uid'])
+      end
+    end
+  end
+
+  def apply_omniauth(omniauth)
+    self.username = (omniauth['info']['nickname'] rescue nil) if username.blank?
+    user_tokens.build(:provider => omniauth['provider'], :uid => omniauth['uid'])
+  end
+
+  def password_required?
+    (user_tokens.empty? || !password.blank?) && super
   end
 
   def update_score

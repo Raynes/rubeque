@@ -180,11 +180,11 @@ header {
     padding: 20px 0;
     position: relative;
 
-    .username a {
+    .username a, .username p {
       color: #000;
     }
-        
-    a {
+
+    a, p {
       color: #B11000;
       text-decoration: none;
       display: block;
