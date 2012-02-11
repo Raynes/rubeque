@@ -4,7 +4,7 @@ class User
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :lockable, :omniauthable,
-         :recoverable, :rememberable, :trackable
+         :recoverable, :rememberable, :trackable, :validatable
 
   field :username
   field :email
@@ -53,6 +53,19 @@ class User
 
   def password_required?
     (user_tokens.empty? || !password.blank?) && super
+  end
+
+  def email_required?
+    user_tokens.length == 0
+  end
+
+  def self.find_for_open_id(access_token, signed_in_resource=nil)
+    data = access_token.info
+    if user = User.where(:email => data["email"]).first
+      user
+    else
+      User.create!(:email => data["email"], :password => Devise.friendly_token[0,20])
+    end
   end
 
   def update_score

@@ -16,6 +16,8 @@ gem 'sicuro'
 gem 'omniauth', '~> 1.0.1'
 gem "omniauth-twitter"
 gem "omniauth-github"
+gem 'omniauth-google-oauth2'
+gem "omniauth-openid"
 
 # Gems used only for assets and not required
 # in production environments by default.

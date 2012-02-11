@@ -20,7 +20,7 @@
           <div class="user">
             <% if user_signed_in? %>
               <span class="username">
-                <% if current_user.user_tokens %>
+                <% if current_user.user_tokens.any? %>
                   <p><%= current_user %></p>
                 <% else %>
                   <%= link_to current_user.username, edit_user_registration_path %>

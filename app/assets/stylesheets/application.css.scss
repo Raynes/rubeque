@@ -388,3 +388,21 @@ a.downvote img {
   transform: rotate(180deg);
    -moz-transform: rotate(180deg);
    -webkit-transform: rotate(180deg); }
+
+#provider-links {
+  margin: 15px 0 30px;
+}
+.provider-link {
+  float: none;
+  clear: both;
+  margin: 5px 0;
+  height: 40px;
+  img {
+    float: left;
+  }
+  a {
+    display: block;
+    float: left;
+    margin: 7px 2px 2px 6px;
+  }
+}
