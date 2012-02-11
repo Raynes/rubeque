@@ -200,7 +200,7 @@ Devise.setup do |config|
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', :scope => 'user,public_repo'
   config.omniauth :twitter, ENV['twitter_key'], ENV['twitter_secret']
-  #config.omniauth :github, ENV['github_key'], ENV['github_secret']
+  config.omniauth :github, ENV['github_key'], ENV['github_secret']
   config.omniauth :open_id, :store => OpenID::Store::Filesystem.new('/tmp'), :name => 'google', :identifier => 'https://www.google.com/accounts/o8/id', :require => 'omniauth-openid'
   #config.omniauth :google_oauth2, ENV['google_key'], ENV['google_secret']
 
