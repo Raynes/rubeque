@@ -12,6 +12,9 @@ class Solution
 
   validate :run_problem
   after_create :update_user_solution_count, :create_upvote_for_solution
+  validates_uniqueness_of :problem_id, scope: :user_id,
+    message: "solution error. Please do not use the back button in your browser before submitting a solution."
+  after_destroy :update_user_solution_count
 
   def update_score
     update_attribute(:score, votes.upvote.count - votes.downvote.count)
@@ -22,6 +25,22 @@ class Solution
     result = executor.execute
     executor.errors.each {|e| errors.add(:base, e)}
     return result
+  end
+
+  def self.duplicates(callback = nil, sort = :asc)
+    duplicates = []
+    Solution.all(sort: [[:updated_at, sort]]).each do |solution|
+      conditions = { problem_id: solution.problem.id,
+                     user_id: solution.user_id,
+                     id: { "$nin" => [solution.id] }
+                   }
+      if (dupes = Solution.all(conditions: conditions)).any?
+        solution.send(callback) if callback
+        duplicates << solution
+      end
+    end
+
+    duplicates
   end
 
   protected
