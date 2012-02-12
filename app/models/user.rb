@@ -21,7 +21,7 @@ class User
 
   validates_uniqueness_of :email, :username
 
-  attr_accessible :username, :email, :password, :password_confirmation, :remember_me, :admin
+  attr_accessible :username, :email, :password, :password_confirmation, :remember_me
   attr_accessor :users_followed
 
   after_create :initialize_score
