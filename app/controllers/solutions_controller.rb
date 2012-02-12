@@ -69,7 +69,6 @@ class SolutionsController < ApplicationController
 
     respond_to do |format|
       if @solution.update_attributes(params[:solution])
-        @solution_code = @solution.code
         format.html { redirect_to @problem, notice: "Solution passed and was updated. #{share_link}" }
         format.json { head :ok }
       else
@@ -119,7 +118,7 @@ class SolutionsController < ApplicationController
     end
 
     def share_link
-      "<a href='#{share_problem_solutions_path(@problem, solution_code: @solution_code)}'>Share your solution</a>!"
+      "<a href='#{share_problem_solutions_path(@problem, solution_code: @solution.code)}'>Share your solution</a>!"
     end
 
 end
