@@ -1,0 +1,7 @@
+# Solution to #{problem.title}
+<% if current_user %>
+# by <%= current_user.username %>
+<% end -%>
+# <%= problem_url(@problem) %>
+
+<%= @solution_code %>

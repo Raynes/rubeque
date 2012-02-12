@@ -8,6 +8,6 @@
 
 <p class="small">
   Submitted by <strong><%= solution.user %></strong> on <%= solution.updated_at %>.
-  <% if current_user_admin? %><%= link_to 'Edit', edit_solution_path(solution) %> | <%= link_to 'Destroy', solution, confirm: 'Are you sure?', method: :delete %><% end %>
+  <% if current_user_admin? %><%= link_to 'Edit', edit_problem_solution_path(solution.problem, solution) %> | <%= link_to 'Destroy', [solution.problem, solution], confirm: 'Are you sure?', method: :delete %><% end %>
 </p>
 <div class="clear"></div>

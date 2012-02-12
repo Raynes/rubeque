@@ -49,11 +49,11 @@
 
 <% if @problem.solved?(current_user) || current_user_admin? %>
   <p id="solutions-link">
-    <%= link_to "View Solutions", solutions_path(:problem_id => @problem.id) %>
+    <%= link_to "View Solutions", problem_solutions_path(:problem_id => @problem.id) %>
   </p>
 <% end -%>
 
-<%= form_for @solution do |f| -%>
+<%= form_for [@problem, @solution] do |f| -%>
   <%= form_errors @solution %>
   <%= f.hidden_field :problem_id %>
   <%= f.text_area :code %>

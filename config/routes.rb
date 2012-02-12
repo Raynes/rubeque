@@ -8,8 +8,11 @@ Rubeque::Application.routes.draw do
   resources :problems do
     get 'unapproved', on: :collection
     put 'approve', on: :member
+
+    resources :solutions, except: [:new] do
+      get "share", on: :collection
+    end
   end
-  resources :solutions, except: [:new]
 
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
