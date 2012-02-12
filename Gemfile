@@ -48,6 +48,10 @@ group :test, :development do
   gem 'turn', '0.8.2', :require => false
   gem 'launchy'
   gem 'selenium-webdriver'
+  gem 'awesome_print'
+  gem 'looksee'
+  gem 'hirb'
+  gem 'interactive_editor'
 end
 
 group :development do

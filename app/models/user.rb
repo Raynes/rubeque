@@ -28,7 +28,7 @@ class User
             format: { :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i },
             allow_nil: -> user { user.user_tokens.empty? }
 
-  attr_accessible :username, :email, :password, :password_confirmation, :remember_me, :admin
+  attr_accessible :username, :email, :password, :password_confirmation, :remember_me
   attr_accessor :users_followed
   #attr_protected :provider, :uid, :name, :email
 
