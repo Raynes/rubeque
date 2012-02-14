@@ -278,8 +278,8 @@ textarea#solution_code {
   font-family: 'Menlo', 'Monaco', 'Courier New', Monospace;
   width: 500px;
 }
-#editor {
-  font-family: 'Menlo', 'Monaco', 'Courier New', Monospace;
+.code-editor {
+  font-family: 'Menlo', 'Monaco', 'Courier New', Monospace !important;
   position: relative;
   width: 615px;
   height: 350px;
