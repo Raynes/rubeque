@@ -18,6 +18,7 @@ Rubeque::Application.routes.draw do
 
   get "static/index"
   match 'help' => 'static#help', :via => :get, :as => :help
+  match 'problem_submission' => "static#problem_submission", via: :get, as: "submission_help"
 
   #root :to => "static#index"
   root to: "problems#index"

@@ -63,5 +63,5 @@ When /^I press the login button$/ do
 end
 
 Then /^I should see my username on the page$/ do
-  page.find("span.username").text.should eql(@current_user.username)
+  page.find("span.username").text.strip.should eql(@current_user.username)
 end
