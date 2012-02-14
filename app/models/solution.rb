@@ -21,7 +21,7 @@ class Solution
   end
 
   def run_problem
-    executor = CodeExecutor.new(problem.code.gsub("__", self.code), excluded_methods: problem.excluded_methods)
+    executor = CodeExecutor.new(combined_code, excluded_methods: problem.excluded_methods)
     result = executor.execute
     executor.errors.each {|e| errors.add(:base, e)}
     return result
@@ -41,6 +41,12 @@ class Solution
     end
 
     duplicates
+  end
+
+  def combined_code
+    full_code = problem.code
+    full_code += ("\n" + problem.hidden_code) if problem.hidden_code
+    full_code.gsub("__", self.code)
   end
 
   protected

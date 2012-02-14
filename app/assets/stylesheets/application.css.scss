@@ -274,16 +274,16 @@ div.content {
     font-weight: bold;
     font-family: "Droid Sans", Helvetica, Arial, Sans-serif; } }
 
-textarea#solution_code {
-  font-family: 'Menlo', 'Monaco', 'Courier New', Monospace;
-  width: 500px;
-}
 .code-editor {
   font-family: 'Menlo', 'Monaco', 'Courier New', Monospace !important;
   position: relative;
   width: 615px;
   height: 350px;
   border: 1px solid #777; }
+.code-editor-field {
+  height: 360px; }
+.edit_problem .code-editor-field, .new_problem .code-editor-field {
+  height: 370px; }
 
 p#solutions-link {
   position: relative;

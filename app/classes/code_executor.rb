@@ -41,9 +41,9 @@ class CodeExecutor
   end
 
   PRECODE = <<-code
-    def assert_equal(x, y)
+    def assert_equal(x, y, message = nil)
       if x != y
-        raise "The value '\#{x}' does not equal '\#{y}'."
+        raise message ? message : "The value '\#{x}' does not equal '\#{y}'."
       else
         return true
       end
