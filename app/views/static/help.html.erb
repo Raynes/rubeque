@@ -1,9 +1,11 @@
 <h1>Help is here!</h1>
 
-<p>Rubeque challenges users to solve ruby koans or short problems using ruby code. To do this, you'll need to fill in the blank on each problem.</p>
+<p>Rubeque challenges users to solve ruby koans or short problems using ruby code. To do this, you'll need to fill in the blank on each problem.
+The blanks that you will be filling in are indicated by "__" (two underscores).  This is not part of the syntax of Ruby and in its place, your code
+will be evaluated. If there are multiple blanks, each will be replaced with your code. Any code passes all assertions will be considered a correct
+answer.</p>
 
-<p>The blanks that you will be filling in are indicated by a <strong>double underscore</strong>: '__'.  This is not part of the syntax of the language.
-Any code which makes the final form evaluate to 'true' will be considered a correct answer.  Let's consider the first problem:</p>
+</p>Let's consider the first problem:</p>
 
 <p><%=raw highlight_code("assert_equal __, true") %></p>
 
@@ -11,13 +13,11 @@ Any code which makes the final form evaluate to 'true' will be considered a corr
 <ol>
   <li>true</li>
   <li>(1 == 1)</li>
-  <li>!(false)</li>
+  <li>!!1</li>
 </ol>
 
-<p>Some operations are prohibited for security reasons. For example, no system calls will be allowed.</p>
-
-<p>Many of the easier problems on this site can be solved using only your browser. Here are some sites to help you along the way:</p>
-
+<p>Some operations are prohibited for security reasons. For example, no system calls will be allowed. Many of the easier problems on this site can
+be solved using only your browser. Here are some sites to help you along the way:</p>
 <ul>
   <li><%= link_to "tryruby.org", "http://tryruby.org" %> &mdash; provides an interative ruby session (irb) in your browser.</li>
   <li><%= link_to "ruby-doc.org/core-1.9.3", "http://ruby-doc.org/core-1.9.3/" %> &mdash; ruby 1.9.3 documenation.</li>
@@ -25,8 +25,7 @@ Any code which makes the final form evaluate to 'true' will be considered a corr
   <li><%= link_to "strfti.me", "http://strfti.me/" %> &mdash; look up variables that you need to format time in ruby.</li>
 </ul>
 
-
 <h2 class="text-header">Need to contact us?</h2>
 
 <p>If you found a problem or bug with this site, feel free to open an issue on <%= link_to "our github page", "http://github.com/daviddavis/rubeque" %>.
-Otherwise, our email address is <%= link_to "rubeque@scimedsolutions.com", "mailto:rubeque@scimedsolutions.com" %>.</p>
+You can also drop us an email at <%= link_to "rubeque@scimedsolutions.com", "mailto:rubeque@scimedsolutions.com" %>.</p>
