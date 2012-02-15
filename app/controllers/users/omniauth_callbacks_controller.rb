@@ -45,7 +45,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
               sign_in_and_redirect(:user, user)
             else
               session[:omniauth] = omniauth.except('extra')
-              flash[:error] = "Could not create new user account"
+              flash[:error] = "Could not create new user account: #{user.errors.first.join(" ")}"
               redirect_to new_user_registration_url
             end
           end
