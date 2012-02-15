@@ -42,6 +42,37 @@ class ProblemsController < ApplicationController
     end
   end
 
+  def test
+    render :text => prime_factorization(12345)
+
+  end
+
+  def prime_factorization(num)
+
+    prime =  Enumerator.new do |y|
+      mem = []
+      is_prime = lambda { |e| mem.find { |_| e.gcd(_) != 1 } }
+      2.upto(num) do |n|
+        unless is_prime[n]
+          mem << n
+          y << n
+        end
+      end
+    end
+
+    o = []
+    loop do
+      n = prime.next
+      if num % n == 0
+        num /= n
+        o << n
+        prime.rewind
+      end
+    end
+    o
+
+  end
+
   # GET /problems/new
   # GET /problems/new.json
   def new
