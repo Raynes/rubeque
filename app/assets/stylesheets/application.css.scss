@@ -134,13 +134,15 @@ table {
 h1, h2, h3, h4 {
   font-family: "Droid Sans", Helvetica, Arial, Sans-serif;
 }
+h1 {
+  font-size: 2.4em; }
 h2 {
-  font-size: 1.6em; }
+  font-size: 1.8em; }
 h3 {
-  font-size: 1.4em;
+  font-size: 1.6em;
   margin-bottom: .5em; }
 h4 {
-  font-size: 1.25em; }
+  font-size: 1.3em; }
 
 textarea {
   width: 400px;
@@ -151,13 +153,13 @@ textarea {
   display: none; }
 
 header {
-  height: 65px;
-  background: url('/assets/bgnoise.gif');
+  height: 90px;
+  background: url("sqnoise.png");
   font-family: "Droid Sans", Helvetica, Arial, Sans-serif;
-  font-size: 20px;
+  font-size: 22px;
   font-weight: bold;
   color: #333;
-  border-bottom: 8px solid #D31000;
+  border-bottom: 8px solid #B11000;
   position: relative;
 
   p {
@@ -169,10 +171,10 @@ header {
 
   img {
     position: relative;
-    top: -5px;
+    top: -10px;
     float: left;
-    margin: -17px -20px;
-    height: 75px; }
+    margin: -17px -20px -17px -28px;
+    height: 115px; }
 
   .container {
     width: 950px;
@@ -209,7 +211,7 @@ header {
 
   .user, .menu {
     float: right;
-    margin-top: 0.5em; }
+    margin-top: 1.8em; }
 
 }
 
@@ -247,7 +249,7 @@ footer, .push {
 }
 
 #wrap {
-  background: url('/assets/sqnoise.png');
+  background: url('/assets/bgnoise.gif');
   min-height: 100%;
   height: auto !important;
   margin: 0 auto -65px; // set footer height here
@@ -256,7 +258,7 @@ footer, .push {
 div.content {
   width: 950px;
   min-height: 500px;
-  margin: 10px auto;
+  margin: 20px auto;
   background: #fff;
   border: 1px solid #ccc;
   border-radius: 6px;
@@ -265,7 +267,8 @@ div.content {
   padding: 0 10px 30px;
 
   h1 {
-    padding-bottom: 10px;
+    padding-bottom: 13px;
+    padding-left: 4px;
     border-bottom: 2px solid #eee; }
   h2.text-header {
     margin: 1.1em 0 .3em; }
