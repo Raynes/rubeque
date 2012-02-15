@@ -5,6 +5,7 @@
 <div class="solutions">
   <% if @followed_users.any? %>
     <% @followed_users.each do |user| %>
+      <% solution = Solution.first(conditions: { problem_id: @problem.id, user_id: user.id }) %>
       <div class="solution">
         <%= render solution %>
       </div>
