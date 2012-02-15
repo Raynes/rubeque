@@ -4,9 +4,9 @@ class SolutionsController < ApplicationController
   before_filter :restrict_to_admin, only: [:edit, :destroy, :show, :new]
 
   def index
-    @problem = Problem.find(params[:problem_id]) rescue nil
+    @problem = Problem.find(params[:problem_id]) rescue (redirect_to "/" and return)
     if !current_user_admin? && (@problem.nil? || !@problem.solved?(current_user))
-      redirect_to "/" and return
+      redirect_to @problem and return
     end
     @top_solutions = Solution.all(conditions: { problem_id: @problem.id, user_id: { "$nin" => [current_user.id] } },
                                   sort: [[:score, :desc], [:updated_at, :desc]],
@@ -25,7 +25,7 @@ class SolutionsController < ApplicationController
     @solution = Solution.find(params[:id])
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html { redirect_to @solution.problem }
       format.json { render json: @solution }
     end
   end
@@ -45,7 +45,8 @@ class SolutionsController < ApplicationController
     respond_to do |format|
       if run_and_save_solution(@solution)
         notice = 'Your solution passed!'
-        notice += '  Please sign in or register to earn points.' if current_user.blank?
+        notice += ' Please sign in or register to earn points.' if current_user.blank?
+        notice += " #{share_link}" 
         format.html { redirect_to problem_path(@problem.id, solution_code: @solution.code), notice: notice }
         format.json { render json: @solution, status: :created, location: @solution }
       else
@@ -68,7 +69,7 @@ class SolutionsController < ApplicationController
 
     respond_to do |format|
       if @solution.update_attributes(params[:solution])
-        format.html { redirect_to @problem, notice: 'Solution was successfully updated.' }
+        format.html { redirect_to @problem, notice: "Solution passed and was updated. #{share_link}" }
         format.json { head :ok }
       else
         flash.now[:error] = "Sorry, that solution didn't work! Try again."
@@ -91,6 +92,20 @@ class SolutionsController < ApplicationController
     end
   end
 
+  def share
+    @problem = Problem.find(params[:problem_id])
+    if (@solution_code = @problem.code.gsub("__", params[:solution_code])).blank?
+      redirect_to @problem and return
+    end
+    text = render_to_string "shared/code_gist.text"
+    @gist = CodeGist.create(text, "#{@problem.id}.rb")
+
+    respond_to do |format|
+      format.html
+      format.json { head :ok }
+    end
+  end
+
   private
 
     def run_and_save_solution(solution)
@@ -101,4 +116,9 @@ class SolutionsController < ApplicationController
         return solution.valid?
       end
     end
+
+    def share_link
+      "<a href='#{share_problem_solutions_path(@problem, solution_code: @solution.code)}'>Share your solution</a>!"
+    end
+
 end

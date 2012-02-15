@@ -11,6 +11,13 @@ gem "rinku"
 gem 'rubycop', git: "git://github.com/daviddavis/RubyCop.git"
 gem 'exception_notification', :require => 'exception_notifier'
 gem 'sicuro'
+gem 'gist'
+
+# omniauth gems
+gem 'omniauth', '~> 1.0.1'
+gem "omniauth-twitter"
+gem "omniauth-github"
+gem "omniauth-openid"
 
 # Gems used only for assets and not required
 # in production environments by default.

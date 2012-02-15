@@ -1,5 +1,9 @@
-<h1>Sign up</h1>
+<h1>Register</h1>
 
+<h2>Sign in Through a Provider</h2>
+<%= render "devise/shared/provider_links" %>
+
+<h2>Create a Rubeque Account</h2>
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 

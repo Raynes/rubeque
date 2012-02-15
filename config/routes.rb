@@ -8,13 +8,17 @@ Rubeque::Application.routes.draw do
   resources :problems do
     get 'unapproved', on: :collection
     put 'approve', on: :member
-  end
-  resources :solutions, except: [:new]
 
-  devise_for :users
+    resources :solutions, except: [:new] do
+      get "share", on: :collection
+    end
+  end
+
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
   get "static/index"
   match 'help' => 'static#help', :via => :get, :as => :help
+  match 'problem_submission' => "static#problem_submission", via: :get, as: "submission_help"
 
   #root :to => "static#index"
   root to: "problems#index"

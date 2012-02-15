@@ -1,0 +1,26 @@
+<h1>Problem Submission Help</h1>
+
+<p>First of all, thanks for helping us out by submitting a problem. Problems should be in Ruby without any sort of library that isn't standard in Ruby 1.9.3 (we're currently working on a way
+to include gems and libraries). The code which you expect the user to fill out should be represented by "__" (two underscores). You may have multiple double underscores in your problem but each
+one will be replaced by the same code which the user inputs.</p>
+
+<p>To check the code, you'll use assertions. These assertions raise an error message if they fail. Currently the assertions we support are listed below. We're trying to add more so keep checking
+back.</p>
+<ul>
+  <li>assert_equal(x, y, message = "")
+  <ul><li>compares x and y and raises a message if x and y are not equal</li></ul>
+  </li>
+</ul>
+
+<p>For the instructions field, fill out any description or text that might help the user to understand your problem. Filling out the instructions field is optional.</p>
+
+<p>For levels of difficulty, we usually use Elementary if the problem only requires
+a basic understanding of Ruby, Easy if the user is expected to do some basic work to get an answer&mdash;be it coding or thinking, Medium if there's quite a bit of work and Ruby knowledge involved, 
+and Hard if there's quite a bit of work involved or a very in depth level of Ruby expertise.</p>
+
+<p>The tag field is a list of comma separated tags that represent different concepts your problem covers. They should be lowercase and pluralized when possible (e.g. arrays, hashes).</p>
+
+<p>The hidden code field is for code that is executed after the other code. It will not be displayed to the user. Use this if you want to test some code without giving the answer away. You can
+use this in combination with the message argument to assert_equal to make your tests completely unseen by the user.</p>
+
+<%= link_to "Back to New Problem", new_problem_path() %>

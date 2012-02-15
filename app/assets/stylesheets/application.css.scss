@@ -124,6 +124,7 @@ table {
     font-size: 15px;
     background: $background;
     color: #444;
+    text-shadow: 1px 1px #fff;
   }
   
   tr:nth-of-type(2n + 1) {
@@ -182,11 +183,11 @@ header {
     padding: 20px 0;
     position: relative;
 
-    .username a {
+    .username a, .username p {
       color: #000;
     }
-        
-    a {
+
+    a, p {
       color: #B11000;
       text-decoration: none;
       display: block;
@@ -277,16 +278,16 @@ div.content {
     font-weight: bold;
     font-family: "Droid Sans", Helvetica, Arial, Sans-serif; } }
 
-textarea#solution_code {
-  font-family: 'Menlo', 'Monaco', 'Courier New', Monospace;
-  width: 500px;
-}
-#editor {
-  font-family: 'Menlo', 'Monaco', 'Courier New', Monospace;
+.code-editor {
+  font-family: 'Menlo', 'Monaco', 'Courier New', Monospace !important;
   position: relative;
   width: 615px;
   height: 350px;
   border: 1px solid #777; }
+.code-editor-field {
+  height: 360px; }
+.edit_problem .code-editor-field, .new_problem .code-editor-field {
+  height: 380px; }
 
 p#solutions-link {
   position: relative;
@@ -320,6 +321,7 @@ td.solved-mark {
 
 table#problems tr.problem {
   cursor: pointer;
+  height: 37px;
   a {
     text-decoration: none;
     color: inherit;
@@ -391,3 +393,25 @@ a.downvote img {
   transform: rotate(180deg);
    -moz-transform: rotate(180deg);
    -webkit-transform: rotate(180deg); }
+
+#provider-links {
+  margin: 15px 0 30px;
+}
+.provider-link {
+  float: none;
+  clear: both;
+  margin: 5px 0;
+  height: 40px;
+  img {
+    float: left;
+  }
+  a {
+    display: block;
+    float: left;
+    margin: 7px 2px 2px 6px;
+  }
+}
+
+p.gist {
+  margin: 13px 0 25px;
+}

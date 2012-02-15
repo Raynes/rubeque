@@ -12,7 +12,7 @@ class CodeExecutor
     /Errno::/
   ]
 
-  attr_accessor :code, :errors
+  attr_accessor :code, :errors, :time
 
   def initialize(code, options = {})
     @code = code
@@ -27,7 +27,9 @@ class CodeExecutor
 
     Sicuro.setup(timelimit, memlimit)
     begin
+      start_time = Time.now
       result = Sicuro.eval(code)
+      self.time = (Time.now - start_time)
     rescue Exception => e
       @errors << e.message
     end
@@ -41,9 +43,9 @@ class CodeExecutor
   end
 
   PRECODE = <<-code
-    def assert_equal(x, y)
+    def assert_equal(x, y, message = nil)
       if x != y
-        raise "The value '\#{x}' does not equal '\#{y}'."
+        raise message ? message : "The value '\#{x}' does not equal '\#{y}'."
       else
         return true
       end

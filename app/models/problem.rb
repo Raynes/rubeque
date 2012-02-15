@@ -6,6 +6,7 @@ class Problem
   field :title
   field :instructions
   field :code
+  field :hidden_code
   field :difficulty, type: Integer
   field :approved, type: Boolean
   field :excluded_methods, type: Array

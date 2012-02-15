@@ -3,6 +3,7 @@ class Solution
   include Mongoid::Timestamps
   field :code
   field :score, type: Integer
+  field :time, type: Float
 
   referenced_in :problem
   referenced_in :user
@@ -21,9 +22,10 @@ class Solution
   end
 
   def run_problem
-    executor = CodeExecutor.new(problem.code.gsub("__", self.code), excluded_methods: problem.excluded_methods)
+    executor = CodeExecutor.new(combined_code, excluded_methods: problem.excluded_methods)
     result = executor.execute
     executor.errors.each {|e| errors.add(:base, e)}
+    self.time = executor.time
     return result
   end
 
@@ -43,6 +45,17 @@ class Solution
     duplicates
   end
 
+  def combined_code
+    full_code = problem.code
+    full_code += ("\n" + problem.hidden_code) if problem.hidden_code
+    full_code.gsub("__", self.code)
+  end
+
+  def share_code
+    # don't add in hidden_code because we don't want it showing up on twitter
+    problem.code.gsub("__", self.code)
+  end
+
   protected
 
     def create_upvote_for_solution
@@ -52,7 +65,7 @@ class Solution
     def update_user_solution_count
       # TODO: find all the solutions and update the user's solution count?
       if user_id && (updating_user = User.find(self.user_id))
-        updating_user.solution_count = user.solution_count ? user.solution_count + 1 : 1
+        updating_user.solution_count = updating_user.solutions.count
         updating_user.save
       end
     end

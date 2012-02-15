@@ -1,0 +1,7 @@
+# Solution to '<%= @problem.title.html_safe %>' on rubeque.com
+<% if current_user %>
+# by <%= current_user.username.html_safe %>
+<% end -%>
+# <%= problem_url(@problem) %>
+
+<%= @solution_code.html_safe %>

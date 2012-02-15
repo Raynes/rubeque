@@ -11,6 +11,8 @@
     </div>
   <% end %>
 
+  <p>Need help? Check out our <%= link_to "problem submission help page", submission_help_path %>.</p>
+
   <div class="field">
     <%= f.label :title %><br />
     <%= f.text_field :title %>
@@ -39,11 +41,18 @@
     <%= f.label :instructions %><br />
     <%= f.text_area :instructions, style: "width: 611px; height: 200px;" %>
   </div>
-  <div class="field">
+  <div class="field code-editor-field">
     <%= f.label :code %><br />
     <%= f.text_area :code %>
-    <div id="editor"></div>
+    <div id="code_editor" class="code-editor"></div>
   </div>
+  <div class="clear"></div>
+  <div class="field code-editor-field">
+    <%= f.label :hidden_code, "Hidden Code and Assertions" %><br />
+    <%= f.text_area :hidden_code %>
+    <div id="hidden_code_editor" class="code-editor"></div>
+  </div>
+  <div class="clear"></div>
   <div class="actions">
     <%= f.submit %>
   </div>
