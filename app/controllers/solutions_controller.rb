@@ -94,7 +94,7 @@ class SolutionsController < ApplicationController
 
   def share
     @problem = Problem.find(params[:problem_id])
-    if (@solution_code = params[:solution_code]).blank?
+    if (@solution_code = @problem.code.gsub("__", params[:solution_code])).blank?
       redirect_to @problem and return
     end
     text = render_to_string "shared/code_gist.text"
@@ -118,7 +118,7 @@ class SolutionsController < ApplicationController
     end
 
     def share_link
-      "<a href='#{share_problem_solutions_path(@problem, solution_code: @solution.share_code)}'>Share your solution</a>!"
+      "<a href='#{share_problem_solutions_path(@problem, solution_code: @solution.code)}'>Share your solution</a>!"
     end
 
 end
