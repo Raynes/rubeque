@@ -3,18 +3,16 @@
 <h2>People You Follow</h2>
 
 <div class="solutions">
-  <% @followed_users.each do |user| %>
-
-    <div class="solution">
-      <% if solution = Solution.first(conditions: { problem_id: @problem.id, user_id: user.id }) %>
+  <% if @followed_users.any? %>
+    <% @followed_users.each do |user| %>
+      <div class="solution">
         <%= render solution %>
-      <% else %>
-        <h3><%= user %>'s Solution</h3>
-        <p><%= user %> has not solved this problem.</p>
-      <% end -%>
-    </div>
-
+      </div>
+    <% end -%>
+  <% else %>
+    <p>None of the people you follow have solved this problem.</p>
   <% end -%>
+
 </div>
 
 <hr/>

@@ -3,6 +3,7 @@ class Solution
   include Mongoid::Timestamps
   field :code
   field :score, type: Integer
+  field :time, type: Float
 
   referenced_in :problem
   referenced_in :user
@@ -24,6 +25,7 @@ class Solution
     executor = CodeExecutor.new(combined_code, excluded_methods: problem.excluded_methods)
     result = executor.execute
     executor.errors.each {|e| errors.add(:base, e)}
+    self.time = executor.time
     return result
   end
 
