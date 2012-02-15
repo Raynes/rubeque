@@ -118,7 +118,7 @@ class SolutionsController < ApplicationController
     end
 
     def share_link
-      "<a href='#{share_problem_solutions_path(@problem, solution_code: @solution.code)}'>Share your solution</a>!"
+      "<a href='#{share_problem_solutions_path(@problem, solution_code: @solution.share_code)}'>Share your solution</a>!"
     end
 
 end

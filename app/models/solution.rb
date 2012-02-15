@@ -49,6 +49,11 @@ class Solution
     full_code.gsub("__", self.code)
   end
 
+  def share_code
+    # don't add in hidden_code because we don't want it showing up on twitter
+    problem.code.gsub("__", self.code)
+  end
+
   protected
 
     def create_upvote_for_solution
