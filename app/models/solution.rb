@@ -1,6 +1,7 @@
 class Solution
   include Mongoid::Document
   include Mongoid::Timestamps
+  include Mongoid::History::Trackable
   field :code
   field :score, type: Integer
   field :time, type: Float
@@ -16,6 +17,9 @@ class Solution
   validates_uniqueness_of :problem_id, scope: :user_id,
     message: "solution error. Please do not use the back button in your browser before submitting a solution."
   after_destroy :update_user_solution_count
+
+  track_history :track_create   => true,
+                :track_destroy  => true
 
   def update_score
     update_attribute(:score, votes.upvote.count - votes.downvote.count)

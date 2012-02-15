@@ -1,7 +1,8 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   helper_method :current_user_admin?
-  
+  around_filter Mongoid::History::Sweeper.instance
+
   protected
   def restrict_to_admin
     case

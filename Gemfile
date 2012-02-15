@@ -12,6 +12,7 @@ gem 'rubycop', git: "git://github.com/daviddavis/RubyCop.git"
 gem 'exception_notification', :require => 'exception_notifier'
 gem 'sicuro'
 gem 'gist'
+gem 'mongoid-history'
 
 # omniauth gems
 gem 'omniauth', '~> 1.0.1'

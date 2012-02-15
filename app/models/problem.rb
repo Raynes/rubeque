@@ -1,6 +1,7 @@
 class Problem
   include Mongoid::Document
   include Mongoid::Timestamps
+  include Mongoid::History::Trackable
   key :title
 
   field :title
@@ -27,6 +28,9 @@ class Problem
   validates_uniqueness_of :title
 
   validates_inclusion_of :difficulty, in: (0..3)
+
+  track_history :track_create   => true,
+                :track_destroy  => true
 
   def to_s
     "#{title}"
