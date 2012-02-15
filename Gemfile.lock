@@ -219,7 +219,7 @@ GEM
       ffi (~> 1.0.9)
       multi_json (~> 1.0.4)
       rubyzip
-    sicuro (0.0.2)
+    sicuro (0.0.5)
       fakefs
     spoon (0.0.1)
     sprockets (2.0.3)
