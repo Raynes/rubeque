@@ -14,6 +14,8 @@ Rubeque::Application.routes.draw do
     end
   end
 
+  resources :audits
+
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
   get "static/index"

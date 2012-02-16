@@ -1,8 +1,8 @@
 class User
   include Mongoid::Document
   include Mongoid::Timestamps
-  # Include default devise modules. Others available are:
-  # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
+  include Mongoid::History::Trackable
+
   devise :database_authenticatable, :registerable, :lockable, :omniauthable,
          :recoverable, :rememberable, :trackable, :validatable
 
@@ -33,6 +33,10 @@ class User
   #attr_protected :provider, :uid, :name, :email
 
   after_create :initialize_score
+
+  track_history :on => [:username, :email, :admin],
+                :track_create   => true,
+                :track_destroy  => true
 
   def to_s
     username

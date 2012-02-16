@@ -1,0 +1,21 @@
+<h1>History</h1>
+
+<table id="audits">
+  <tr>
+    <th>ID</th>
+    <th>Object</th>
+    <th>Action</th>
+    <th>Modifications</th>
+    <th>User</th>
+  </tr>
+
+<% @audits.each do |audit| %>
+  <tr class="problem">
+    <td title="<%= audit.id %>"><%= truncate(audit.id.to_s, length: 6) %></td>
+    <td><%= audit.association_chain.first["name"] %></td>
+    <td><%= audit.action %></td>
+    <td><%= audit.modified.keys %></td>
+    <td><%= audit.modifier %></td>
+  </tr>
+<% end %>
+</table>
