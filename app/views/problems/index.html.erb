@@ -15,7 +15,7 @@
 
 <% @problems.each_with_index do |problem, i| %>
   <tr class="problem <%= 'solved' if problem.solved?(current_user) %>" id="<%= problem.id %>">
-    <td><%= i+1 %></td>
+    <td><%= i+1 + offset(25) %></td>
     <td><%= link_to problem.title, problem %></td>
     <td><%= problem.tag_list %></td>
     <td><%= problem.difficulty_word %></td>
@@ -28,14 +28,18 @@
 <% end %>
 </table>
 
-<% if current_user %>
-  <%= link_to 'Submit a problem', new_problem_path, id: 'new_problem' %>
-<% end -%>
+<%= paginate @problems %>
 
-<% if current_user_admin? %>
-  <% if params[:action] == "unapproved" %>
-    | <%= link_to "Back to Problems", problems_path() %>
-  <% else %>
-    | <%= link_to "View Unapproved Problems", unapproved_problems_path() %>
+<%= content_tag "div", class: "links" do %>
+  <% if current_user %>
+    <%= link_to 'Submit a problem', new_problem_path, id: 'new_problem' %>
   <% end -%>
-<% end %>
+
+  <% if current_user_admin? %>
+    <% if params[:action] == "unapproved" %>
+      | <%= link_to "Back to Problems", problems_path() %>
+    <% else %>
+      | <%= link_to "View Unapproved Problems", unapproved_problems_path() %>
+    <% end -%>
+  <% end %>
+<% end -%>

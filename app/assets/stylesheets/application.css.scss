@@ -8,6 +8,8 @@
 
 html, body {height: 100%;}
 
+$width: 950px;
+
 body {
   padding: 0 0 0;
   margin: 0;
@@ -130,18 +132,24 @@ table {
   tr:nth-of-type(2n + 1) {
     background: $background;
   }
+  tr:nth-of-type(2n) {
+    background: #fff;
+  }
 }
 
 h1, h2, h3, h4 {
   font-family: "Droid Sans", Helvetica, Arial, Sans-serif;
+  text-shadow: 2px 2px #fff;
 }
+h1 {
+  font-size: 2.4em; }
 h2 {
-  font-size: 1.6em; }
+  font-size: 1.8em; }
 h3 {
-  font-size: 1.4em;
+  font-size: 1.6em;
   margin-bottom: .5em; }
 h4 {
-  font-size: 1.25em; }
+  font-size: 1.3em; }
 
 textarea {
   width: 400px;
@@ -152,14 +160,13 @@ textarea {
   display: none; }
 
 header {
-  height: 65px;
-  background: url('/assets/bgnoise.gif');
+  height: 90px;
   font-family: "Droid Sans", Helvetica, Arial, Sans-serif;
-  font-size: 20px;
+  font-size: 22px;
   font-weight: bold;
   color: #333;
-  border-bottom: 8px solid #D31000;
   position: relative;
+  margin-bottom: 15px;
 
   p {
     font-size: inherit;
@@ -170,16 +177,18 @@ header {
 
   img {
     position: relative;
-    top: -5px;
+    top: -10px;
     float: left;
-    margin: -17px -20px;
-    height: 75px; }
+    margin: -17px -20px -17px -28px;
+    height: 115px; }
 
   .container {
-    width: 950px;
+    width: $width;
     margin: 0 auto;
     padding: 20px 0;
     position: relative;
+    height: 60px;
+    border-bottom: 1px solid #dedede;
 
     .username a, .username p {
       color: #000;
@@ -210,7 +219,7 @@ header {
 
   .user, .menu {
     float: right;
-    margin-top: 0.5em; }
+    margin-top: 20px; }
 
 }
 
@@ -223,7 +232,7 @@ footer {
   width:100%;
 
   .container {
-    width: 950px;
+    width: $width;
     margin: 0 auto;
 
     img {
@@ -244,30 +253,27 @@ footer {
   clear: both; }
 
 footer, .push {
-  height: 65px;
+  height: 95px;
 }
 
 #wrap {
-  background: url('/assets/sqnoise.png');
+  background: url('/assets/bgnoise.gif');
   min-height: 100%;
   height: auto !important;
   margin: 0 auto -65px; // set footer height here
 }
 
 div.content {
-  width: 950px;
+  width: $width - 20;
   min-height: 500px;
-  margin: 10px auto;
-  background: #fff;
-  border: 1px solid #ccc;
+  margin: 30px auto;
   border-radius: 6px;
   -webkit-border-radius: 6px;
   -moz-border-radius: 6px;
-  padding: 0 10px 30px;
 
   h1 {
-    padding-bottom: 10px;
-    border-bottom: 2px solid #eee; }
+    margin: 40px 0 23px;
+    padding-left: 1px; }
   h2.text-header {
     margin: 1.1em 0 .3em; }
   b, label {
@@ -278,7 +284,7 @@ div.content {
 .code-editor {
   font-family: 'Menlo', 'Monaco', 'Courier New', Monospace !important;
   position: relative;
-  width: 615px;
+  width: $width - 25;
   height: 350px;
   border: 1px solid #777; }
 .code-editor-field {
@@ -318,6 +324,7 @@ td.solved-mark {
 
 table#problems tr.problem {
   cursor: pointer;
+  height: 37px;
   a {
     text-decoration: none;
     color: inherit;
@@ -411,3 +418,39 @@ a.downvote img {
 p.gist {
   margin: 13px 0 25px;
 }
+
+div#flash {
+  padding: 0 2px;
+  margin: -34px 0 -20px; }
+
+nav.pagination {
+  margin: 1em 0 0;
+  float: right;
+  span.current {
+    display: block;
+    float: left;
+    font-weight: bold;
+    border: 1px solid #333;
+    background: #666;
+    margin: 0 4px 0 0px;
+    color: #fff;
+    padding: 4px 6px; }
+  a {
+    display: block;
+    float: left;
+    text-decoration: none;
+    padding: 4px 6px;
+    margin: 0 4px 0 0px;
+    border: 1px solid #aaa;
+    color: #343434;
+    &:hover{
+      color: #333;
+      border: 1px solid #333;
+      color: #333; }
+    &:visit{
+      color: #0e509e; } } 
+  .next, .prev {
+    font-weight: bold; } }
+
+div.links {
+  margin-top: .5em }

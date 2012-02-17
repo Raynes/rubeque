@@ -6,7 +6,7 @@ class ProblemsController < ApplicationController
   before_filter :authenticate_user!, only: [:new]
   
   def index
-    @problems = Problem.approved.asc(:difficulty).asc(:order_number)
+    @problems = Problem.approved.asc(:difficulty).asc(:order_number).page(params[:page] || 1)
 
     respond_to do |format|
       format.html # index.html.erb
