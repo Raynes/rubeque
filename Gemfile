@@ -13,7 +13,7 @@ gem 'exception_notification', :require => 'exception_notifier'
 gem 'sicuro'
 gem 'gist'
 gem 'mongoid-history'
-gem 'will_paginate', '~> 3.0'
+gem 'kaminari'
 
 # omniauth gems
 gem 'omniauth', '~> 1.0.1'

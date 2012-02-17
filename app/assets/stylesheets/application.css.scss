@@ -250,7 +250,7 @@ footer {
   clear: both; }
 
 footer, .push {
-  height: 65px;
+  height: 95px;
 }
 
 #wrap {
@@ -419,3 +419,35 @@ p.gist {
 div#flash {
   padding: 0 2px;
   margin: -34px 0 -20px; }
+
+nav.pagination {
+  margin: 1em 0 0;
+  float: right;
+  span.current {
+    display: block;
+    float: left;
+    font-weight: bold;
+    border: 1px solid #333;
+    background: #666;
+    margin: 0 4px 0 0px;
+    color: #fff;
+    padding: 4px 6px; }
+  a {
+    display: block;
+    float: left;
+    text-decoration: none;
+    padding: 4px 6px;
+    margin: 0 4px 0 0px;
+    border: 1px solid #aaa;
+    color: #343434;
+    &:hover{
+      color: #333;
+      border: 1px solid #333;
+      color: #333; }
+    &:visit{
+      color: #0e509e; } } 
+  .next, .prev {
+    font-weight: bold; } }
+
+div.links {
+  margin-top: .5em }

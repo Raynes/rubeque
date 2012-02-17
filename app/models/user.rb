@@ -34,6 +34,8 @@ class User
 
   after_create :initialize_score
 
+  paginates_per 50
+
   track_history :on => [:username, :email, :admin],
                 :track_create   => true,
                 :track_destroy  => true
