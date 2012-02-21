@@ -15,7 +15,7 @@ class ProblemsController < ApplicationController
   end
 
   def unapproved
-    @problems = Problem.unapproved.asc(:created_at)
+    @problems = Problem.unapproved.asc(:created_at).page(params[:page] || 1)
     respond_to do |format|
       format.html { render 'index.html.erb' }
       format.json { render json: @problems }
