@@ -52,12 +52,22 @@ class Solution
   def combined_code
     full_code = problem.code
     full_code += ("\n" + problem.hidden_code) if problem.hidden_code
-    full_code.gsub("__", self.code)
+
+    while(i = full_code.rindex("__"))
+      full_code[i..i+1] = self.code
+    end
+
+    full_code
   end
 
   def share_code
     # don't add in hidden_code because we don't want it showing up on twitter
-    problem.code.gsub("__", self.code)
+    share_code = problem.code
+    while(i = share_code.rindex("__"))
+      share_code[i..i+1] = self.code
+    end
+
+    share_code
   end
 
   protected
