@@ -14,6 +14,7 @@ class Solution
   index [:problem_id, :user_id]
 
   scope :cheating, where(cheating: true)
+  scope :not_cheating, any_in(cheating: [nil, false])
 
   validate :run_problem
   after_create :update_user_solution_count, :create_upvote_for_solution

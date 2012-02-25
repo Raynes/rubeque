@@ -1,0 +1,21 @@
+<h1>Solutions Marked for Cheating</h1>
+
+<table>
+  <tr>
+    <th>Problem</th>
+    <th>User</th>
+    <th>Submitted</th>
+    <th></th>
+  </tr>
+  <% @solutions.each do |solution| %>
+    <tr>
+      <td><%= solution.problem.to_s %></td>
+      <td><%= solution.user %></td>
+      <td><%= solution.created_at %></td>
+      <td><%= link_to "View", edit_problem_solution_path(solution.problem, solution) %></td>
+    </tr>
+  <% end -%>
+</table><br/>
+
+<%= link_to "Back", :back %>
+

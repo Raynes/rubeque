@@ -2,6 +2,7 @@ class SolutionsController < ApplicationController
   # GET /solutions
   # GET /solutions.json
   before_filter :restrict_to_admin, only: [:edit, :destroy, :show, :new]
+  respond_to :html, :json
 
   def index
     @problem = Problem.find(params[:problem_id]) rescue (redirect_to "/" and return)
@@ -10,7 +11,7 @@ class SolutionsController < ApplicationController
     end
     @top_solutions = Solution.where(problem_id: @problem.id, user_id: { "$nin" => [current_user.id] }).
       desc(:score).desc(:updated_at).page(params[:page] || 1)
-    @followed_users = current_user.users_followed.reject{|u| u.solutions.where(problem_id: @problem.id).empty?}
+    @followed_solutions = current_user.users_followed.map {|u| u.solutions.where(problem_id: @problem.id).first}.compact
 
     respond_to do |format|
       format.html # index.html.erb
@@ -102,6 +103,16 @@ class SolutionsController < ApplicationController
     respond_to do |format|
       format.html
       format.json { head :ok }
+    end
+  end
+
+  def report
+    @solution = Solution.find(params[:id])
+    @solution.update_attribute(:cheating, true)
+
+    respond_to do |format|
+      format.html { redirect_to problem_solutions_path(@solution.problem), notice: "Thank you for reporting a solution." }
+      format.json { respond_with @solution }
     end
   end
 
