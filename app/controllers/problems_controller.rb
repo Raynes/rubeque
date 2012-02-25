@@ -66,6 +66,7 @@ class ProblemsController < ApplicationController
 
     respond_to do |format|
       if @problem.save
+        ProblemMailer.new_problem_email(@problem).deliver unless current_user.admin?
         format.html { redirect_to problems_path, notice: 'Problem was successfully submitted.' }
         format.json { render json: @problem, status: :created, location: @problem }
       else
