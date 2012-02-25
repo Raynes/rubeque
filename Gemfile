@@ -14,6 +14,7 @@ gem 'sicuro'
 gem 'gist'
 gem 'mongoid-history'
 gem 'kaminari'
+gem 'chosen-rails'
 
 # omniauth gems
 gem 'omniauth', '~> 1.0.1'

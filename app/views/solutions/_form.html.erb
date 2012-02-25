@@ -13,7 +13,20 @@
 
   <div class="field">
     <%= f.label :problem %><br />
-    <div class='instructions'><%= @solution.problem.instructions %></div>
+    <div class='instructions'><%= @solution.problem.title %></div>
+    <%= link_to "Show...", "#", class: "show-problem-info" %>
+  </div>
+  <div class="problem-info" style="display: none">
+    <b>Problem Code:</b>
+    <%=raw highlight_code(@solution.problem.code) %>
+  </div>
+  <div class="field">
+    <%= f.label :user %><br />
+    <%= f.collection_select :user_id, User.all, :id, :to_s, {}, class: "chosen" %>
+  </div>
+  <div class="field">
+    <%= f.label :cheating, 'Marked as Cheating' %><br/>
+    <%= f.check_box :cheating %>
   </div>
   <div class="field code-editor-field">
     <%= f.label :code %><br />

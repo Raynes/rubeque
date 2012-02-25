@@ -5,12 +5,15 @@ class Solution
   field :code
   field :score, type: Integer
   field :time, type: Float
+  field :cheating, type: Boolean
 
   referenced_in :problem
   referenced_in :user
   references_many :votes, dependent: :destroy
 
   index [:problem_id, :user_id]
+
+  scope :cheating, where(cheating: true)
 
   validate :run_problem
   after_create :update_user_solution_count, :create_upvote_for_solution

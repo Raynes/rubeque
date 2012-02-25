@@ -3,6 +3,7 @@
  * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
  * the top of the compiled file, but it's generally better to create a new file per style scope.
  *= require_self
+ *= require chosen
  *= require_tree .
 */
 
@@ -39,7 +40,7 @@ a {
 input, select, textarea {
   font-size: 1.2em; }
 
-input[type=text], input[type=password], input[type=email] {
+input[type=text], input[type=password], input[type=email], select {
   border: 1px solid #B6B6B6;
   width: 300px;
   border-radius: 3px;
@@ -112,7 +113,7 @@ div {
 
 hr {
   margin: 2em 0 2.5em;
-  border: 2px solid #efefef; }
+  border: 2px solid #bfbfbf; }
 
 table {
   $background: #ebebeb;
@@ -343,7 +344,9 @@ table#users tr.user-record th {
     margin-bottom: 7px;
     padding-top: 8px; }
   .CodeRay {
-    margin-top: 3px; }
+    margin-top: 8px; }
+  .solution-info {
+    margin-bottom: 0; }
   p {
     margin-top: 4px; } }
 

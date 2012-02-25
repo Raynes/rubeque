@@ -29,5 +29,8 @@ Rubeque::Application.routes.draw do
   match 'help' => 'static#help', :via => :get, :as => :help
   match 'problem_submission' => "static#problem_submission", via: :get, as: "submission_help"
 
+  get "cheating", as: :cheating, controller: :cheating, action: :index
+
+
   root to: "static#home"
 end
