@@ -4,6 +4,9 @@ Rubeque::Application.routes.draw do
   resources :votes
 
   resources :users, only: :index
+  namespace :user do
+    root :to => "problems#index"
+  end
 
   resources :problems do
     get 'unapproved', on: :collection
