@@ -1,7 +1,7 @@
 <h1>Edit <%= resource_name.to_s.humanize %></h1>
 
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
-  <%= devise_error_messages! %>
+  <%= errors_for resource %>
 
   <p><b>Username</b><br/>
   <%= resource.username %>
@@ -10,14 +10,16 @@
   <%= f.label :email %>
   <%= f.email_field :email %>
 
-  <%= f.label :password, "Password <span class='explanation'>(leave blank if you don't want to change it)</span>".html_safe %>
-  <%= f.password_field :password %>
+  <% if resource.user_tokens.empty? %>
+    <%= f.label :password, "Password <span class='explanation'>(leave blank if you don't want to change it)</span>".html_safe %>
+    <%= f.password_field :password %>
 
-  <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %>
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation %>
 
-  <%= f.label :current_password, "Current password <span class='explanation'>(we need your current password to confirm your changes)</span>".html_safe %>
-  <%= f.password_field :current_password %>
+    <%= f.label :current_password, "Current password <span class='explanation'>(we need your current password to confirm your changes)</span>".html_safe %>
+    <%= f.password_field :current_password %>
+  <% end -%>
 
   <%= f.submit "Update" %>
 <% end %>

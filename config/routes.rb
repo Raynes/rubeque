@@ -19,7 +19,11 @@ Rubeque::Application.routes.draw do
 
   resources :audits
 
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", :registrations => "registrations" }
+  resources :settings, only: [:edit, :update] do
+    get "edit", on: :collection
+    put "update", on: :collection
+  end
 
   get "static/index"
   match 'help' => 'static#help', :via => :get, :as => :help
