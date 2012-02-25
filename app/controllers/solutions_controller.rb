@@ -108,7 +108,9 @@ class SolutionsController < ApplicationController
 
   def report
     @solution = Solution.find(params[:id])
+    notify = @solution.cheating? # don't notify admins if it's already marked as cheating
     @solution.update_attribute(:cheating, true)
+    SolutionMailer.cheating_notification(@solution, current_user).deliver if notify
 
     respond_to do |format|
       format.html { redirect_to problem_solutions_path(@solution.problem), notice: "Thank you for reporting a solution." }
