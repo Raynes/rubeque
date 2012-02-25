@@ -37,9 +37,10 @@
     <%= f.label :tag_list, "Tags" %>
     <%= f.text_field :tag_list, class: "tag-field" %>
   </div>
-  <div class="field">
-    <%= f.label :instructions %><p class="small">(html is allowed)</p><br />
-    <%= f.text_area :instructions, style: "width: 611px; height: 200px;" %>
+  <div class="field" style="position: relative">
+    <%= f.label :instructions %>
+    <span class="small" style="display: block; position: absolute; top: -1px; left: 105px; float: left;">(html is allowed)</span><br />
+    <%= f.text_area :instructions, style: "margin-top: 5px;" %>
   </div>
   <div class="field code-editor-field">
     <%= f.label :code %><br />
