@@ -19,6 +19,8 @@ class Solution
   after_destroy :update_user_solution_count
   validates_presence_of :problem_id
 
+  paginates_per 5
+
   track_history :track_create   => true,
                 :track_destroy  => true
 

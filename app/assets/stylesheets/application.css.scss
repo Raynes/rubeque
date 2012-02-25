@@ -427,12 +427,15 @@ div#flash {
 nav.pagination {
   margin: 1em 0 0;
   float: right;
-  span.current {
+  span, a {
     display: block;
-    float: left;
+    float: left; }
+  span.gap {
+    margin-right: 4px;
+    padding: 4px 2px; }
+  span.current {
     font-weight: bold;
     border: 1px solid #333;
-    background: #666;
     margin: 0 4px 0 0px;
     color: #fff;
     background: #c6c6c6 url(Aristo/bg_fallback.png) 0 0 repeat-x; /* Old browsers */
@@ -444,8 +447,6 @@ nav.pagination {
     background: linear-gradient(top, #c6c6c6 0%,#e6e6e6 100%); /* W3C */
     padding: 4px 6px; }
   a {
-    display: block;
-    float: left;
     text-decoration: none;
     padding: 4px 6px;
     margin: 0 4px 0 0px;
@@ -515,4 +516,8 @@ div.links {
   font-weight: 200;
   line-height: 27px;
   text-shadow: 0 1px #fff;
+}
+
+.solutions .pagination {
+  margin: 0px;
 }

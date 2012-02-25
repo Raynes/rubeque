@@ -27,7 +27,10 @@
     </div>
 
   <% end -%>
+
+  <%= paginate @top_solutions %>
 </div>
+<div class="clear"></div>
 
 <% if solution = Solution.first(conditions: { user_id: current_user.id, problem_id: @problem.id }) %>
   <hr/>
