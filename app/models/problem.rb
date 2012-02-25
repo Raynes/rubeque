@@ -65,7 +65,7 @@ class Problem
   end
 
   def solution_for(user)
-    solutions.where(:user_id => user.id).first
+    solutions.where(:user_id => user.id).first if user
   end
 
   private
