@@ -9,6 +9,7 @@
     <th>Solutions</th>
     <th>Submitter</th>
     <% if current_user %>
+      <th>Score</th>
       <th>Solved</th>
     <% end %>
   </tr>
@@ -22,7 +23,9 @@
     <td><%= problem.solutions.count %></td>
     <td><%= problem.creator %></td>
     <% if current_user %>
-      <td class="solved-mark"><%= problem.solved?(current_user) ? image_tag("check.png") : "" %></td>
+      <%- solution = problem.solution_for(current_user) -%>
+      <td><%= solution.try(:score) || 0 %></td>
+      <td class="solved-mark"><%= solution ? image_tag("check.png") : "" %></td>
     <% end -%>
   </tr>
 <% end %>

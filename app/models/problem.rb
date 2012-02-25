@@ -41,7 +41,7 @@ class Problem
   end
 
   def solved?(user)
-    user.present? && solutions.where(:user_id => user.id).present?
+    !solution_for(user).nil?
   end
 
   def approve
@@ -58,6 +58,14 @@ class Problem
 
   def difficulty_word
     DIFFICULTY_LEVELS[read_attribute(:difficulty).to_i]
+  end
+
+  def value
+    self.difficulty
+  end
+
+  def solution_for(user)
+    solutions.where(:user_id => user.id).first
   end
 
   private

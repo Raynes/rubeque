@@ -17,12 +17,17 @@ class Solution
   validates_uniqueness_of :problem_id, scope: :user_id,
     message: "solution error. Please do not use the back button in your browser before submitting a solution."
   after_destroy :update_user_solution_count
+  validates_presence_of :problem_id
 
   track_history :track_create   => true,
                 :track_destroy  => true
 
   def update_score
-    update_attribute(:score, votes.upvote.count - votes.downvote.count)
+    update_attribute(:score, calculated_score)
+  end
+
+  def calculated_score
+    votes.upvote.count - votes.downvote.count + (problem.try(:value) || 0)
   end
 
   def run_problem
