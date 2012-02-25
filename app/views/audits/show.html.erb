@@ -1,0 +1,39 @@
+<h1>Change <%= @audit.id %></h1>
+
+<p>
+<b>Object</b><br/>
+<%= @audit.association_chain.first["name"] %> #<%= @audit.association_chain.first["id"] %>
+</p>
+
+<p>
+<b>Action</b><br/>
+<%= @audit.action %>
+</p>
+
+<p>
+<b>Changes</b><br/>
+<table>
+  <tr>
+    <th>Field</th>
+    <th>Old Value</th>
+    <th>New Value</th>
+  </tr>
+  <% @audit.modified.each do |k, v| %>
+    <tr>
+      <td><%= k %></td>
+      <td><%= @audit.original[k] %></td>
+      <td><%= v %></td>
+    </tr>
+    <% end -%>
+</table>
+</p>
+
+<p>
+<b>Modifier</b><br/>
+<%= @audit.modifier %>
+</p>
+
+<p>
+<b>Action</b><br/>
+<%= @audit.created_at %>
+</p>

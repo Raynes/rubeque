@@ -4,9 +4,8 @@
   <h2>People You Follow</h2>
 
   <div class="solutions">
-    <% if @followed_users.any? %>
-      <% @followed_users.each do |user| %>
-        <% solution = Solution.first(conditions: { problem_id: @problem.id, user_id: user.id }) %>
+    <% if @followed_solutions.any? %>
+      <% @followed_solutions.each do |solution| %>
         <div class="solution">
           <%= render solution %>
         </div>

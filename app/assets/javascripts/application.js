@@ -25,6 +25,7 @@ $(function() {
   $(".chosen").chosen();
 
   $("a.show-problem-info").live("click", function(e) {
+    e.preventDefault();
     var self = $(e.target);
     if(self.text().match(/Show/)) {
       $(e.target).text("Hide...");

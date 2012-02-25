@@ -161,6 +161,11 @@ h4 {
 .no-display {
   display: none; }
 
+.container {
+  width: $width;
+  margin: 0 auto;
+  position: relative; }
+
 header {
   height: 90px;
   font-family: "Droid Sans", Helvetica, Arial, Sans-serif;
@@ -185,10 +190,8 @@ header {
     height: 115px; }
 
   .container {
-    width: $width;
     margin: 0 auto;
     padding: 20px 0;
-    position: relative;
     height: 60px;
     border-bottom: 1px solid #dedede;
 
@@ -234,12 +237,8 @@ footer {
   width:100%;
 
   .container {
-    width: $width;
-    margin: 0 auto;
-
     img {
-      float: right; }
-  }
+      float: right; } }
 
   a {
     color: #999;
@@ -483,7 +482,7 @@ div.links {
     padding: 8px;
     font-size: 16pt; }
   .blurb {
-    padding-top: 1px;
+    padding-top: 3px;
     p:first-child {
       margin-top: 2px; }
     p {
