@@ -4,9 +4,6 @@ Rubeque::Application.routes.draw do
   resources :votes
 
   resources :users, only: :index
-  namespace :user do
-    root :to => "problems#index"
-  end
 
   resources :problems do
     get 'unapproved', on: :collection
@@ -20,7 +17,9 @@ Rubeque::Application.routes.draw do
 
   resources :audits
 
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", :registrations => "registrations" }
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", :registrations => "registrations" } do
+    root :to => "problems#index"
+  end
 
   get "static/index"
   match 'help' => 'static#help', :via => :get, :as => :help

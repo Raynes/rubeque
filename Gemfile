@@ -6,7 +6,7 @@ gem "bson_ext", "~> 1.5"
 gem "coderay", "~> 1.0.5"
 gem 'fakefs', :require => "fakefs/safe"
 gem 'jquery-rails'
-gem 'devise', '~> 1.5.3'
+gem 'devise', '~> 2.0.4'
 gem "rinku"
 gem 'rubycop', git: "git://github.com/daviddavis/RubyCop.git"
 gem 'exception_notification', :require => 'exception_notifier'

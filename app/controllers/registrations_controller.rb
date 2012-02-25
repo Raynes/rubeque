@@ -20,8 +20,8 @@ class RegistrationsController < Devise::RegistrationsController
     else
       # TODO: we keep getting duplicate error messages for email
       clean_up_passwords(resource)
-      render "devise/registrations/edit"
+      respond_with resource
     end
   end
-  
+
 end

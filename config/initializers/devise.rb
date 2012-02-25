@@ -37,7 +37,7 @@ Devise.setup do |config|
   # Configure which authentication keys should be case-insensitive.
   # These keys will be downcased upon creating or modifying a user and when used
   # to authenticate or find a user. Default is :email.
-  # config.case_insensitive_keys = [ :username ]
+  config.case_insensitive_keys = [ :email ]
 
   # Configure which authentication keys should have whitespace stripped.
   # These keys will have whitespace before and after removed upon creating or
@@ -72,14 +72,6 @@ Devise.setup do |config|
 
   # Setup a pepper to generate the encrypted password.
   # config.pepper = "536226d0d4fd7690bf5b82ddcb46040de9ff9cccbf210ec5aad37c237668396cb77c2cf2e3f4556c502a6848c2429012d267d5c1f496acc47547bc749c23c8ab"
-
-  # ==> Configuration for :confirmable
-  # A period that the user is allowed to access the website even without
-  # confirming his account. For instance, if set to 2.days, the user will be
-  # able to access the website for two days without confirming his account,
-  # access will be blocked just in the third day. Default is 0.days, meaning
-  # the user cannot access the website without confirming his account.
-  config.confirm_within = 2.days
 
   # Defines which key will be used when confirming an account
   # config.confirmation_keys = [ :email ]
@@ -212,4 +204,8 @@ Devise.setup do |config|
   #   manager.intercept_401 = false
   #   manager.default_strategies(:scope => :user).unshift :some_external_strategy
   # end
+  config.reset_password_within = 6.hours
+
+  # Devise no longer manages the MongoDB schema for you
+  config.apply_schema = false
 end
