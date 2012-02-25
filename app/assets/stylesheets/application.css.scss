@@ -15,14 +15,14 @@ body {
   margin: 0;
   background-color: #fff;
   color: #333;
-  font-family: verdana, arial, freesans, sans-serif;
-  font-size: 13px;
-  line-height: 18px; }
+  font-family: Helvetica, arial, freesans, sans-serif;
+  font-size: 12pt;
+  line-height: 20px; }
 
 p, ol, ul, td {
-  font-family: verdana, arial, freesans, sans-serif;
-  font-size: 13px;
-  line-height: 18px; }
+  font-family: Helvetica, arial, freesans, sans-serif;
+  font-size: 12pt;
+  line-height: 20px; }
 
 pre {
   background-color: #eee;
@@ -91,7 +91,7 @@ div {
   margin-bottom: 20px;
   background-color: lavenderblush;
   h2 {
-    font-family: verdana, arial, freesans, sans-serif;
+    font-family: Helvetica, arial, freesans, sans-serif;
     text-align: left;
     font-weight: bold;
     padding: 5px 5px 5px 15px;
@@ -123,7 +123,7 @@ table {
   
   th {
     font-family: "Droid Sans", Arial, Sans-serif;
-    font-size: 15px;
+    font-size: 14pt;
     background: $background;
     color: #444;
     text-shadow: 1px 1px #fff;
@@ -434,6 +434,13 @@ nav.pagination {
     background: #666;
     margin: 0 4px 0 0px;
     color: #fff;
+    background: #c6c6c6 url(Aristo/bg_fallback.png) 0 0 repeat-x; /* Old browsers */
+    background: -moz-linear-gradient(top, #c6c6c6 0%, #e6e6e6 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ededed), color-stop(100%,#e6e6e6)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #c6c6c6 0%,#e6e6e6 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #c6c6c6 0%,#e6e6e6 100%); /* Opera11.10+ */ 
+    background: -ms-linear-gradient(top, #c6c6c6 0%,#e6e6e6 100%); /* IE10+ */
+    background: linear-gradient(top, #c6c6c6 0%,#e6e6e6 100%); /* W3C */
     padding: 4px 6px; }
   a {
     display: block;
@@ -443,6 +450,13 @@ nav.pagination {
     margin: 0 4px 0 0px;
     border: 1px solid #aaa;
     color: #343434;
+    background: #f5f5f5 url(Aristo/bg_fallback.png) 0 0 repeat-x; /* Old browsers */
+    background: -moz-linear-gradient(top, #f5f5f5 0%, #d6d6d6 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ededed), color-stop(100%,#d6d6d6)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #f5f5f5 0%,#d6d6d6 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #f5f5f5 0%,#d6d6d6 100%); /* Opera11.10+ */ 
+    background: -ms-linear-gradient(top, #f5f5f5 0%,#d6d6d6 100%); /* IE10+ */
+    background: linear-gradient(top, #f5f5f5 0%,#d6d6d6 100%); /* W3C */
     &:hover{
       color: #333;
       border: 1px solid #333;
@@ -450,7 +464,54 @@ nav.pagination {
     &:visit{
       color: #0e509e; } } 
   .next, .prev {
-    font-weight: bold; } }
+    font-weight: normal; } }
 
 div.links {
   margin-top: .5em }
+
+#landing-page {
+  p {
+    font-size: 14pt; }
+  input[type=submit] {
+    height: 40px !important;
+    padding: 8px;
+    font-size: 16pt; }
+  .blurb {
+    padding-top: 1px;
+    p:first-child {
+      margin-top: 2px; }
+    p {
+      line-height: 25px;
+      font-family: "Open Sans", Helvetica, Arial, Sans-serif; } }
+}
+.hero-unit {
+  padding: 40px;
+  margin: 0 10px;
+  margin-bottom: 30px;
+  border: 1px solid #aaa;
+  webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+  width: 620px;
+  float: right;
+  text-align: right;
+  background: rgba(255, 255, 255, 0); /* Old browsers */
+  background: -moz-linear-gradient(top, rgba(255, 255, 255, 0) 0%, #efefef 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, rgba(255, 255, 255, 0), color-stop(100%,#efefef)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0) 0%, #efefef 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, rgba(255, 255, 255, 0) 0%,#efefef 100%); /* Opera11.10+ */ 
+  background: -ms-linear-gradient(top, rgba(255, 255, 255, 0) 0%,#efefef 100%); /* IE10+ */
+  background: linear-gradient(top, rgba(255, 255, 255, 0) 0%,#efefef 100%); /* W3C */
+}
+.hero-unit h1 {
+  margin-bottom: 0;
+  font-size: 60px;
+  line-height: 1;
+  letter-spacing: -1px;
+}
+.hero-unit p {
+  font-size: 28px !important;
+  font-weight: 200;
+  line-height: 27px;
+  text-shadow: 0 1px #fff;
+}

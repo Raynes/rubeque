@@ -15,7 +15,7 @@
 
 <% @problems.each_with_index do |problem, i| %>
   <tr class="problem <%= 'solved' if problem.solved?(current_user) %>" id="<%= problem.id %>">
-    <td><%= i+1 + offset(25) %></td>
+    <td><%= i+1 + offset %></td>
     <td><%= link_to problem.title, problem %></td>
     <td><%= problem.tag_list %></td>
     <td><%= problem.difficulty_word %></td>

@@ -9,7 +9,7 @@ module ApplicationHelper
     CodeRay.scan(code, :ruby).div(:css => :class)
   end
 
-  def offset(per_page = 50)
+  def offset(per_page = Kaminari.config.default_per_page)
     ((params[:page] || 1).to_i - 1) * per_page
   end
 
