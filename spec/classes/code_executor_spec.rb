@@ -8,13 +8,13 @@ describe CodeExecutor do
 
   describe "#execute" do
 
-    #it "should return false if the input is Kernel.exit!" do
-      #code_executor = CodeExecutor.new("Kernel.exit!")
-      #puts code_executor.execute
-      #code_executor.execute.should eql(false)
-      #code_executor.errors.count.should >= 1
-      #code_executor.errors.first.downcase.should =~ /your code contains a class or method call that is not allowed/
-    #end
+    it "should return false if the input is Kernel.exit!" do
+      code_executor = CodeExecutor.new("Kernel.exit!")
+      puts code_executor.execute
+      code_executor.execute.should eql(false)
+      code_executor.errors.count.should >= 1
+      code_executor.errors.first.downcase.should =~ /prematurely/
+    end
 
     #it "should halt after #{CodeExecutor::MAX_EXECUTION_TIME} seconds" do
       #code_executor = CodeExecutor.new("loop {}")
