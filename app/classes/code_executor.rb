@@ -12,23 +12,23 @@ class CodeExecutor
     /Errno::/
   ]
 
-  attr_accessor :code, :errors, :time
+  attr_accessor :code, :errors, :time, :uid
 
   def initialize(code, options = {})
     @code = code
     @excluded_methods = options[:excluded_methods]
     @errors = []
+    @uid = generate_uid
   end
 
   def execute
-    code = PRECODE + @code
     timelimit = MAX_EXECUTION_TIME
     memlimit  = 30
 
     Sicuro.setup(timelimit, memlimit)
     begin
       start_time = Time.now
-      result = Sicuro.eval(code)
+      result = Sicuro.eval(combined_code)
       self.time = (Time.now - start_time)
     rescue Exception => e
       @errors << e.message
@@ -37,9 +37,31 @@ class CodeExecutor
     ERROR_PATTERNS.each {|re| @errors << result if result =~ re}
     if result == "<timeout hit>"
       @errors << "Your solution timed out."
+    elsif result.strip != @uid && @errors.empty?
+      @errors << "Solution contained unexpected output or returned prematurely."
     end
 
     return @errors.empty?
+  end
+
+  def generate_uid
+    UUID.new.generate
+  end
+
+  def post_code
+    %{\nputs "#{@uid}"}
+  end
+
+  def pre_code
+    PRECODE
+  end
+
+  def post_code
+    %{\nputs "#{@uid}"}
+  end
+
+  def combined_code
+    [pre_code, @code, post_code].join("\n")
   end
 
   PRECODE = <<-code

@@ -15,6 +15,7 @@ gem 'gist'
 gem 'mongoid-history'
 gem 'kaminari'
 gem 'chosen-rails'
+gem "uuid", "~> 2.3.5"
 
 # omniauth gems
 gem 'omniauth', '~> 1.0.1'
