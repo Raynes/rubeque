@@ -49,11 +49,6 @@ class User
 
   validates_uniqueness_of :username
   validates_presence_of :username
-  validates :email,
-            presence: true,
-            uniqueness: true,
-            format: { :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i },
-            allow_nil: -> user { user.user_tokens.empty? }
 
   attr_accessible :username, :email, :password, :password_confirmation, :remember_me
   attr_accessor :users_followed
