@@ -17,9 +17,7 @@ Rubeque::Application.routes.draw do
 
   resources :audits
 
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", :registrations => "registrations" } do
-    root :to => "problems#index"
-  end
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks", :registrations => "registrations" }
 
   get "static/index"
   match 'help' => 'static#help', :via => :get, :as => :help
