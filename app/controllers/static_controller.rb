@@ -11,4 +11,8 @@ class StaticController < ApplicationController
   def admin
   end
 
+  def home
+    redirect_to problems_path if current_user
+  end
+
 end
