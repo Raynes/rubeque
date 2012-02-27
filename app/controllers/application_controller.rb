@@ -25,4 +25,9 @@ class ApplicationController < ActionController::Base
   def current_user_admin?
     current_user && current_user.admin?
   end
+
+  def after_sign_in_path_for(resource)
+    stored_location_for(resource) || problems_path
+  end
+
 end
