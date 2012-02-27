@@ -97,7 +97,8 @@ class User
   def update_score
     upvotes = solutions.map{|s| s.votes.where(:up => true)}.flatten
     downvotes = solutions.map{|s| s.votes.where(:up => false)}.flatten
-    update_attribute(:score, upvotes.count - downvotes.count)
+    difficulty_points = solutions.map{|s| s.problem.difficulty}.sum
+    update_attribute(:score, upvotes.count - downvotes.count + difficulty_points)
   end
 
   def users_followed
