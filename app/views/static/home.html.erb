@@ -1,7 +1,7 @@
 <div id="landing-page">
   <div class="hero-unit">
     <h1>Welcome to Rubeque!</h1>
-    <p><strong><%= number_with_delimiter(Solution.count) %></strong> problems solved by <strong><%= number_with_delimiter(User.count) %></strong> users</p>
+    <p><strong><%= number_with_delimiter(Solution.count) %></strong> solutions submitted by <strong><%= number_with_delimiter(User.count) %></strong> users</p>
     <p>
       <%= button_to "Get Started", problems_path, method: :get %>
     </p>
