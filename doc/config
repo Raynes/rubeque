@@ -1,0 +1,12 @@
+PROBLEM_MAX_TIME     => 4
+RUBY_VERSION         => ruby-1.9.3-p0
+TZ                   => America/New_York
+exception_recipients => rubeque@dev.null
+github_key           =>
+github_secret        =>
+google_analytics_id  => UA-XXXXX-XX
+notification_email   => rubeque@dev.null
+smtp_password        =>
+smtp_username        => support@dev.null
+twitter_key          =>
+twitter_secret       =>
