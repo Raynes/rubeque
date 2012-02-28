@@ -1,7 +1,7 @@
 require 'sicuro'
 
 class CodeExecutor
-  MAX_EXECUTION_TIME = 15 # seconds
+  MAX_EXECUTION_TIME = ENV['PROBLEM_MAX_TIME'] || 5 # seconds
 
   ERROR_PATTERNS = [
     /^SystemExit:/,
