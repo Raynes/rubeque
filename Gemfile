@@ -8,7 +8,6 @@ gem 'fakefs', :require => "fakefs/safe"
 gem 'jquery-rails'
 gem 'devise', '~> 2.0.4'
 gem "rinku"
-gem 'rubycop', git: "git://github.com/daviddavis/RubyCop.git"
 gem 'exception_notification', :require => 'exception_notifier'
 gem 'sicuro'
 gem 'gist'
