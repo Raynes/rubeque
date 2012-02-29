@@ -447,6 +447,9 @@ nav.pagination {
     background: -o-linear-gradient(top, #c6c6c6 0%,#e6e6e6 100%); /* Opera11.10+ */ 
     background: -ms-linear-gradient(top, #c6c6c6 0%,#e6e6e6 100%); /* IE10+ */
     background: linear-gradient(top, #c6c6c6 0%,#e6e6e6 100%); /* W3C */
+    border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
     padding: 4px 6px; }
   a {
     text-decoration: none;
@@ -461,12 +464,15 @@ nav.pagination {
     background: -o-linear-gradient(top, #f5f5f5 0%,#d6d6d6 100%); /* Opera11.10+ */ 
     background: -ms-linear-gradient(top, #f5f5f5 0%,#d6d6d6 100%); /* IE10+ */
     background: linear-gradient(top, #f5f5f5 0%,#d6d6d6 100%); /* W3C */
+    border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
     &:hover{
       color: #333;
       border: 1px solid #333;
       color: #333; }
     &:visit{
-      color: #0e509e; } } 
+      color: #0e509e; } }
   .next, .prev {
     font-weight: normal; } }
 
