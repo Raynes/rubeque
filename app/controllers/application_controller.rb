@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
   helper_method :current_user_admin?
   around_filter Mongoid::History::Sweeper.instance
+  helper_method :root_path
 
   protected
   def restrict_to_admin
@@ -28,6 +29,10 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     stored_location_for(resource) || problems_path
+  end
+
+  def root_path
+    current_user ? problems_path : super
   end
 
 end

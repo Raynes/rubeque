@@ -25,9 +25,10 @@ class ProblemsController < ApplicationController
   # GET /problems/1
   # GET /problems/1.json
   def show
-    @problem = Problem.find(params[:id])
-    if !@problem.approved? && !current_user_admin?
-      redirect_to "/" and return
+    @problem = Problem.find(params[:id]) rescue nil
+    if @problem.nil? || (!@problem.approved? && !current_user_admin?)
+      flash[:error] = "Problem not found"
+      redirect_to root_path and return
     end
 
     @solution = if current_user && (solution =  @problem.solutions.where(user_id: current_user.id).first)
