@@ -7,9 +7,9 @@ class ProblemsController < ApplicationController
   
   def index
     if params[:sort]
-      @problems = Problem.order_by([sort_column, sort_direction], [:order_number, :asc])
+      @problems = Problem.order_by([sort_column, sort_direction], [:order_number, :asc]).page(params[:page] || 1)
     else
-      @problems = Problem.approved.asc(:difficulty).asc(:order_number)
+      @problems = Problem.approved.asc(:difficulty).asc(:order_number).page(params[:page] || 1)
     end
     
     respond_to do |format|
@@ -19,7 +19,7 @@ class ProblemsController < ApplicationController
   end
 
   def unapproved
-    @problems = Problem.unapproved.asc(:created_at)
+    @problems = Problem.unapproved.asc(:created_at).page(params[:page] || 1)
     respond_to do |format|
       format.html { render 'index.html.erb' }
       format.json { render json: @problems }
@@ -29,9 +29,10 @@ class ProblemsController < ApplicationController
   # GET /problems/1
   # GET /problems/1.json
   def show
-    @problem = Problem.find(params[:id])
-    if !@problem.approved? && !current_user_admin?
-      redirect_to "/" and return
+    @problem = Problem.find(params[:id]) rescue nil
+    if @problem.nil? || (!@problem.approved? && !current_user_admin?)
+      flash[:error] = "Problem not found"
+      redirect_to root_path and return
     end
 
     @solution = if current_user && (solution =  @problem.solutions.where(user_id: current_user.id).first)
@@ -70,6 +71,7 @@ class ProblemsController < ApplicationController
 
     respond_to do |format|
       if @problem.save
+        ProblemMailer.new_problem_email(@problem).deliver unless current_user.admin?
         format.html { redirect_to problems_path, notice: 'Problem was successfully submitted.' }
         format.json { render json: @problem, status: :created, location: @problem }
       else

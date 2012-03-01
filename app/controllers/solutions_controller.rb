@@ -2,14 +2,16 @@ class SolutionsController < ApplicationController
   # GET /solutions
   # GET /solutions.json
   before_filter :restrict_to_admin, only: [:edit, :destroy, :show, :new]
+  respond_to :html, :json
 
   def index
-    @problem = Problem.find(params[:problem_id]) rescue nil
+    @problem = Problem.find(params[:problem_id]) rescue (redirect_to "/" and return)
     if !current_user_admin? && (@problem.nil? || !@problem.solved?(current_user))
-      redirect_to "/" and return
+      redirect_to @problem and return
     end
-    @top_solutions = Solution.all(conditions: { problem_id: @problem.id }, sort: [[:score, :desc]], limit: 5)
-    @followed_users = current_user.users_followed.reject{|u| u.solutions.where(problem_id: @problem.id).empty?}
+    @top_solutions = Solution.where(problem_id: @problem.id, user_id: { "$nin" => [current_user.id] }).
+      desc(:score).desc(:updated_at).page(params[:page] || 1)
+    @followed_solutions = current_user.users_followed.map {|u| u.solutions.where(problem_id: @problem.id).first}.compact
 
     respond_to do |format|
       format.html # index.html.erb
@@ -23,7 +25,7 @@ class SolutionsController < ApplicationController
     @solution = Solution.find(params[:id])
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html { redirect_to @solution.problem }
       format.json { render json: @solution }
     end
   end
@@ -43,7 +45,8 @@ class SolutionsController < ApplicationController
     respond_to do |format|
       if run_and_save_solution(@solution)
         notice = 'Your solution passed!'
-        notice += '  Please sign in or register to earn points.' if current_user.blank?
+        notice += ' Please sign in or register to earn points.' if current_user.blank?
+        notice += " #{share_link}" 
         format.html { redirect_to problem_path(@problem.id, solution_code: @solution.code), notice: notice }
         format.json { render json: @solution, status: :created, location: @solution }
       else
@@ -66,7 +69,7 @@ class SolutionsController < ApplicationController
 
     respond_to do |format|
       if @solution.update_attributes(params[:solution])
-        format.html { redirect_to @problem, notice: 'Solution was successfully updated.' }
+        format.html { redirect_to @problem, notice: "Solution passed and was updated. #{share_link}" }
         format.json { head :ok }
       else
         flash.now[:error] = "Sorry, that solution didn't work! Try again."
@@ -80,12 +83,38 @@ class SolutionsController < ApplicationController
   # DELETE /solutions/1.json
   def destroy
     @solution = Solution.find(params[:id])
-    problem = @solution
+    problem = @solution.problem
     @solution.destroy
 
     respond_to do |format|
       format.html { redirect_to problem }
       format.json { head :ok }
+    end
+  end
+
+  def share
+    @problem = Problem.find(params[:problem_id])
+    if (@solution_code = @problem.code.gsub("__", params[:solution_code])).blank?
+      redirect_to @problem and return
+    end
+    text = render_to_string "shared/code_gist.text"
+    @gist = CodeGist.create(text, "#{@problem.id}.rb")
+
+    respond_to do |format|
+      format.html
+      format.json { head :ok }
+    end
+  end
+
+  def report
+    @solution = Solution.find(params[:id])
+    notify = @solution.cheating? # don't notify admins if it's already marked as cheating
+    @solution.update_attribute(:cheating, true)
+    SolutionMailer.cheating_notification(@solution, current_user).deliver if notify
+
+    respond_to do |format|
+      format.html { redirect_to problem_solutions_path(@solution.problem), notice: "Thank you for reporting a solution." }
+      format.json { respond_with @solution }
     end
   end
 
@@ -99,4 +128,9 @@ class SolutionsController < ApplicationController
         return solution.valid?
       end
     end
+
+    def share_link
+      "<a href='#{share_problem_solutions_path(@problem, solution_code: @solution.code)}'>Share your solution</a>!"
+    end
+
 end

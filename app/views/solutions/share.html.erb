@@ -1,0 +1,12 @@
+<h1>Boast a Little</h1>
+
+<h2>Direct Link to Share</h2>
+<p class="gist">
+  <%= @gist %>
+</p>
+
+<h2>Share on Twitter</h2>
+<p>Click below to visit Twitter.com where you'll be able to edit tweet and post your solution.</p>
+<p><%= twitter_link(@problem, @gist) %></p><br/>
+
+<%= link_to "Back to Problem", problem_path(@problem) %>

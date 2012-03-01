@@ -1,4 +1,4 @@
-<%= form_for(@solution) do |f| %>
+<%= form_for([@solution.problem, @solution]) do |f| %>
   <% if @solution.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@solution.errors.count, "error") %> prohibited this solution from being saved:</h2>
@@ -13,14 +13,28 @@
 
   <div class="field">
     <%= f.label :problem %><br />
-    <div class='instructions'><%= @solution.problem.instructions %></div>
+    <div class='instructions'><%= @solution.problem.title %></div>
+    <%= link_to "Show...", "#", class: "show-problem-info" %>
+  </div>
+  <div class="problem-info" style="display: none">
+    <b>Problem Code:</b>
+    <%=raw highlight_code(@solution.problem.code) %>
   </div>
   <div class="field">
+    <%= f.label :user %><br />
+    <%= f.collection_select :user_id, User.all, :id, :to_s, {}, class: "chosen" %>
+  </div>
+  <div class="field">
+    <%= f.label :cheating, 'Marked as Cheating' %><br/>
+    <%= f.check_box :cheating %>
+  </div>
+  <div class="field code-editor-field">
     <%= f.label :code %><br />
     <%= f.text_area :code %>
-    <div id="editor"></div><br/>
+    <div id="code_editor" class="code-editor"></div><br/>
   </div>
-  <div class="actions">
+  <div class="clear"></div>
+  <div class="actions" style="margin-top:20px">
     <%= f.submit %>
   </div>
 <% end %>

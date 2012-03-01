@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>rubeque</title>
+    <title>Rubeque</title>
     <%= stylesheet_link_tag "application" %>
-    <link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700|Open+Sans:400,700' rel='stylesheet' type='text/css'>
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <%= google_analytics_js %>
   </head>
   <body>
 
@@ -14,10 +16,13 @@
         <div class="container">
           <div class="logo">
             <%= link_to image_tag("rubeque.png"), root_path %>
+            <span style="position: absolute; font-size: 13px; top: 17px; left: 269px">BETA</span>
           </div>
           <div class="user">
             <% if user_signed_in? %>
-              <span class="username"><%= link_to current_user.username, edit_user_registration_path %></span>
+              <span class="username">
+                <%= link_to current_user.username, edit_user_registration_path %>
+              </span>
               <%= link_to "Log Out", destroy_user_session_path(), method: :delete %>
             <% else %>
               <%= link_to "Sign In", new_user_session_path %>
@@ -27,15 +32,16 @@
           <div class="menu">
             <%= link_to "Problems", problems_path() %>
             <%= link_to "Scores", users_path() %>
-            <%= link_to "Submit a Problem", new_problem_path if user_signed_in? %>
             <%= link_to "Help", help_path() %>
           </div>
         </div>
       </header>
+      <div>&nbsp;</div>
 
       <div class="content">
         <%= render "/shared/flash_messages" %>
         <%= yield %>
+        <div class="clear"></div>
       </div>
 
       <div class="push"></div>
@@ -44,6 +50,10 @@
 
     <footer>
       <div class="container">
+        <% if current_user_admin? %>
+          <%= link_to "Admin", admin_path(), style: "position: absolute; top: 10px; left: 450px;" %>
+        <% end %>
+
         <%= link_to image_tag("scimed.png"), "http://www.scimedsolutions.com" %>
         &copy; 2012 <%= link_to "SciMed Solutions, Inc.", "http://www.scimedsolutions.com" %><br/>
         This software is freely available under the <%= link_to "MIT License", "http://www.opensource.org/licenses/MIT" %> at <%= link_to "github.com", "https://github.com/daviddavis/rubeque" %>.

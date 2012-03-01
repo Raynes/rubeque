@@ -14,5 +14,5 @@
 </p>
 
 <% if current_user_admin? %>
-  <%= link_to 'Edit', edit_solution_path(@solution) %> |
+  <%= link_to 'Edit', edit_problem_solution_path(@solution.problem, @solution) %>
 <% end %>

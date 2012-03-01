@@ -1,11 +1,13 @@
 class Problem
   include Mongoid::Document
   include Mongoid::Timestamps
+  include Mongoid::History::Trackable
   key :title
 
   field :title
   field :instructions
   field :code
+  field :hidden_code
   field :difficulty, type: Integer
   field :approved, type: Boolean
   field :excluded_methods, type: Array
@@ -27,6 +29,9 @@ class Problem
 
   validates_inclusion_of :difficulty, in: (0..3)
 
+  track_history :track_create   => true,
+                :track_destroy  => true
+
   def to_s
     "#{title}"
   end
@@ -36,7 +41,7 @@ class Problem
   end
 
   def solved?(user)
-    user.present? && solutions.where(:user_id => user.id).present?
+    !solution_for(user).nil?
   end
 
   def approve
@@ -53,6 +58,14 @@ class Problem
 
   def difficulty_word
     DIFFICULTY_LEVELS[read_attribute(:difficulty).to_i]
+  end
+
+  def value
+    self.difficulty
+  end
+
+  def solution_for(user)
+    solutions.where(:user_id => user.id).first if user
   end
 
   private

@@ -1,24 +1,23 @@
 <h1>Solutions for <%= link_to "#{@problem}", @problem %></h1>
 
-<h2>People You Follow</h2>
+<% if @top_solutions.current_page == 1 %>
+  <h2>People You Follow</h2>
 
-<div class="solutions">
-  <% @followed_users.each do |user| %>
-
-    <div class="solution">
-      <% if solution = Solution.first(conditions: { problem_id: @problem.id, user_id: user.id }) %>
-        <%= render solution %>
-      <% else %>
-        <h3><%= user %>'s Solution</h3>
-        <p><%= user %> has not solved this problem.</p>
+  <div class="solutions">
+    <% if @followed_solutions.any? %>
+      <% @followed_solutions.each do |solution| %>
+        <div class="solution">
+          <%= render solution %>
+        </div>
       <% end -%>
-    </div>
+    <% else %>
+      <p>None of the people you follow have solved this problem.</p>
+    <% end -%>
+  </div>
 
-  <% end -%>
-</div>
-
-<hr/>
-<h2>Top Solutions</h2>
+  <hr/>
+  <h2>Top Solutions</h2>
+<% end %>
 
 <div class="solutions">
   <% @top_solutions.each do |solution| %>
@@ -28,7 +27,10 @@
     </div>
 
   <% end -%>
+
+  <%= paginate @top_solutions %>
 </div>
+<div class="clear"></div>
 
 <% if solution = Solution.first(conditions: { user_id: current_user.id, problem_id: @problem.id }) %>
   <hr/>

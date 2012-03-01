@@ -1,0 +1,25 @@
+<div id="landing-page">
+  <div class="hero-unit">
+    <h1>Welcome to Rubeque!</h1>
+    <p><strong><%= number_with_delimiter(Solution.count) %></strong> solutions submitted by <strong><%= number_with_delimiter(User.count) %></strong> users</p>
+    <p>
+      <%= button_to "Get Started", problems_path, method: :get %>
+    </p>
+  </div>
+
+  <div class="blurb">
+    <p>"What is Rubeque?" you ask. Good question! Rubeque is a place to hone your Ruby skills by solving small Ruby problems while competing against other Rubyists.
+    Whether you are new to Ruby or just looking to sharpen your Ruby skills, Rubeque should have something to offer.</p>
+
+    <p>As for the problems, the premise is simple: simply fill the code box with Ruby code will be substituted for the double underscores (__) in the problem. If code
+    passes the assertions, then you get points and you can move on to another problem.</p>
+
+    <p>Once you have solved all the problems, feel free to visit <%= link_to "our github page", "https://github.com/daviddavis/rubeque" %> to contribute code.
+    Alternatively, you can click <%= link_to "the new problem link", new_problem_path %> to submit a problem of your own. Also, keep checking back as new problems
+    are posted on a regular basis. Good luck!</p>
+
+    <div class="ad">
+      <p>Interested in learning a functional programming language? Check out <%= link_to "4clojure.com", "http://4clojure.com" %>.</p>
+    </div>
+  </div>
+</div>

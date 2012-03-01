@@ -22,6 +22,7 @@ end
 
 When /^I click signup$/ do
   click_button "Sign up"
+  @current_user = User.last
 end
 
 Then /^there should be a new user account$/ do
@@ -34,6 +35,7 @@ Given /^I am logged in as an? (user|admin) named "([^"]*)"$/ do |user_type, user
   step %Q{I fill in my username}
   step %Q{I fill in my password}
   step %Q{I press the login button}
+  @current_user = User.first(conditions: {username: username})
 end
 
 Given /^there is an? (admin|user) account named "([^"]*)"$/ do |user_type, username|
@@ -63,5 +65,5 @@ When /^I press the login button$/ do
 end
 
 Then /^I should see my username on the page$/ do
-  page.find("span.username").text.should eql(@current_user.username)
+  page.find("span.username").text.strip.should eql(@current_user.username)
 end

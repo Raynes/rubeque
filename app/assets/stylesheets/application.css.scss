@@ -3,29 +3,32 @@
  * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
  * the top of the compiled file, but it's generally better to create a new file per style scope.
  *= require_self
+ *= require chosen
  *= require_tree .
 */
 
 html, body {height: 100%;}
+
+$width: 950px;
 
 body {
   padding: 0 0 0;
   margin: 0;
   background-color: #fff;
   color: #333;
-  font-family: verdana, arial, freesans, sans-serif;
-  font-size: 13px;
-  line-height: 18px; }
+  font-family: Helvetica, arial, freesans, sans-serif;
+  font-size: 12pt;
+  line-height: 20px; }
 
 p, ol, ul, td {
-  font-family: verdana, arial, freesans, sans-serif;
-  font-size: 13px;
-  line-height: 18px; }
+  font-family: Helvetica, arial, freesans, sans-serif;
+  font-size: 12pt;
+  line-height: 20px; }
 
 pre {
   background-color: #eee;
   padding: 10px;
-  font-size: 11px; }
+  font-size: 13px; }
 
 a {
   color: #000;
@@ -37,7 +40,7 @@ a {
 input, select, textarea {
   font-size: 1.2em; }
 
-input[type=text], input[type=password], input[type=email] {
+input[type=text], input[type=password], input[type=email], select {
   border: 1px solid #B6B6B6;
   width: 300px;
   border-radius: 3px;
@@ -46,7 +49,9 @@ input[type=text], input[type=password], input[type=email] {
   padding: 6px; }
 
 textarea {
-  width: 600px;
+  width: 604px;
+  height: 230px;
+  border-color: #aaa;
   border: 1px solid #B6B6B6;
   border-radius: 3px;
   box-shadow: 0 0 0 #fff;
@@ -84,27 +89,31 @@ div {
 #error_explanation {
   width: 600px;
   border: 2px solid red;
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
   padding: 7px;
   padding-bottom: 0;
   margin-bottom: 20px;
   background-color: lavenderblush;
   h2 {
-    font-family: verdana, arial, freesans, sans-serif;
+    font-family: Helvetica, arial, freesans, sans-serif;
     text-align: left;
     font-weight: bold;
     padding: 5px 5px 5px 15px;
-    font-size: 14px;
+    font-size: 14pt;
     margin: -7px;
     margin-bottom: 0px;
     background-color: #c00;
+    text-shadow: none;
     color: #fff; }
   ul li {
-    font-size: 12px;
+    font-size: 12pt;
     list-style: square; } }
 
 hr {
   margin: 2em 0 2.5em;
-  border: 2px solid #efefef; }
+  border: 2px solid #bfbfbf; }
 
 table {
   $background: #ebebeb;
@@ -121,44 +130,50 @@ table {
   
   th {
     font-family: "Droid Sans", Arial, Sans-serif;
-    font-size: 15px;
+    font-size: 14pt;
     background: $background;
     color: #444;
+    text-shadow: 1px 1px #fff;
   }
   
   tr:nth-of-type(2n + 1) {
     background: $background;
   }
+  tr:nth-of-type(2n) {
+    background: #fff;
+  }
 }
 
 h1, h2, h3, h4 {
   font-family: "Droid Sans", Helvetica, Arial, Sans-serif;
+  text-shadow: 2px 2px #fff;
 }
+h1 {
+  font-size: 2.4em; }
 h2 {
-  font-size: 1.6em; }
+  font-size: 1.8em; }
 h3 {
-  font-size: 1.4em;
+  font-size: 1.6em;
   margin-bottom: .5em; }
 h4 {
-  font-size: 1.25em; }
-
-textarea {
-  width: 400px;
-  border-color: #aaa;
-}
+  font-size: 1.3em; }
 
 .no-display {
   display: none; }
 
+.container {
+  width: $width;
+  margin: 0 auto;
+  position: relative; }
+
 header {
-  height: 65px;
-  background: url('/assets/bgnoise.gif');
+  height: 90px;
   font-family: "Droid Sans", Helvetica, Arial, Sans-serif;
-  font-size: 20px;
+  font-size: 22px;
   font-weight: bold;
   color: #333;
-  border-bottom: 8px solid #D31000;
   position: relative;
+  margin-bottom: 15px;
 
   p {
     font-size: inherit;
@@ -169,21 +184,22 @@ header {
 
   img {
     position: relative;
-    top: -5px;
+    top: -10px;
     float: left;
-    margin: -17px -20px;
-    height: 75px; }
+    margin: -17px -20px -17px -28px;
+    height: 115px; }
 
   .container {
-    width: 950px;
     margin: 0 auto;
     padding: 20px 0;
-    
-    .username a {
+    height: 60px;
+    border-bottom: 1px solid #dedede;
+
+    .username a, .username p {
       color: #000;
     }
-        
-    a {
+
+    a, p {
       color: #B11000;
       text-decoration: none;
       display: block;
@@ -208,7 +224,7 @@ header {
 
   .user, .menu {
     float: right;
-    margin-top: 0.5em; }
+    margin-top: 20px; }
 
 }
 
@@ -221,12 +237,8 @@ footer {
   width:100%;
 
   .container {
-    width: 950px;
-    margin: 0 auto;
-
     img {
-      float: right; }
-  }
+      float: right; } }
 
   a {
     color: #999;
@@ -246,26 +258,23 @@ footer, .push {
 }
 
 #wrap {
-  background: url('/assets/sqnoise.png');
+  background: url('/assets/bgnoise.gif');
   min-height: 100%;
   height: auto !important;
   margin: 0 auto -65px; // set footer height here
 }
 
 div.content {
-  width: 950px;
+  width: $width - 20;
   min-height: 500px;
-  margin: 10px auto;
-  background: #fff;
-  border: 1px solid #ccc;
+  margin: 30px auto;
   border-radius: 6px;
   -webkit-border-radius: 6px;
   -moz-border-radius: 6px;
-  padding: 0 10px 30px;
 
   h1 {
-    padding-bottom: 10px;
-    border-bottom: 2px solid #eee; }
+    margin: 40px 0 23px;
+    padding-left: 1px; }
   h2.text-header {
     margin: 1.1em 0 .3em; }
   b, label {
@@ -273,23 +282,23 @@ div.content {
     font-weight: bold;
     font-family: "Droid Sans", Helvetica, Arial, Sans-serif; } }
 
-textarea#solution_code {
-  font-family: 'Menlo', 'Monaco', 'Courier New', Monospace;
-  width: 500px;
-}
-#editor {
-  font-family: 'Menlo', 'Monaco', 'Courier New', Monospace;
+.code-editor {
+  font-family: 'Menlo', 'Monaco', 'Courier New', Monospace !important;
   position: relative;
-  width: 615px;
+  width: $width - 25;
   height: 350px;
   border: 1px solid #777; }
+.code-editor-field {
+  height: 360px; }
+.edit_problem .code-editor-field, .new_problem .code-editor-field {
+  height: 380px; }
 
 p#solutions-link {
   position: relative;
   float: right;
   top: -44px; }
 
-form#user_edit {
+form#edit_user {
   label {
     display: block;
     margin-bottom: 5px;
@@ -316,8 +325,14 @@ td.solved-mark {
 
 table#problems tr.problem {
   cursor: pointer;
+  height: 37px;
+  a {
+    text-decoration: none;
+    color: inherit;
+    &:hover {
+      color: inherit; } }
   &:hover {
-    color: #888; } }
+    color: #777; } }
 
 table#users tr.user-record th {
   background: inherit; }
@@ -328,7 +343,9 @@ table#users tr.user-record th {
     margin-bottom: 7px;
     padding-top: 8px; }
   .CodeRay {
-    margin-top: 3px; }
+    margin-top: 8px; }
+  .solution-info {
+    margin-bottom: 0; }
   p {
     margin-top: 4px; } }
 
@@ -382,3 +399,144 @@ a.downvote img {
   transform: rotate(180deg);
    -moz-transform: rotate(180deg);
    -webkit-transform: rotate(180deg); }
+
+#provider-links {
+  margin: 15px 0 30px;
+}
+.provider-link {
+  float: none;
+  clear: both;
+  margin: 5px 0;
+  height: 40px;
+  img {
+    float: left;
+  }
+  a {
+    display: block;
+    float: left;
+    margin: 7px 2px 2px 6px;
+  }
+}
+
+p.gist {
+  margin: 13px 0 25px;
+}
+
+div#flash {
+  padding: 0 2px;
+  margin: -34px 0 -20px; }
+
+nav.pagination {
+  margin: 1em 0 0;
+  float: right;
+  span, a {
+    display: block;
+    float: left; }
+  span.gap {
+    margin-right: 4px;
+    padding: 4px 2px; }
+  span.current {
+    font-weight: bold;
+    border: 1px solid #333;
+    margin: 0 4px 0 0px;
+    color: #fff;
+    background: #c6c6c6 url(Aristo/bg_fallback.png) 0 0 repeat-x; /* Old browsers */
+    background: -moz-linear-gradient(top, #c6c6c6 0%, #e6e6e6 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ededed), color-stop(100%,#e6e6e6)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #c6c6c6 0%,#e6e6e6 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #c6c6c6 0%,#e6e6e6 100%); /* Opera11.10+ */ 
+    background: -ms-linear-gradient(top, #c6c6c6 0%,#e6e6e6 100%); /* IE10+ */
+    background: linear-gradient(top, #c6c6c6 0%,#e6e6e6 100%); /* W3C */
+    border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    padding: 4px 6px; }
+  a {
+    text-decoration: none;
+    padding: 4px 6px;
+    margin: 0 4px 0 0px;
+    border: 1px solid #aaa;
+    color: #343434;
+    background: #f5f5f5 url(Aristo/bg_fallback.png) 0 0 repeat-x; /* Old browsers */
+    background: -moz-linear-gradient(top, #f5f5f5 0%, #d6d6d6 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ededed), color-stop(100%,#d6d6d6)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #f5f5f5 0%,#d6d6d6 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #f5f5f5 0%,#d6d6d6 100%); /* Opera11.10+ */ 
+    background: -ms-linear-gradient(top, #f5f5f5 0%,#d6d6d6 100%); /* IE10+ */
+    background: linear-gradient(top, #f5f5f5 0%,#d6d6d6 100%); /* W3C */
+    border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    &:hover{
+      color: #333;
+      border: 1px solid #333;
+      color: #333; }
+    &:visit{
+      color: #0e509e; } }
+  .next, .prev {
+    font-weight: normal; } }
+
+div.links {
+  margin-top: .5em }
+
+#landing-page {
+  margin-top: 30px;
+  p {
+    font-size: 14pt; }
+  input[type=submit] {
+    height: 40px !important;
+    padding: 8px;
+    font-size: 16pt; }
+  .blurb {
+    padding-top: 3px;
+    p:first-child {
+      margin-top: 2px; }
+    p {
+      line-height: 25px;
+      font-family: "Open Sans", Helvetica, Arial, Sans-serif; } }
+}
+.hero-unit {
+  padding: 40px;
+  margin: 8px 10px 0;
+  margin-bottom: 30px;
+  border: 1px solid #aaa;
+  webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+  width: 620px;
+  float: right;
+  text-align: right;
+  background: rgba(255, 255, 255, 0); /* Old browsers */
+  background: -moz-linear-gradient(top, rgba(255, 255, 255, 0) 0%, #efefef 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, rgba(255, 255, 255, 0), color-stop(100%,#efefef)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0) 0%, #efefef 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, rgba(255, 255, 255, 0) 0%,#efefef 100%); /* Opera11.10+ */ 
+  background: -ms-linear-gradient(top, rgba(255, 255, 255, 0) 0%,#efefef 100%); /* IE10+ */
+  background: linear-gradient(top, rgba(255, 255, 255, 0) 0%,#efefef 100%); /* W3C */
+}
+.hero-unit h1 {
+  margin-bottom: 0;
+  font-size: 60px;
+  line-height: 1;
+  letter-spacing: -1px;
+}
+.hero-unit p {
+  font-size: 28px !important;
+  font-weight: 200;
+  line-height: 27px;
+  text-shadow: 0 1px #fff;
+}
+
+.solutions .pagination {
+  margin: 0px;
+}
+
+div.ad p {
+  background: #eee;
+  margin: 1em 0.5em -.25em !important;
+  padding: 8px 4px;
+  text-align: center;
+  border: 1px solid #aaa;
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px; }

@@ -9,3 +9,11 @@ $ ->
       $("div.votes-#{id}").html($(data).html())
       $("div.votes-#{id}").delay(300).fadeIn(400)
     return false
+
+  $("a.report-solution").live "click", (event) ->
+    event.preventDefault()
+    self = $(event.target)
+    link = self.attr("href")
+    self.text("Reported")
+    $.ajax url: link, complete: (xhr, text) ->
+      self.delay(300).fadeOut(500)

@@ -2,7 +2,7 @@
   <h2><%= pluralize(object.errors.count, "error") %> prohibited this solution from being saved:</h2>
 
   <ul>
-    <% object.errors.full_messages.each do |msg| %>
+    <% object.errors.full_messages.uniq.each do |msg| %>
       <li><%= msg %></li>
     <% end %>
   </ul>

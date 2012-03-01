@@ -1,75 +1,77 @@
-require 'timeout'
+require 'sicuro'
 
 class CodeExecutor
-  MAX_EXECUTION_TIME = 15 # seconds
+  MAX_EXECUTION_TIME = ENV['PROBLEM_MAX_TIME'] || 5 # seconds
 
-  attr_accessor :code, :errors
+  ERROR_PATTERNS = [
+    /^SystemExit:/,
+    /Error\S*:/,
+    /Exception\S*:/,
+    /^fatal/,
+    /Interrupt\S*:/,
+    /Errno::/
+  ]
+
+  attr_accessor :code, :errors, :time, :uid, :result
 
   def initialize(code, options = {})
     @code = code
     @excluded_methods = options[:excluded_methods]
     @errors = []
+    @uid = generate_uid
   end
 
   def execute
+    timelimit = MAX_EXECUTION_TIME.to_i
+    memlimit  = 30
+
+    Sicuro.setup(timelimit, memlimit)
     begin
-      check_code(@code)
-
-      FakeFS.activate!
-
-      code = PRECODE + @code
-      evaluator = Proc.new { eval(code) }
-      success = Timeout::timeout(MAX_EXECUTION_TIME) { evaluator.call }
-
-      if success == false
-        @errors << "Your solution failed."
-      end
+      start_time = Time.now
+      @result = Sicuro.eval(combined_code)
+      self.time = (Time.now - start_time)
     rescue Exception => e
-      @errors << "Your solution failed: #{e.message}"
-      return false
-    ensure
-      FakeFS.deactivate!
-      #load "#{Rails.root}/app/classes/code_executor.rb"
+      @errors << e.message
     end
 
-    return success
-  end
-
-  def check_code(code)
-    policy = initialize_policy
-    ast = Rubycop::Analyzer::NodeBuilder.build(code)
-    if !ast.accept(policy)
-      raise "your code contains a class or method call that is not allowed."
+    ERROR_PATTERNS.each {|re| @errors << result if result =~ re}
+    if @result == "<timeout hit>"
+      @errors << "Your solution timed out."
+    elsif @result.strip != @uid && @errors.empty?
+      @errors << "Solution contained unexpected output or returned prematurely."
     end
-    return true
+
+    return @errors.empty?
   end
 
-  def initialize_policy
-    policy = Policy.new
-    policy.blacklist_calls( @excluded_methods )
-
-    constants = ["Mongoid", "Document", "FakeFS", "RealFile", "RealFileTest", "RealFileUtils", "RealDir"] + model_names
-    constants.each {|c| policy.blacklist_const(c)}
-    return policy
+  def generate_uid
+    UUID.new.generate
   end
 
-  def model_names
-    Dir.chdir(File.join("#{Rails.root}", "app", "models"))
-    filenames = Dir.glob("*.rb")
-    filenames.map{|f| f.match(/^[^.]*/).to_s.camelize}
+  def post_code
+    %{\nputs "#{@uid}"}
+  end
+
+  def pre_code
+    PRECODE
+  end
+
+  def post_code
+    %{\nputs "#{@uid}"}
+  end
+
+  def combined_code
+    [pre_code, @code, post_code].join("\n")
   end
 
   PRECODE = <<-code
-    def assert_equal(x, y)
+    def assert_equal(x, y, message = nil)
       if x != y
-        raise "The value '\#{x}' does not equal '\#{y}'."
+        raise message ? message : "The value '\#{x}' does not equal '\#{y}'."
       else
         return true
       end
     end
-
-    #Object.instance_eval { remove_const :CodeExecutor }
-    $SAFE = 3
   code
 
 end

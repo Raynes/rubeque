@@ -3,7 +3,7 @@ When /^I go to the home page$/ do
 end
 
 Then /^I should be on the home page$/ do
-  current_path.should == root_path
+  current_path.should == (@current_user ? problems_path : root_path)
 end
 
 Then /^I should see an? (success|error) message$/ do |type|

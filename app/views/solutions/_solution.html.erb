@@ -6,8 +6,19 @@
 
 <%=raw highlight_code(solution.code) %>
 
-<p class="small">
-  Submitted by <strong><%= solution.user %></strong> on <%= solution.updated_at %>.
-  <% if current_user_admin? %><%= link_to 'Edit', edit_solution_path(solution) %>|<%= link_to 'Destroy', solution, confirm: 'Are you sure?', method: :delete %><% end %>
+<p class="small" style="float: right; height: 1em">
+  <%= link_to "Report", report_problem_solution_path(solution.problem, solution), confirm: "Are you sure you want to report this solution?", class: "report-solution" %>
+</p>
+
+<p class="small solution-info">
+  <% if solution.time %>
+    Time: <strong><%= solution.time.round(4) %></strong> seconds.
+  <% end %>
+  Length: <strong><%= solution.code.length %></strong> chars.
+  Date: <strong><%= solution.updated_at %></strong>.
+  <% if current_user_admin? %>
+    <%= link_to 'Edit', edit_problem_solution_path(solution.problem, solution) %> | 
+    <%= link_to 'Destroy', [solution.problem, solution], confirm: 'Are you sure?', method: :delete %>
+  <% end %>
 </p>
 <div class="clear"></div>
