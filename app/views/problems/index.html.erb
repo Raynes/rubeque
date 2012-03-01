@@ -3,9 +3,9 @@
 <table id="problems">
   <tr>
     <td></td>
-    <th>Title</th>
-    <th>Tags</th>
-    <th>Difficulty</th>
+    <th><%= sortable 'title' %></th>
+    <th>Tag</th>
+    <th><%= sortable 'difficulty' %></th>
     <th>Solutions</th>
     <th>Submitter</th>
     <% if current_user %>

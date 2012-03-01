@@ -6,8 +6,12 @@ class ProblemsController < ApplicationController
   before_filter :authenticate_user!, only: [:new]
   
   def index
-    @problems = Problem.approved.asc(:difficulty).asc(:order_number)
-
+    if params[:sort]
+      @problems = Problem.order_by([sort_column, sort_direction], [:order_number, :asc])
+    else
+      @problems = Problem.approved.asc(:difficulty).asc(:order_number)
+    end
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @problems }
@@ -115,4 +119,13 @@ class ProblemsController < ApplicationController
       format.json { head :ok }
     end
   end
+
+  private
+    def sort_column
+      Problem.fields.keys.include?(params[:sort]) ? params[:sort] : :difficulty
+    end
+    
+    def sort_direction
+      %w(asc desc).include?(params[:direction]) ? params[:direction] : :asc
+    end
 end
