@@ -7,9 +7,9 @@ class ProblemsController < ApplicationController
   
   def index
     if params[:sort]
-      @problems = Problem.order_by([sort_column, sort_direction], [:order_number, :asc]).page(params[:page] || 1)
+      @problems = Problem.includes(:solution).order_by([sort_column, sort_direction], [:order_number, :asc]).page(params[:page] || 1)
     else
-      @problems = Problem.approved.asc(:difficulty).asc(:order_number).page(params[:page] || 1)
+      @problems = Problem.includes(:solution).approved.asc(:difficulty).asc(:order_number).page(params[:page] || 1)
     end
     
     respond_to do |format|

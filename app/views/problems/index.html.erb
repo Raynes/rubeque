@@ -15,7 +15,7 @@
   </tr>
 
 <% @problems.each_with_index do |problem, i| %>
-  <tr class="problem <%= 'solved' if problem.solved?(current_user) %>" id="<%= problem.id %>">
+  <tr class="problem <%= 'solved' if current_user && current_user.solved_problems[problem.id] %>" id="<%= problem.id %>">
     <td><%= i+1 + offset %></td>
     <td><%= link_to problem.title, problem %></td>
     <td><%= problem.tag_list %></td>
@@ -23,9 +23,8 @@
     <td><%= problem.solutions.count %></td>
     <td><%= problem.creator %></td>
     <% if current_user %>
-      <%- solution = problem.solution_for(current_user) -%>
-      <td><%= solution.try(:score) || 0 %></td>
-      <td class="solved-mark"><%= solution ? image_tag("check.png") : "" %></td>
+      <td><%= current_user.solved_problem_scores[problem.id] %></td>
+      <td class="solved-mark"><%= current_user.solved_problems[problem.id] ? image_tag("check.png") : "" %></td>
     <% end -%>
   </tr>
 <% end %>

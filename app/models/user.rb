@@ -60,6 +60,14 @@ class User
                 :track_create   => true,
                 :track_destroy  => true
 
+  def solved_problems
+    @solved_problems ||= Hash[solutions.map{|solution| [solution.problem_id,solution.score]}]
+  end
+  
+  def solved_problem_scores
+    solved_problems
+  end
+
   def to_s
     username
   end
