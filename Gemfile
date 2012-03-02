@@ -16,6 +16,7 @@ gem 'kaminari'
 gem 'chosen-rails'
 gem "uuid", "~> 2.3.5"
 gem "rack-timeout"
+gem "aws-ses", "~> 0.4.4", :require => 'aws/ses'
 
 # omniauth gems
 gem 'omniauth', '~> 1.0.1'
