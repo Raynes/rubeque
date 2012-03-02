@@ -38,11 +38,7 @@ class CodeExecutor
     if @result == "<timeout hit>"
       @errors << "Your solution timed out."
     elsif @result.strip != @uid && @errors.empty?
-      if Rails.env.production?
-        @errors << "Solution contained unexpected output or returned prematurely."
-      else
-        @errors << "Unexpected result: #{@result}"
-      end
+      @errors << "Solution contained unexpected output or returned prematurely#{Rails.env.prodution? ? '.' : ": #{result}"}"
     end
 
     return @errors.empty?
