@@ -28,4 +28,17 @@ module ApplicationHelper
 
     </script>".html_safe
   end
+
+  def gravatar_url(email, options = {})
+    options = {r: "pg", d: "mm", s: 24}.merge(options) # pg rating
+    id = Digest::MD5.hexdigest(email)
+    "http://gravatar.com/avatar/#{id}.png?#{options.to_query}"
+  end
+
+  def gravatar_image(email, size = 24, css = {})
+    email ||= ""
+    options = {s: size}
+    css = {class: "gravatar"}.merge(css)
+    image_tag gravatar_url(email, options), css
+  end
 end
