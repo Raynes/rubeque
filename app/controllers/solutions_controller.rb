@@ -108,7 +108,7 @@ class SolutionsController < ApplicationController
 
   def report
     @solution = Solution.find(params[:id])
-    notify = @solution.cheating? # don't notify admins if it's already marked as cheating
+    notify = !@solution.cheating? # don't notify admins if it's already marked as cheating
     @solution.update_attribute(:cheating, true)
     SolutionMailer.cheating_notification(@solution, current_user).deliver if notify
 

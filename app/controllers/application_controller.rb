@@ -1,8 +1,17 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
+  before_filter :ensure_domain
   helper_method :current_user_admin?
   around_filter Mongoid::History::Sweeper.instance
   helper_method :root_path
+
+  def ensure_domain
+    debugger
+    if request.env['HTTP_HOST'] =~ /^www/
+      # HTTP 301 is a "permanent" redirect
+      redirect_to "http://#{request.env['HTTP_HOST'].gsub(/www\./, '')}", :status => 301
+    end
+  end
 
   protected
   def restrict_to_admin
