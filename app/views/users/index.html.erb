@@ -14,7 +14,7 @@
 <% @users.each_with_index do |user, i| %>
   <tr class="user-record" id="<%= user.id %>">
     <td><%= i+1 + offset %></td>
-    <td><%= user.username %></td>
+    <td class="user"><%= gravatar_image(user.email, 24, style: "margin-right: 0.5em") %><%= user.username %></td>
     <td><%= user.solution_count || 0 %></td>
     <td><%= user.score || 0 %></td>
     <% if current_user %>

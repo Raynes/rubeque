@@ -278,7 +278,7 @@ div.content {
   h2.text-header {
     margin: 1.1em 0 .3em; }
   b, label {
-    font-size: 16px;
+    font-size: 14pt;
     font-weight: bold;
     font-family: "Droid Sans", Helvetica, Arial, Sans-serif; } }
 
@@ -334,14 +334,33 @@ table#problems tr.problem {
   &:hover {
     color: #777; } }
 
-table#users tr.user-record th {
-  background: inherit; }
+table#users {
+  tr {
+    height: 35px; }
+  td.user {
+    vertical-align: top;
+    padding: 8px 0 0;
+    img {
+      margin: -3px 0px 0 10px; } }
+  tr.user-record th {
+    background: inherit; } }
 
-.solutions {
+#solutions-index {
+  h2 {
+    margin-bottom: 0.7em; }
+}
+.solution {
+  position: relative;
   h3 {
-    height: 25px;
-    margin-bottom: 7px;
-    padding-top: 8px; }
+    display: block;
+    height: 36px;
+    overflow: hidden;
+    margin: 0.5em 0 0;
+    padding-top: 8px;
+    position: relative;
+    img {
+      position: relative;
+      top: 4px; } }
   .CodeRay {
     margin-top: 8px; }
   .solution-info {
@@ -349,35 +368,28 @@ table#users tr.user-record th {
   p {
     margin-top: 4px; } }
 
-.solution {
-    position: relative;
-    .CodeRay {
-      margin-bottom: 8px; } }
-
-#your-solution h3 {
-  font-size: 1.6em;
-  margin: 1em 0 1em 0; }
-
 div.votes {
-  margin: 0 0 4px;
+  margin: 0 0 1px;
   position: absolute;
   height: 32px;
   overflow: hidden;
   right: 0;
+  top: 10px;
+  z-index: 10;
 
   b {
     font-size: 1.3em;
     display: block;
     float: left;
     position: relative;
-    top: 10px;
+    top: 8px;
     margin: 0 9px 0; }
   b.no-votes {
     position: relative;
     top: 17px; } }
 
 div.score-only {
-  top: 2px; }
+  top: 12px; }
 
 a.upvote, a.downvote {
   text-decoration: none;
@@ -540,3 +552,8 @@ div.ad p {
   border-radius: 3px;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px; }
+
+img.gravatar {
+  border: 1px solid #666; }
+.profile-avatar img {
+  margin-top: 4px }

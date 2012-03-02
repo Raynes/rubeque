@@ -1,5 +1,13 @@
 <h1>Edit <%= resource_name.to_s.humanize %></h1>
 
+<p class="profile-avatar"><b>Profile Image</b><br/>
+<%= gravatar_image(resource.email, 100) %><br/>
+
+<span class="small">
+  To edit your image, set your email below and then go to <%= link_to "gravatar.com", "http://gravatar.com" %> to sign up for an account using the same email.
+</span>
+</p>
+
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
   <%= errors_for resource %>
 

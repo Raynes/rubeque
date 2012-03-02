@@ -2,7 +2,10 @@
 
 <%= render "votes", solution: solution %>
 
-<h3><%= title %></h3>
+<h3>
+  <%= gravatar_image(solution.user.email, 28) %>
+  <%= title %>
+</h3>
 
 <%=raw highlight_code(solution.code) %>
 
