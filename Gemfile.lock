@@ -140,7 +140,6 @@ GEM
       mongoid (~> 2.0)
     multi_json (1.0.4)
     multipart-post (1.1.4)
-    newrelic_rpm (3.3.2)
     nokogiri (1.5.0)
     oauth (0.4.5)
     oauth2 (0.5.2)
@@ -284,7 +283,6 @@ DEPENDENCIES
   looksee
   mongoid (~> 2.4)
   mongoid-history
-  newrelic_rpm
   omniauth (~> 1.0.1)
   omniauth-github
   omniauth-openid
