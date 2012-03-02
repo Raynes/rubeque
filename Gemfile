@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem "rails", "~> 3.2.1"
+gem "rails", "~> 3.2.2"
 gem "mongoid", "~> 2.4"
 gem "bson_ext", "~> 1.5"
 gem "coderay", "~> 1.0.5"
@@ -15,6 +15,7 @@ gem 'mongoid-history'
 gem 'kaminari'
 gem 'chosen-rails'
 gem "uuid", "~> 2.3.5"
+gem "rack-timeout"
 
 # omniauth gems
 gem 'omniauth', '~> 1.0.1'
