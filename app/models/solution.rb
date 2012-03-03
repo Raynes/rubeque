@@ -63,22 +63,15 @@ class Solution
   def combined_code
     full_code = problem.code.clone
     full_code += ("\n" + problem.hidden_code) if problem.hidden_code
-
-    while(i = full_code.rindex("__"))
-      full_code[i..i+1] = self.code
-    end
-
-    full_code
+    pieces = full_code.split
+    full_code.simple_sub("__", self.code)
   end
 
   def share_code
     # don't add in hidden_code because we don't want it showing up on twitter
     share_code = problem.code.clone
-    while(i = share_code.rindex("__"))
-      share_code[i..i+1] = self.code
-    end
-
-    share_code
+    share_code["__"] = self.code
+    share_code.simple_sub("__", self.code)
   end
 
   protected

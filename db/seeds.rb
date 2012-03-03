@@ -430,6 +430,33 @@ code_block
 
 ######################################################################################################################
 
+Problem.create!(difficulty: 1,
+                title: "Method Acting",
+                instructions: "Write code that will return the name of a method.",
+                tag_list: "methods, metaprogramming",
+                approved: true,
+                order_number: (order_number+=1),
+                code: <<-code_block
+def dogs
+  __
+end
+
+def cats
+  __
+end
+
+def chunky_bacon
+  __
+end
+
+assert_equal dogs, :dogs
+assert_equal cats, :cats
+assert_equal chunky_bacon, :chunky_bacon
+code_block
+                )
+
+######################################################################################################################
+
 Problem.create!(#_id: 8,
                difficulty: 2,
                title: "Hello? Yes, This Is Dog",

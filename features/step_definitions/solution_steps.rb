@@ -32,3 +32,8 @@ end
 Then /^I should see a "([^"]*)" error message$/ do |message|
   page.find("#error_explanation li").text.should include(message)
 end
+
+When /^I fill in a regex date solution$/ do
+  answer = "Date.parse(date.sub(/(\\d+)[-\\/](\\d\\d).(\\d{4})/,'\\\\3-\\\\1-\\\\2')).strftime('%b %d, %Y')"
+  page.find("#solution_code").set(answer)
+end
