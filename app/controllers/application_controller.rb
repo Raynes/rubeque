@@ -6,7 +6,6 @@ class ApplicationController < ActionController::Base
   helper_method :root_path
 
   def ensure_domain
-    debugger
     if request.env['HTTP_HOST'] =~ /^www/
       # HTTP 301 is a "permanent" redirect
       redirect_to "http://#{request.env['HTTP_HOST'].gsub(/www\./, '')}", :status => 301
