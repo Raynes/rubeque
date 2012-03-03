@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   helper_method :root_path
 
   def ensure_domain
-    if request.env['HTTP_HOST'] =~ /^www/
+    if request.env['HTTP_HOST'] =~ /^www/ && Rails.env.production?
       # HTTP 301 is a "permanent" redirect
       redirect_to "http://#{request.env['HTTP_HOST'].gsub(/www\./, '')}", :status => 301
     end
