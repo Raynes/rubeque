@@ -51,19 +51,35 @@ $(function() {
 
   });
 
-  $("table#problems").dataTable({
-    "sPaginationType": "full_numbers",
-    "iDisplayLength": 50,
-    "bLengthChange": false,
-    "aaSorting": [[2,'asc'], [3,'desc']],
-    "aoColumns": [
-      null,
-      null,
-      { "sType": "difficulty" },
-      null,
-      null,
-      null,
-      { "sType": "string" },
-    ],
-  });
+  if($("div.user .username").length > 0) { // logged in user
+    $("table#problems").dataTable({
+      "sPaginationType": "full_numbers",
+      "iDisplayLength": 50,
+      "bLengthChange": false,
+      "aaSorting": [[2,'asc'], [3,'desc']],
+      "aoColumns": [
+        null,
+        null,
+        { "sType": "difficulty" },
+        null,
+        null,
+        null,
+        { "sType": "string" },
+      ],
+    });
+  } else {
+    $("table#problems").dataTable({
+      "sPaginationType": "full_numbers",
+      "iDisplayLength": 50,
+      "bLengthChange": false,
+      "aaSorting": [[2,'asc'], [3,'desc']],
+      "aoColumns": [
+        null,
+        null,
+        { "sType": "difficulty" },
+        null,
+        null,
+      ],
+    });
+  }
 });

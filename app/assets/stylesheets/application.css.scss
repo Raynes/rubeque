@@ -117,7 +117,7 @@ hr {
 
 table {
   $background: #ebebeb;
-  
+
   border-collapse: collapse;
   width: 100%;
   tr.solved {
@@ -131,16 +131,16 @@ table {
   th {
     font-family: "Droid Sans", Arial, Sans-serif;
     font-size: 14pt;
-    background: $background;
+    background-color: $background !important;
     color: #444;
     text-shadow: 1px 1px #fff;
   }
   
-  tr:nth-of-type(2n + 1) {
-    background: $background;
+  tr:nth-of-type(even) {
+    background-color: $background;
   }
-  tr:nth-of-type(2n) {
-    background: #fff;
+  tr:nth-of-type(odd) {
+    background-color: #fff;
   }
 }
 
@@ -323,27 +323,30 @@ td.solved-mark {
   text-align: center;
 }
 
-table#problems tr.problem {
-  cursor: pointer;
-  height: 37px;
-  a {
-    text-decoration: none;
-    color: inherit;
-    &:hover {
-      color: inherit; } }
-  &:hover {
-    color: #777; } }
-
-table#users {
+table#problems {
   tr {
-    height: 35px; }
-  td.user {
-    vertical-align: top;
-    padding: 8px 0 0;
-    img {
-      margin: -3px 0px 0 10px; } }
-  tr.user-record th {
-    background: inherit; } }
+    height: 35px }
+  tr.problem {
+    cursor: pointer;
+    height: 38px;
+    a {
+      text-decoration: none;
+      color: inherit;
+      &:hover {
+        color: inherit; } }
+    &:hover {
+      color: #777; } }
+
+  table#users {
+    tr {
+      height: 35px; }
+    td.user {
+      vertical-align: top;
+      padding: 8px 0 0;
+      img {
+        margin: -3px 0px 0 10px; } }
+    tr.user-record th {
+      background: inherit; } } }
 
 #solutions-index {
   h2 {
