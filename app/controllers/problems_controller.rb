@@ -6,12 +6,8 @@ class ProblemsController < ApplicationController
   before_filter :authenticate_user!, only: [:new]
   
   def index
-    if params[:sort]
-      @problems = Problem.order_by([sort_column, sort_direction], [:order_number, :asc]).page(params[:page] || 1)
-    else                  
-      @problems = Problem.approved.asc(:difficulty).asc(:order_number).page(params[:page] || 1)
-    end                   
-    
+    @problems = Problem.approved.all
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @problems }
