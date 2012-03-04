@@ -54,9 +54,8 @@ group :test, :development do
   gem 'launchy'
   gem 'selenium-webdriver'
   gem 'awesome_print'
-  gem 'looksee'
-  gem 'hirb'
   gem 'interactive_editor'
+  gem 'rails-footnotes'
 end
 
 group :development do
