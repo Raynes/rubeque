@@ -122,7 +122,7 @@ hr {
 
 table {
   $background: #ebebeb;
-  
+
   border-collapse: collapse;
   width: 100%;
   tr.solved {
@@ -136,16 +136,16 @@ table {
   th {
     font-family: "Droid Sans", Arial, Sans-serif;
     font-size: 14pt;
-    background: $background;
+    background-color: $background !important;
     color: #444;
     text-shadow: 1px 1px #fff;
   }
   
-  tr:nth-of-type(2n + 1) {
-    background: $background;
+  tr:nth-of-type(even) {
+    background-color: $background;
   }
-  tr:nth-of-type(2n) {
-    background: #fff;
+  tr:nth-of-type(odd) {
+    background-color: #fff;
   }
 }
 
@@ -324,27 +324,30 @@ td.solved-mark {
   text-align: center;
 }
 
-table#problems tr.problem {
-  cursor: pointer;
-  height: 37px;
-  a {
-    text-decoration: none;
-    color: inherit;
-    &:hover {
-      color: inherit; } }
-  &:hover {
-    color: #777; } }
-
-table#users {
+table#problems {
   tr {
-    height: 35px; }
-  td.user {
-    vertical-align: top;
-    padding: 8px 0 0;
-    img {
-      margin: -3px 0px 0 10px; } }
-  tr.user-record th {
-    background: inherit; } }
+    height: 35px }
+  tr.problem {
+    cursor: pointer;
+    height: 38px;
+    a {
+      text-decoration: none;
+      color: inherit;
+      &:hover {
+        color: inherit; } }
+    &:hover {
+      color: #777; } }
+
+  table#users {
+    tr {
+      height: 35px; }
+    td.user {
+      vertical-align: top;
+      padding: 8px 0 0;
+      img {
+        margin: -3px 0px 0 10px; } }
+    tr.user-record th {
+      background: inherit; } } }
 
 #solutions-index {
   h2 {
@@ -438,56 +441,6 @@ p.gist {
 div#flash {
   padding: 0 2px;
   margin: -34px 0 -20px; }
-
-nav.pagination {
-  margin: 1em 0 0;
-  float: right;
-  span, a {
-    display: block;
-    float: left; }
-  span.gap {
-    margin-right: 4px;
-    padding: 4px 2px; }
-  span.current {
-    font-weight: bold;
-    border: 1px solid #333;
-    margin: 0 4px 0 0px;
-    color: #fff;
-    background: #c6c6c6 url(Aristo/bg_fallback.png) 0 0 repeat-x; /* Old browsers */
-    background: -moz-linear-gradient(top, #c6c6c6 0%, #e6e6e6 100%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ededed), color-stop(100%,#e6e6e6)); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(top, #c6c6c6 0%,#e6e6e6 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(top, #c6c6c6 0%,#e6e6e6 100%); /* Opera11.10+ */ 
-    background: -ms-linear-gradient(top, #c6c6c6 0%,#e6e6e6 100%); /* IE10+ */
-    background: linear-gradient(top, #c6c6c6 0%,#e6e6e6 100%); /* W3C */
-    border-radius: 2px;
-    -webkit-border-radius: 2px;
-    -moz-border-radius: 2px;
-    padding: 4px 6px; }
-  a {
-    text-decoration: none;
-    padding: 4px 6px;
-    margin: 0 4px 0 0px;
-    border: 1px solid #aaa;
-    color: #343434;
-    background: #f5f5f5 url(Aristo/bg_fallback.png) 0 0 repeat-x; /* Old browsers */
-    background: -moz-linear-gradient(top, #f5f5f5 0%, #d6d6d6 100%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ededed), color-stop(100%,#d6d6d6)); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(top, #f5f5f5 0%,#d6d6d6 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(top, #f5f5f5 0%,#d6d6d6 100%); /* Opera11.10+ */ 
-    background: -ms-linear-gradient(top, #f5f5f5 0%,#d6d6d6 100%); /* IE10+ */
-    background: linear-gradient(top, #f5f5f5 0%,#d6d6d6 100%); /* W3C */
-    border-radius: 2px;
-    -webkit-border-radius: 2px;
-    -moz-border-radius: 2px;
-    &:hover{
-      color: #333;
-      border: 1px solid #333;
-      color: #333; }
-    &:visit{
-      color: #0e509e; } }
-  .next, .prev {
-    font-weight: normal; } }
 
 div.links {
   margin-top: 1.2em }

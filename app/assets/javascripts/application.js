@@ -13,9 +13,23 @@
 //= require chosen-jquery
 //= require_directory .
 
-jQuery.ajaxSetup({ 
+jQuery.ajaxSetup({
   'beforeSend': function(xhr) {xhr.setRequestHeader("Accept", "application/json")} 
 });
+
+jQuery.fn.dataTableExt.oSort['difficulty-asc'] = function(a,b) {
+  difficulties = ["Elementary", "Easy", "Medium", "Hard"];
+  var x = parseInt(difficulties.indexOf(a));
+  var y = parseInt(difficulties.indexOf(b));
+  return ((x < y) ?  -1 : ((x > y) ? 1 : 0));
+};
+
+jQuery.fn.dataTableExt.oSort['difficulty-desc'] = function(a,b) {
+  difficulties = ["Elementary", "Easy", "Medium", "Hard"];
+  var x = parseInt(difficulties.indexOf(a));
+  var y = parseInt(difficulties.indexOf(b));
+  return ((x < y) ?  1 : ((x > y) ? -1 : 0));
+};
 
 $(function() {
   $("input:submit").button();
@@ -36,4 +50,36 @@ $(function() {
     }
 
   });
+
+  if($("div.user .username").length > 0) { // logged in user
+    $("table#problems").dataTable({
+      "sPaginationType": "full_numbers",
+      "iDisplayLength": 50,
+      "bLengthChange": false,
+      "aaSorting": [[2,'asc'], [3,'desc']],
+      "aoColumns": [
+        null,
+        null,
+        { "sType": "difficulty" },
+        null,
+        null,
+        null,
+        { "sType": "string" },
+      ],
+    });
+  } else {
+    $("table#problems").dataTable({
+      "sPaginationType": "full_numbers",
+      "iDisplayLength": 50,
+      "bLengthChange": false,
+      "aaSorting": [[2,'asc'], [3,'desc']],
+      "aoColumns": [
+        null,
+        null,
+        { "sType": "difficulty" },
+        null,
+        null,
+      ],
+    });
+  }
 });

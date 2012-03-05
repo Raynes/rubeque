@@ -1,36 +1,39 @@
 <h1><%='Unapproved ' if (params[:action] == 'unapproved') -%>Problems</h1>
 
 <table id="problems">
-  <tr>
-    <td></td>
-    <th><%= sortable 'title' %></th>
-    <th>Tag</th>
-    <th><%= sortable 'difficulty' %></th>
-    <th>Solutions</th>
-    <th>Submitter</th>
-    <% if current_user %>
-      <th>Score</th>
-      <th>Solved</th>
-    <% end %>
-  </tr>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Tag</th>
+      <th>Difficulty</th>
+      <th>Solutions</th>
+      <th>Submitter</th>
+      <% if current_user %>
+        <th>Score</th>
+        <th>Solved</th>
+      <% end %>
+    </tr>
+  </thead>
 
-<% @problems.each_with_index do |problem, i| %>
-  <tr class="problem <%= 'solved' if current_user && current_user.solved_problems[problem.id] %>" id="<%= problem.id %>">
-    <td><%= i+1 + offset %></td>
-    <td><%= link_to problem.title, problem %></td>
-    <td><%= problem.tag_list %></td>
-    <td><%= problem.difficulty_word %></td>
-    <td><%= problem.solutions.count %></td>
-    <td><%= problem.creator %></td>
-    <% if current_user %>
-      <td><%= current_user.solved_problem_scores[problem.id] %></td>
-      <td class="solved-mark"><%= current_user.solved_problems[problem.id] ? image_tag("check.png") : "" %></td>
-    <% end -%>
-  </tr>
-<% end %>
+  <tbody>
+    <% @problems.each do |problem| %>
+      <tr class="problem <%= 'solved' if current_user && current_user.solved_problems[problem.id] %>" id="<%= problem.id %>">
+        <td><%= link_to problem.title, problem %></td>
+        <td><%= problem.tag_list %></td>
+        <td><%= problem.difficulty_word %></td>
+        <td><%= problem.solutions.count %></td>
+        <td><%= problem.creator %></td>
+        <% if current_user %>
+          <td><%= current_user.solved_problem_scores[problem.id] %></td>
+          <td class="solved-mark"><%= current_user.solved_problems[problem.id] ? image_tag("check.png") : "" %></td>
+        <% end -%>
+      </tr>
+    <% end %>
+  </tbody>
+
 </table>
 
-<%= paginate @problems %>
+<div class="clear"></div>
 
 <%= content_tag "div", class: "links" do %>
   <% if current_user %>
