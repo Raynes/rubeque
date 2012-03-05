@@ -37,16 +37,16 @@
 
 <%= content_tag "div", class: "links" do %>
   <% if current_user %>
-    <%= link_to 'Submit a problem', new_problem_path, id: 'new_problem' %>
+    <%= link_to 'Submit a problem', new_problem_path, id: 'new_problem' %> |
   <% end -%>
 
   <% if current_user_admin? %>
     <% if params[:action] == "unapproved" %>
-      | <%= link_to "Back to Problems", problems_path() %>
+      <%= link_to "Back to Problems", problems_path() %> |
     <% else %>
-      | <%= link_to "View Unapproved Problems", unapproved_problems_path() %>
+      <%= link_to "View Unapproved Problems", unapproved_problems_path() %> |
     <% end -%>
   <% end %>
 
-  | <%= link_to "RSS Feed", rss_problems_path(format: :xml), class: "rss" %>
+  <%= link_to "RSS Feed", rss_problems_path(format: :xml), class: "rss" %>
 <% end -%>
