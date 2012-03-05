@@ -18,12 +18,12 @@
     <td><%= user.solution_count || 0 %></td>
     <td><%= user.score || 0 %></td>
     <% if current_user %>
-      <th class="follow">
+      <td class="follow">
         <% unless user == current_user %>
           <%= link_to "Follow", "#", class: (current_user.following?(user) ? "no-display" : "") %>
           <%= link_to "Unfollow", "#", class: (current_user.following?(user) ? "" : "no-display")  %>
         <% end %>
-      </th>
+      </td>
     <% end %>
   </tr>
 <% end %>
