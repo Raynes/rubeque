@@ -8,6 +8,7 @@ Rubeque::Application.routes.draw do
   resources :problems do
     get 'unapproved', on: :collection
     put 'approve', on: :member
+    get 'rss', on: :collection
 
     resources :solutions, except: [:new] do
       get "share", on: :collection

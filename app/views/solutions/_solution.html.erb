@@ -17,7 +17,7 @@
   <% if solution.time %>
     Time: <strong><%= solution.time.round(4) %></strong> seconds.
   <% end %>
-  Length: <strong><%= solution.code.length %></strong> chars.
+  Length: <strong><%= solution.character_count %></strong> chars.
   Date: <strong><%= solution.updated_at %></strong>.
   <% if current_user_admin? %>
     <%= link_to 'Edit', edit_problem_solution_path(solution.problem, solution) %> | 

@@ -72,6 +72,10 @@ class Solution
     share_code.gsub("__"){self.code}
   end
 
+  def character_count
+    self.code.gsub(/\s/, "").length
+  end
+
   protected
 
     def create_upvote_for_solution

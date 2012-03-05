@@ -1,4 +1,4 @@
-<h1>Solutions for <%= link_to "#{@problem}", @problem %></h1>
+<h1>Solutions for <%= link_to "#{truncate(@problem.to_s, length: 30)}", @problem %></h1>
 
 <% if @top_solutions.current_page == 1 %>
   <h2 style="margin-top: 1.5em">People You Follow</h2>

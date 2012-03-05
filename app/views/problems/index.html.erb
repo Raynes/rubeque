@@ -47,4 +47,6 @@
       | <%= link_to "View Unapproved Problems", unapproved_problems_path() %>
     <% end -%>
   <% end %>
+
+  | <%= link_to "RSS Feed", rss_problems_path(format: :xml), class: "rss" %>
 <% end -%>

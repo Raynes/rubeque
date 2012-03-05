@@ -118,6 +118,12 @@ class ProblemsController < ApplicationController
     end
   end
 
+  def rss
+    @problems = Problem.approved.desc(:created_at)
+    render :layout => false
+    response.headers["Content-Type"] = "application/xml; charset=utf-8"
+  end
+
   private
     def sort_column
       Problem.fields.keys.include?(params[:sort]) ? params[:sort] : :difficulty
