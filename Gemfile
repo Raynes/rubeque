@@ -55,7 +55,6 @@ group :test, :development do
   gem 'selenium-webdriver'
   gem 'awesome_print'
   gem 'interactive_editor'
-  gem 'rails-footnotes'
 end
 
 group :development do

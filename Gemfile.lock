@@ -180,8 +180,6 @@ GEM
       activesupport (= 3.2.2)
       bundler (~> 1.0)
       railties (= 3.2.2)
-    rails-footnotes (3.7.5)
-      rails (>= 3.0.0)
     railties (3.2.2)
       actionpack (= 3.2.2)
       activesupport (= 3.2.2)
@@ -289,7 +287,6 @@ DEPENDENCIES
   omniauth-twitter
   rack-timeout
   rails (~> 3.2.2)
-  rails-footnotes
   rinku
   rspec-rails (~> 2.8)
   ruby-debug-base19 (= 0.11.26)
