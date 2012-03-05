@@ -57,11 +57,17 @@ div.dataTables_paginate {
   .first, .last {
     display: none; }
 
+  a:focus {
+    outline-width: 0; }
+
   a.next:after {
     content: " ›"; }
 
   a.previous:before {
     content: "‹ "; }
+
+  .paginate_button_disabled {
+    display: none; }
 
   a.paginate_active {
     font-weight: bold;
