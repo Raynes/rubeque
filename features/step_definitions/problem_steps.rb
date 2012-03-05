@@ -1,5 +1,7 @@
 When /I go to the problems page/ do
   visit problems_path
+  #debugger
+  1
 end
 
 Given /^the following problems:$/ do |table|
@@ -10,8 +12,8 @@ Given /^the following problems:$/ do |table|
   end
 end
 
-When /^I sort by (.+)$/ do |column|
-  click_link column.titleize
+When /^I sort by "([^"]*)"$/ do |column|
+  page.find(:xpath, "//table[@id='problems']//th[contains(., '#{column}')]").click
 end
 
 Then /^I should see problems in this order:$/ do |table|
@@ -20,8 +22,8 @@ Then /^I should see problems in this order:$/ do |table|
 
   rows = page.all('tr.problem')
   rows.each do |row|
-    # We just want the second and fourth td in our cells array
-    cells = row.all('td').select.with_index { |element, index| [1, 3].include? index }
+    # We just want the first and third td in our cells array
+    cells = row.all('td').select.with_index { |element, index| [0, 2].include? index }
     actual_order << cells.map { |cell| cell.text }
   end
 
