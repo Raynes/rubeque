@@ -10,13 +10,13 @@ gem 'devise', '~> 2.0.4'
 gem "rinku"
 gem 'exception_notification', :require => 'exception_notifier'
 gem 'sicuro'
-gem 'gist'
 gem 'mongoid-history'
 gem 'kaminari'
 gem 'chosen-rails'
 gem "uuid", "~> 2.3.5"
 gem "rack-timeout"
 gem "aws-ses", "~> 0.4.4", :require => 'aws/ses'
+gem "rubyheap", "~> 0.1.1"
 
 # omniauth gems
 gem 'omniauth', '~> 1.0.1'
