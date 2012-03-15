@@ -10,7 +10,7 @@
 <%=raw highlight_code(solution.code) %>
 
 <p class="small" style="float: right; height: 1em">
-  <%= link_to "Report", report_problem_solution_path(solution.problem, solution), confirm: "Are you sure you want to report this solution?", class: "report-solution" %>
+  <%= link_to "Report Abuse", report_problem_solution_path(solution.problem, solution), confirm: "Are you sure you want to report this solution for abuse?", class: "report-solution" %>
 </p>
 
 <p class="small solution-info">
