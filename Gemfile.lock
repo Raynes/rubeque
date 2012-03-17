@@ -95,7 +95,6 @@ GEM
     ffi (1.0.11)
     gherkin (2.9.0)
       json (>= 1.4.6)
-    gist (2.0.4)
     hashie (1.2.0)
     heroku (2.21.2)
       launchy (>= 0.3.2)
@@ -103,6 +102,9 @@ GEM
       rubyzip
       term-ansicolor (~> 1.0.5)
     hike (1.2.1)
+    httparty (0.8.1)
+      multi_json
+      multi_xml
     i18n (0.6.0)
     interactive_editor (0.0.10)
       spoon (>= 0.0.1)
@@ -136,6 +138,7 @@ GEM
       easy_diff
       mongoid (~> 2.0)
     multi_json (1.0.4)
+    multi_xml (0.4.1)
     multipart-post (1.1.4)
     newrelic_rpm (3.3.2)
     nokogiri (1.5.0)
@@ -218,6 +221,8 @@ GEM
     ruby-openid (2.1.8)
     ruby_core_source (0.1.5)
       archive-tar-minitar (>= 0.5.2)
+    rubyheap (0.1.1)
+      httparty (~> 0.8.1)
     rubyzip (0.9.6.1)
     sass (3.1.15)
     sass-rails (3.2.4)
@@ -273,7 +278,6 @@ DEPENDENCIES
   devise (~> 2.0.4)
   exception_notification
   fakefs
-  gist
   heroku
   interactive_editor
   jquery-rails
@@ -293,6 +297,7 @@ DEPENDENCIES
   rspec-rails (~> 2.8)
   ruby-debug-base19 (= 0.11.26)
   ruby-debug19 (= 0.11.6)
+  rubyheap (~> 0.1.1)
   sass-rails (~> 3.2.3)
   selenium-webdriver
   sicuro

@@ -97,8 +97,8 @@ class SolutionsController < ApplicationController
     if (@solution_code = @problem.code.gsub("__", params[:solution_code])).blank?
       redirect_to @problem and return
     end
-    text = render_to_string "shared/code_gist.text"
-    @gist = CodeGist.create(text, "#{@problem.id}.rb")
+    text = render_to_string "shared/code_refheap.text"
+    @paste = CodeRefheap.create(text)
 
     respond_to do |format|
       format.html
