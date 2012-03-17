@@ -497,6 +497,9 @@ div.links {
   margin: 0px;
 }
 
+#solution-share-link {
+  width: 330px; }
+
 div.ad p {
   background: #eee;
   margin: 1em 0.5em -.25em !important;
@@ -511,3 +514,18 @@ img.gravatar {
   border: 1px solid #666; }
 .profile-avatar img {
   margin-top: 4px }
+
+a.twitter {
+  padding: 10px 0 10px 36px;
+  margin: 20px 0 5px;
+  height: 40px;
+  background: url(/assets/auth/twitter_32.png) no-repeat 0px 2px; }
+
+#share {
+  h2 {
+    margin-top: 1.2em; }
+  h2.twitter {
+    margin-top: 1.4em; }
+  .links {
+    margin-top: 4em; }
+  }

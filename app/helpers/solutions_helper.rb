@@ -1,10 +1,10 @@
 module SolutionsHelper
 
-  def twitter_link(problem, gist)
-    text = URI.escape("Check out my solution to #{problem.title} on #rubeque #{gist}")
+  def twitter_link(problem, paste)
+    url = "http://rubeque.com/problems/#{problem.id}"
+    text = URI.escape("Check out my solution to '#{problem.title}' (#{url}) on #rubeque: #{paste}")
     link = "http://twitter.com/share?"
     link += "text=#{text}"
-    link += "&url=#{URI.escape("http://rubeque.com/problems/#{problem.id}")}"
-    link_to "Tweet your solution on Twitter", link 
+    link_to "Edit your tweet on Twitter", link, class: "twitter"
   end
 end

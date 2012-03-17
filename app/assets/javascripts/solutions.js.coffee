@@ -17,3 +17,6 @@ $ ->
     self.text("Reported")
     $.ajax url: link, complete: (xhr, text) ->
       self.delay(300).fadeOut(500)
+
+  $("#solution-share-link").click ->
+    $("#solution-share-link").select()

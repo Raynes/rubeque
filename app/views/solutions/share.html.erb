@@ -1,12 +1,16 @@
-<h1>Boast a Little</h1>
+<h1>Go Ahead And Boast A Little</h1>
 
-<h2>Direct Link to Share</h2>
-<p class="refheap">
-  <%= @paste %>
-</p>
+<div id="share">
+  <h2>Direct Link to Share</h2>
+  <p class="refheap">
+    <%= text_field_tag "share_link", @paste, id: "solution-share-link" %>
+  </p>
 
-<h2>Share on Twitter</h2>
-<p>Click below to visit Twitter.com where you'll be able to edit tweet and post your solution.</p>
-<p><%= twitter_link(@problem, @paste) %></p><br/>
+  <h2 class="twitter">Share on Twitter</h2>
+  <p>You'll be able to edit your tweet before it's posted. Click the link below to go to Twitter.</p>
+  <p><%= twitter_link(@problem, @paste) %></p>
 
-<%= link_to "Back to Problem", problem_path(@problem) %>
+  <div class="links">
+    <%= link_to "Back to Problem", problem_path(@problem) %>
+  </div>
+</div>
