@@ -5,7 +5,7 @@ module SolutionsHelper
     text = URI.escape("Check out my solution to '#{problem.title}' (#{url}) on #rubeque")
     link = "http://twitter.com/share?"
     link += "text=#{text}"
-    link += "url=#{paste}"
+    link += "&url=#{paste}"
     link_to "Edit your tweet on Twitter", link, class: "twitter"
   end
 end
