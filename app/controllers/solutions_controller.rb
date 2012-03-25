@@ -68,8 +68,9 @@ class SolutionsController < ApplicationController
     @problem = @solution.problem
 
     respond_to do |format|
-      if @solution.update_attributes(params[:solution])
-        format.html { redirect_to @problem, notice: "Solution passed and was updated. #{share_link}" }
+      if update_solution(@solution)
+        message = current_user_admin? && params[:bypass_run_code] ? "Solution successfully updated." : "Solution passed and was updated. #{share_link}"
+        format.html { redirect_to @problem, notice: message }
         format.json { head :ok }
       else
         flash.now[:error] = "Sorry, that solution didn't work! Try again."
@@ -132,6 +133,15 @@ class SolutionsController < ApplicationController
 
     def share_link
       "<a href='#{share_problem_solutions_path(@problem, solution_code: @solution.code)}'>Share your solution</a>!"
+    end
+
+    def update_solution(solution)
+      if current_user_admin? && params[:bypass_run_code]
+        solution.assign_attributes(params[:solution], as: :admin)
+        solution.save(validate: false)
+      else
+        solution.update_attributes(params[:solution])
+      end
     end
 
 end
