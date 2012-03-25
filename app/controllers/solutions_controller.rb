@@ -39,8 +39,8 @@ class SolutionsController < ApplicationController
   # POST /solutions.json
   def create
     @solution = Solution.new(params[:solution])
+    @solution.problem = @problem = Problem.find(params[:problem_id])
     @solution.user = current_user
-    @problem = @solution.problem
 
     respond_to do |format|
       if run_and_save_solution(@solution)
