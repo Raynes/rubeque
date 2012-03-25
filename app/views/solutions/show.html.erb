@@ -14,5 +14,6 @@
 </p>
 
 <% if current_user_admin? %>
-  <%= link_to 'Edit', edit_problem_solution_path(@solution.problem, @solution) %>
+  <%= link_to 'Edit', edit_problem_solution_path(@solution.problem, @solution) %> |
+  <%= link_to "Destroy", solution_path(), method: :delete, confirmation: "Are you sure you want to destroy this solution?" %>
 <% end %>

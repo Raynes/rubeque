@@ -86,6 +86,7 @@ class SolutionsController < ApplicationController
     problem = @solution.problem
     @solution.destroy
 
+    flash[:notice] = "Successfully destroyed solution."
     respond_to do |format|
       format.html { redirect_to problem }
       format.json { head :ok }
