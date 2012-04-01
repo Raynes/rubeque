@@ -8,8 +8,9 @@ class User
 
   field :username
   field :email
-  field :score, type: Integer
+  field :score, type: Integer, :default => 0
   field :solution_count, type: Integer
+  field :rank, type: Integer
   field :admin, type: Boolean
 
   ## Devise fields
@@ -54,7 +55,7 @@ class User
   attr_accessor :users_followed
   #attr_protected :provider, :uid, :name, :email
 
-  after_create :initialize_score
+  before_create :initialize_rank
 
   track_history :on => [:username, :email, :admin],
                 :track_create   => true,
@@ -67,7 +68,11 @@ class User
   def solved_problem_scores
     solved_problems
   end
-
+  
+  def scores_page
+    (rank.to_i / User.default_per_page.to_f).ceil
+  end
+  
   def to_s
     username
   end
@@ -122,9 +127,7 @@ class User
   end
 
   protected
-
-    def initialize_score
-      self.score = 0
-      self.save
-    end
+  def initialize_rank
+    self.rank = User.count + 1
+  end
 end
