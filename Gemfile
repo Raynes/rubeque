@@ -9,7 +9,7 @@ gem 'jquery-rails'
 gem 'devise', '~> 2.0.4'
 gem "rinku"
 gem 'exception_notification', :require => 'exception_notifier'
-gem 'sicuro'
+gem 'sicuro', git: "git://github.com/daviddavis/sicuro.git"
 gem 'mongoid-history'
 gem 'kaminari'
 gem 'chosen-rails'

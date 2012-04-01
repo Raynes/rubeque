@@ -35,9 +35,9 @@ class CodeExecutor
     end
 
     ERROR_PATTERNS.each {|re| @errors << result if result =~ re}
-    if @result == "<timeout hit>"
+    if result == "<timeout hit>"
       @errors << "Your solution timed out."
-    elsif @result.strip != @uid && @errors.empty?
+    elsif result != @uid && @errors.empty?
       @errors << "Solution contained unexpected output or returned prematurely#{Rails.env.prodution? ? '.' : ": #{result}"}"
     end
 
@@ -62,6 +62,10 @@ class CodeExecutor
 
   def combined_code
     [pre_code, @code, post_code].join("\n")
+  end
+
+  def result
+    @result.to_s
   end
 
   PRECODE = <<-code

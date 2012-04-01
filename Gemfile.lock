@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/daviddavis/sicuro.git
+  revision: 31ab9a3aa9ce544ea619e9ed48419a5dfc29a92a
+  specs:
+    sicuro (0.0.7)
+      fakefs
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -234,8 +241,6 @@ GEM
       ffi (~> 1.0)
       multi_json (~> 1.0)
       rubyzip
-    sicuro (0.0.7)
-      fakefs
     spoon (0.0.1)
     sprockets (2.1.2)
       hike (~> 1.2)
@@ -300,7 +305,7 @@ DEPENDENCIES
   rubyheap (~> 0.1.1)
   sass-rails (~> 3.2.3)
   selenium-webdriver
-  sicuro
+  sicuro!
   turn (= 0.8.2)
   uglifier (>= 1.0.3)
   uuid (~> 2.3.5)
