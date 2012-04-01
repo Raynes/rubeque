@@ -65,7 +65,7 @@ class CodeExecutor
   end
 
   def result
-    @result.to_s
+    @result.to_s.strip
   end
 
   PRECODE = <<-code
