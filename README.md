@@ -28,6 +28,7 @@ on what to work on.
 * [Michael Stalker](https://github.com/mstalker) (mstalker)
 * [Joseph Jaber](https://github.com/josephjaber) (josephjaber)
 * [Edward Anderson](https://github.com/nilbus) (nilbus)
+* [Anatoli Makarevich](https://github.com/makaroni4) (makaroni4)
 
 ## Acknowledgements
 

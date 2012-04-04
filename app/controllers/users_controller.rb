@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_filter :restrict_to_admin, only: [:edit,:update,:destroy]
   
   def index
-    @users = User.asc(:rank).page(params[:page] || 1)
+    @users = User.asc(:rank).desc(:score).page(params[:page] || 1)
   end
   
   def show
