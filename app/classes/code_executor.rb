@@ -56,10 +56,6 @@ class CodeExecutor
     PRECODE
   end
 
-  def post_code
-    %{\nputs "#{@uid}"}
-  end
-
   def combined_code
     [pre_code, @code, post_code].join("\n")
   end
