@@ -16,7 +16,7 @@ gem 'chosen-rails'
 gem "uuid", "~> 2.3.5"
 gem "rack-timeout"
 gem "aws-ses", "~> 0.4.4", :require => 'aws/ses'
-gem "rubyheap", "~> 0.1.1"
+gem "rubyheap", "~> 0.1.2"
 
 # omniauth gems
 gem 'omniauth', '~> 1.0.1'
