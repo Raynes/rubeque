@@ -13,7 +13,7 @@ class CodeRefheap
       @link = result
       return true
     else
-      raise "Error pasting to RefHeap: #{e.message}"
+      raise "Error pasting to RefHeap"
     end
   end
 
